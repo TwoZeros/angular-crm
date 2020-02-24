@@ -1,0 +1,13 @@
+.employee-table{
+    display: table;
+    width: 95%;
+    margin:0 20px;
+    box-sizing: border-box;
+}
+.employee-row{
+    display: table-row;
+}
+.description-cell{
+    display: table-cell;
+    padding:0 10px;
+}

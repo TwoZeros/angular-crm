@@ -1,0 +1,39 @@
+<h1>Список сотрудников</h1>
+
+
+<mat-table class="employee-table mat-elevation-z8" [dataSource]="employees">
+  
+    <ng-container  matColumnDef="id">
+        <div class="description-cell" *matHeaderCellDef>id</div>
+        <div class="description-cell" *matCellDef="let elem">{{elem.id}}</div>
+    </ng-container>
+  
+    <ng-container matColumnDef="firstName">
+        <div class="description-cell" *matHeaderCellDef>first Name</div>
+        <div class="description-cell"
+                  *matCellDef="let elem">{{elem.firstName}}</div>
+    </ng-container>
+  
+    <ng-container matColumnDef="lastName">
+        <div class="description-cell" *matHeaderCellDef>last Name</div>
+        <div class="description-cell"
+                  *matCellDef="let elem">{{elem.lastName}}</div>
+    </ng-container>
+
+    <ng-container matColumnDef="birstDay">
+        <div class="description-cell" *matHeaderCellDef>birstDay</div>
+        <div class="description-cell"
+                  *matCellDef="let elem">{{elem.birstDay}}</div>
+    </ng-container>
+
+    <ng-container matColumnDef="telephone">
+        <div class="description-cell" *matHeaderCellDef>last Name</div>
+        <div class="description-cell"
+                  *matCellDef="let elem">{{elem.telephone}}</div>
+    </ng-container>
+    
+    <mat-header-row class="employee-row" *matHeaderRowDef="displayedColumns"></mat-header-row>
+    
+    <mat-row class="employee-row" (click)="onRowClicked(row)" *matRowDef="let row; columns: displayedColumns"></mat-row>
+    
+</mat-table>
