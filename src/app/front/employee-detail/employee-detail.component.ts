@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { EmployeeService }  from '../employee.service';
-import { Employee } from '../employee';
+import { EmployeeService }  from '../../../shared/services/employee.service';
+import { Employee } from '../../../shared/models/employee';
 @Component({
   selector: 'app-employee-detail',
   templateUrl: './employee-detail.component.html',

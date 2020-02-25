@@ -1,5 +1,5 @@
-import {Employee} from './employee'
-import {EMPLOYEES} from './mock-employees'
+import {Employee} from '../models/employee'
+import {EMPLOYEES} from '../mock-employees'
 import { Observable, of } from 'rxjs';
 
 import { Injectable } from '@angular/core';

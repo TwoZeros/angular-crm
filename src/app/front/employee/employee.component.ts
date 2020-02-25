@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {EmployeeService} from '../employee.service'
-import { Employee } from '../employee';
+import {EmployeeService} from '../../../shared/services/employee.service'
+import { Employee } from '../../../shared/models/employee';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {Router} from '@angular/router';
@@ -23,7 +23,7 @@ export class EmployeeComponent implements OnInit {
   }
   onRowClicked(row : Employee) {
     this.router.navigate(
-      ['/employee', row.id], 
+      ['/front/employee', row.id], 
     );
     console.log('Row clicked: ', row);
 }

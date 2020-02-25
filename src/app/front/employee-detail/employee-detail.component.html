@@ -1,0 +1,39 @@
+<mat-toolbar>
+  <a mat-raised-button class="p10" color="secondary" routerLink="/front/employee">Назад</a>
+    <h1>Профиль: {{employee.firstName}} {{employee.lastName}}</h1>
+  
+  </mat-toolbar>
+<div class="flex-container">
+  <div style="margin:0 15px">
+    <mat-card class="example-card">
+      <mat-card-content>
+         <div style="height: 300px;">
+      </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <a mat-raised-button  routerLink="/employee/edit/{{employee.id}}">Редактировать</a>
+          <a mat-raised-button color="warn" routerLink="/employee">Удалить</a>    
+        </mat-card-actions>
+  </mat-card>
+  </div>
+  <div style=" width: 100%;">
+    <mat-tab-group style="width: 100%;">
+      <mat-tab label="Инфо"> 
+          <p class="info-row"><span>Дата рождения: </span>{{employee.birstDay}}</p>
+          <p class="info-row"><span>Должность: </span></p> 
+          <p class="info-row"><span>Дата приема: </span></p> 
+        </mat-tab>
+          <mat-tab label="Контакты">
+          <p class="info-row"><span>Телефон: </span>{{employee.telephone}}</p>
+          <p class="info-row"><span>Почта: </span></p> 
+          <p class="info-row"><span>trello: </span></p> 
+          <p class="info-row"><span>slack: </span></p> 
+       </mat-tab>
+      
+    </mat-tab-group>
+  </div>
+</div>
+   
+    
+        
+  

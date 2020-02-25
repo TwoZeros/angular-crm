@@ -1,4 +1,4 @@
-import {Employee} from './employee'
+import {Employee} from './models/employee'
 
 export const EMPLOYEES: Employee[] = [
     { id:1, firstName:"kirill", lastName:"Pakhtusov",birstDay:"03.10.1996", telephone:"+7(918)-398-59-06"},
