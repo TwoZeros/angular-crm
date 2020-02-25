@@ -1,39 +1,50 @@
-<h1>Список сотрудников</h1>
 
+<mat-toolbar>
+    <h1>Список сотрудников </h1>
+    <a mat-raised-button color="accent" routerLink="/employee/add">Добавить</a>
+  </mat-toolbar>
 
-<mat-table class="employee-table mat-elevation-z8" [dataSource]="employees">
+  <mat-form-field>
+    <mat-label>Фильтры</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="">
+  </mat-form-field>
+<table mat-table class="employee-table mat-elevation-z8" [dataSource]="dataSource">
   
     <ng-container  matColumnDef="id">
-        <div class="description-cell" *matHeaderCellDef>id</div>
-        <div class="description-cell" *matCellDef="let elem">{{elem.id}}</div>
+        <th  *matHeaderCellDef>id</th>
+        <td  *matCellDef="let elem">{{elem.id}}</td>
     </ng-container>
   
     <ng-container matColumnDef="firstName">
-        <div class="description-cell" *matHeaderCellDef>first Name</div>
-        <div class="description-cell"
-                  *matCellDef="let elem">{{elem.firstName}}</div>
+        <th  *matHeaderCellDef>first Name</th>
+        <td  *matCellDef="let elem">{{elem.firstName}}</td>
     </ng-container>
   
     <ng-container matColumnDef="lastName">
-        <div class="description-cell" *matHeaderCellDef>last Name</div>
-        <div class="description-cell"
-                  *matCellDef="let elem">{{elem.lastName}}</div>
+        <th *matHeaderCellDef>last Name</th>
+        <td 
+                  *matCellDef="let elem">{{elem.lastName}}</td>
     </ng-container>
 
     <ng-container matColumnDef="birstDay">
-        <div class="description-cell" *matHeaderCellDef>birstDay</div>
-        <div class="description-cell"
-                  *matCellDef="let elem">{{elem.birstDay}}</div>
+        <th *matHeaderCellDef>birstDay</th>
+        <td *matCellDef="let elem">{{elem.birstDay}}</td>
     </ng-container>
 
     <ng-container matColumnDef="telephone">
-        <div class="description-cell" *matHeaderCellDef>last Name</div>
-        <div class="description-cell"
-                  *matCellDef="let elem">{{elem.telephone}}</div>
+        <th *matHeaderCellDef>telephone</th>
+        <td *matCellDef="let elem">{{elem.telephone}}</td>
     </ng-container>
     
-    <mat-header-row class="employee-row" *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <tr mat-header-row  *matHeaderRowDef="displayedColumns">
+        
+    </tr>
     
-    <mat-row class="employee-row" (click)="onRowClicked(row)" *matRowDef="let row; columns: displayedColumns"></mat-row>
+  <tr mat-row (click)="onRowClicked(row)" 
+    *matRowDef="let row; columns: displayedColumns"
+    class="example-element-row">
+      
+    </tr> 
     
-</mat-table>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

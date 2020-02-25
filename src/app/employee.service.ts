@@ -13,5 +13,11 @@ export class EmployeeService {
     
     return of(EMPLOYEES)
   }
+
+  getEmployee(id: number): Observable<Employee> {
+    // TODO: send the message _after_ fetching the hero
+    
+    return of(EMPLOYEES.find(employee => employee.id === id));
+  }
   constructor() { }
 }

@@ -1,13 +1,23 @@
-.employee-table{
-    display: table;
-    width: 95%;
-    margin:0 20px;
-    box-sizing: border-box;
+/* Structure */
+h1 {
+  margin-right: 10px;
 }
-.employee-row{
-    display: table-row;
-}
-.description-cell{
-    display: table-cell;
-    padding:0 10px;
-}
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+
+  }
+  td {
+      text-align: center;
+  }
+  tr.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+  }
+  
+  tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+  }

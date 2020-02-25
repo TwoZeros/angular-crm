@@ -12,7 +12,8 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
 
 
-import {MyMaterialModule} from './material.module'
+import {MyMaterialModule} from './material.module';
+import { AddEmpComponent } from './add-emp/add-emp.component'
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {MyMaterialModule} from './material.module'
     DashbordComponent,
     MainMenuComponent,
     LoginComponentComponent,
+    AddEmpComponent,
 
     
   ],
