@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import {Employee} from '../../../shared/models/employee'
 import { NgForm} from '@angular/forms';
+import {EmployeeService} from '../../../shared/services/employee.service'
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-employee-add',
@@ -9,14 +11,17 @@ import { NgForm} from '@angular/forms';
   styleUrls: ['./employee-add.component.css']
 })
 export class EmployeeAddComponent implements OnInit {
-  employee : Employee
+  employee: Employee;
   firstName : string;
-  lastName: String;
+  secondName: String;
+  middleName: String;
   telephone: String;
-  birstDay: Date
+  birthDay: Date
   constructor(
-    
-    private location: Location) { }
+    private router: Router,
+    private EmployeeService: EmployeeService,
+    private location: Location,
+    ) { }
 
   ngOnInit(): void {
   }
@@ -25,8 +30,16 @@ export class EmployeeAddComponent implements OnInit {
     
   }
   onSubmit(form: NgForm){
-    console.log("work");
-    console.log(form);
+    this.EmployeeService.addEmployee({
+          firstName: this.firstName,
+          middleName: this.middleName, 
+          secondName: this.secondName,
+          birthDay:this.birthDay}).subscribe(status=> {
+      
+            this.router.navigate(
+              ['/front/employee'] 
+            );
+          })
 }
   add() {
 

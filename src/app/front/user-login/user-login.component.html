@@ -6,13 +6,14 @@
 
          <mat-card-content>
             <form class="my-form">
+               {{error}}
                <mat-form-field class="full-width">
-                  <mat-label>Email</mat-label>
-                  <input  matInput  placeholder="Email" name="email">
+                  <mat-label>Username</mat-label>
+                  <input required matInput [(ngModel)]="username" autocomplete="off" placeholder="Your username" name="email">
                </mat-form-field>
                <mat-form-field class="full-width">
                   <mat-label>Password</mat-label>
-                  <input  matInput  placeholder="Password" name="password">
+                  <input required type="password" autocomplete="off" matInput  [(ngModel)]="password" placeholder="Password" name="password">
                </mat-form-field>
             </form>
          </mat-card-content>

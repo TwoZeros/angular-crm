@@ -8,21 +8,23 @@
    
       <mat-form-field class="full-width">
         <mat-label>First Name</mat-label>
-        <input matInput placeholder="First name"  ngModel  name="firstName" required>
+        <input autocomplete="off" matInput placeholder="First name"  [(ngModel)]="firstName"  name="firstName" required>
       </mat-form-field>
       <mat-form-field class="full-width">
         <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Last Name" ngModel name="lastName" required>
+        <input autocomplete="off" matInput placeholder="Last Name" [(ngModel)]="secondName" name="secondName" required>
       </mat-form-field>
+
       <mat-form-field class="full-width">
-        <mat-label>Phone</mat-label>
-        <input matInput placeholder="Phone"  ngModel  name="telephone" required>
+        <mat-label>Middle Name</mat-label>
+        <input autocomplete="off" matInput placeholder="Middle Name" [(ngModel)]="middleName" name="middleName" required>
       </mat-form-field>
+      
 
 
       <mat-form-field>
         <mat-label>Date of Birth</mat-label>
-        <input matInput [matDatepicker]="picker" ngModel  name="birstDay" placeholder="Choose a date">
+        <input matInput [matDatepicker]="picker" [(ngModel)]="birthDay"  name="birthDay" placeholder="Choose a date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -30,7 +32,7 @@
   </mat-card-content>
   <mat-card-actions>
   <input type="submit" [disabled]="myForm.invalid" color="primary" (click)='add' value="Добавить">
-{{birstDay}}
+{{birthDay | date: 'dd-MM-yyyy'}}
 </mat-card-actions>
 </form>
 </mat-card>

@@ -1,6 +1,6 @@
 <mat-toolbar>
   <a mat-raised-button class="p10" color="secondary" routerLink="/front/employee">Назад</a>
-    <h1>Профиль: {{employee.firstName}} {{employee.lastName}}</h1>
+    <h1 *ngIf="employee">Профиль: {{employee.secondName}} {{employee.firstName}} </h1>
   
   </mat-toolbar>
 <div class="flex-container">
@@ -11,23 +11,24 @@
       </div>
         </mat-card-content>
         <mat-card-actions>
-          <a mat-raised-button  routerLink="/employee/edit/{{employee.id}}">Редактировать</a>
-          <a mat-raised-button color="warn" routerLink="/employee">Удалить</a>    
+          <button mat-raised-button (click)="openDialog()">Eddit Photo</button>
+          <a mat-raised-button  *ngIf="employee"  routerLink="/front/employee/{{employee.id}}/update">Редактировать</a>
+          <button mat-raised-button color="warn" (click)="delete(employee.id)">Удалить</button>    
         </mat-card-actions>
   </mat-card>
   </div>
   <div style=" width: 100%;">
     <mat-tab-group style="width: 100%;">
       <mat-tab label="Инфо"> 
-          <p class="info-row"><span>Дата рождения: </span>{{employee.birstDay}}</p>
-          <p class="info-row"><span>Должность: </span></p> 
-          <p class="info-row"><span>Дата приема: </span></p> 
+        <p class="info-row" *ngIf="employee"><span>ФИО </span>{{employee.secondName}} {{employee.firstName}} {{employee.middleName}}</p>
+          <p class="info-row" *ngIf="employee"><span>Дата рождения: </span>{{employee.birthDay | date: 'dd-MM-yyyy'}}</p>
+ 
         </mat-tab>
-          <mat-tab label="Контакты">
-          <p class="info-row"><span>Телефон: </span>{{employee.telephone}}</p>
-          <p class="info-row"><span>Почта: </span></p> 
-          <p class="info-row"><span>trello: </span></p> 
-          <p class="info-row"><span>slack: </span></p> 
+          <mat-tab label="Контакты" *ngIf="employee" >
+          
+          <p  *ngFor="let contact of employee.contacts"  class="info-row">
+            <span>{{ contact.name }} </span>{{contact.value}}
+          </p>
        </mat-tab>
       
     </mat-tab-group>

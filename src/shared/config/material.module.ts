@@ -12,6 +12,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
     imports: [
@@ -45,7 +46,8 @@ import { MatNativeDateModule } from '@angular/material/core';
         MatDatepickerModule,
         FormsModule,
         ReactiveFormsModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        MatDialogModule
     ],
 })
 

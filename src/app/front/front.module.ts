@@ -24,6 +24,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MyMaterialModule } from 'src/shared/config/material.module';
+import { HttpClientModule }   from '@angular/common/http';
+import {isLoginedGuard} from './isLoginedGuard'
+import { EmployeeUpdateComponent } from './employee-update/employee-update.component';
+import { EmployeeUploadAvatarComponent } from './employee-upload-avatar/employee-upload-avatar.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +35,16 @@ import { MyMaterialModule } from 'src/shared/config/material.module';
     EmployeeDetailComponent,
     DashbordComponent,
     UserLoginComponent,
-    EmployeeAddComponent
+    EmployeeAddComponent,
+    EmployeeUpdateComponent,
+    EmployeeUploadAvatarComponent
   ],
   imports: [
     CommonModule,
     FrontRoutingModule,
-    MyMaterialModule
-  ]
+    MyMaterialModule,
+    HttpClientModule
+  ],
+  providers: [isLoginedGuard],
 })
 export class FrontModule { }

@@ -14,27 +14,37 @@
         <th  *matHeaderCellDef>id</th>
         <td  *matCellDef="let elem">{{elem.id}}</td>
     </ng-container>
+
+    <ng-container  matColumnDef="login">
+      <th  *matHeaderCellDef>login</th>
+      <td  *matCellDef="let elem">{{elem.login}}</td>
+  </ng-container>
   
     <ng-container matColumnDef="firstName">
         <th  *matHeaderCellDef>first Name</th>
         <td  *matCellDef="let elem">{{elem.firstName}}</td>
     </ng-container>
   
-    <ng-container matColumnDef="lastName">
+    <ng-container matColumnDef="secondName">
         <th *matHeaderCellDef>last Name</th>
         <td 
-                  *matCellDef="let elem">{{elem.lastName}}</td>
+                  *matCellDef="let elem">{{elem.secondName}}</td>
     </ng-container>
 
     <ng-container matColumnDef="birstDay">
-        <th *matHeaderCellDef>birstDay</th>
-        <td *matCellDef="let elem">{{elem.birstDay}}</td>
+        <th *matHeaderCellDef>birthDay</th>
+        <td *matCellDef="let elem">{{elem.birthDay}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="telephone">
+    <ng-container matColumnDef="created">
+      <th *matHeaderCellDef>created</th>
+      <td *matCellDef="let elem">{{elem.created}}</td>
+  </ng-container>
+  
+    <!-- <ng-container matColumnDef="telephone">
         <th *matHeaderCellDef>telephone</th>
         <td *matCellDef="let elem">{{elem.telephone}}</td>
-    </ng-container>
+    </ng-container> -->
     
     <tr mat-header-row  *matHeaderRowDef="displayedColumns">
         

@@ -6,21 +6,31 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainMenuComponent } from './front/main-menu/main-menu.component';
 import { MyMaterialModule } from 'src/shared/config/material.module';
+import { HttpClientModule, HTTP_INTERCEPTORS  }   from '@angular/common/http';
+import { ParamInterceptor } from './api.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-   MainMenuComponent
+   MainMenuComponent,
+   
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MyMaterialModule
+    MyMaterialModule,
+    HttpClientModule
   ],
   exports: [
   ],
-  providers: [],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: ParamInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

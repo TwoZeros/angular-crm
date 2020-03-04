@@ -1,6 +1,7 @@
 import {Employee} from '../models/employee'
-import {EMPLOYEES} from '../mock-employees'
+//import {EMPLOYEES} from '../mock-employees'
 import { Observable, of } from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 import { Injectable } from '@angular/core';
 
@@ -8,16 +9,31 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class EmployeeService {
+  public uri = 'https://localhost:44349/api/Employees';
+  constructor(private http: HttpClient){ }
 
-  getEmployees(): Observable<Employee[]> {
+  getEmployees(): Observable<any> {
     
-    return of(EMPLOYEES)
+    return this.http.get(this.uri); 
   }
 
-  getEmployee(id: number): Observable<Employee> {
-    // TODO: send the message _after_ fetching the hero
+  getEmployee(id: number): Observable<any> {
+ 
     
-    return of(EMPLOYEES.find(employee => employee.id === id));
+    return this.http.get(this.uri+"/"+id);
   }
-  constructor() { }
+  deleteEmployee(id: number): Observable<any> {
+
+    return this.http.delete(this.uri+"/"+id);
+  }
+  addEmployee(employee: object): Observable<any> {
+  
+    return this.http.post(this.uri,employee);
+  }
+
+  updateEmployee(id,employee: object): Observable<any> {
+console.log(employee);
+    return this.http.put(this.uri+"/"+id,employee);
+  }
+  
 }
