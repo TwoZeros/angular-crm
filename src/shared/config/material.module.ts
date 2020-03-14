@@ -13,7 +13,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
     imports: [
         MatSliderModule,
@@ -47,7 +47,8 @@ import {MatDialogModule} from '@angular/material/dialog';
         FormsModule,
         ReactiveFormsModule,
         MatNativeDateModule,
-        MatDialogModule
+        MatDialogModule,
+        MatIconModule
     ],
 })
 

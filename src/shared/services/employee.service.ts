@@ -26,6 +26,7 @@ export class EmployeeService {
 
     return this.http.delete(this.uri+"/"+id);
   }
+
   addEmployee(employee: object): Observable<any> {
   
     return this.http.post(this.uri,employee);
@@ -35,5 +36,12 @@ export class EmployeeService {
 console.log(employee);
     return this.http.put(this.uri+"/"+id,employee);
   }
+
+  uploadAvatarEmployee(id, employee: object): Observable<any> {
+    console.log(employee);
+    var uri=this.uri+"/"+id+"/upload-avatar"
+        return this.http.put(uri,employee);
+      }
+
   
 }

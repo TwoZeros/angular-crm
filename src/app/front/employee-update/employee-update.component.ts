@@ -13,7 +13,7 @@ import { FormGroup, FormControl, Validators, FormArray, FormsModule } from '@ang
 export class EmployeeUpdateComponent implements OnInit {
   employee : Employee;
   updateForm : FormGroup;
- 
+  currentIdEmployee : number;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -23,6 +23,8 @@ export class EmployeeUpdateComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.currentIdEmployee = +this.route.snapshot.paramMap.get('id');
+
     this.getEmployee();
   }
   createForm(): void {
@@ -36,7 +38,7 @@ export class EmployeeUpdateComponent implements OnInit {
   }
   submit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.EmployeeService.updateEmployee(id,{ 
+    this.EmployeeService.updateEmployee(this.currentIdEmployee,{ 
       id:id,
       firstName:this.updateForm.value.firstName,
       secondName:this.updateForm.value.secondName,
@@ -50,9 +52,8 @@ export class EmployeeUpdateComponent implements OnInit {
    
   }
   getEmployee(): void {
-    
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.EmployeeService.getEmployee(id)
+ 
+    this.EmployeeService.getEmployee(this.currentIdEmployee)
       .subscribe(employee => {
         this.employee = employee;
         this.createForm();

@@ -7,4 +7,5 @@ export interface Employee {
     birthDay: string,
     created : string
     contacts: object[]
+    photo: string;
 }

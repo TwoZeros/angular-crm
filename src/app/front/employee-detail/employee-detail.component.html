@@ -7,13 +7,13 @@
   <div style="margin:0 15px">
     <mat-card class="example-card">
       <mat-card-content>
-         <div style="height: 300px;">
-      </div>
+         <img [src]="employee.photo" style="width: 300px;">
+      
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button (click)="openDialog()">Eddit Photo</button>
-          <a mat-raised-button  *ngIf="employee"  routerLink="/front/employee/{{employee.id}}/update">Редактировать</a>
-          <button mat-raised-button color="warn" (click)="delete(employee.id)">Удалить</button>    
+          <button mat-raised-button routerLink="/front/employee/{{employee.id}}/upload-avatar">Update Photo</button>
+          <a mat-raised-button  *ngIf="employee"  routerLink="/front/employee/{{employee.id}}/update">Eddit Info</a>
+          <button mat-raised-button color="warn" (click)="delete(employee.id)">Delete</button>    
         </mat-card-actions>
   </mat-card>
   </div>
