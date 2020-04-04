@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 export class AuthorisationService {
-  public uri = 'https://localhost:44349';
+  public uri = 'http://ec2-34-201-245-214.compute-1.amazonaws.com';
   public token;
   constructor(private http: HttpClient, public router: Router) { }
 
