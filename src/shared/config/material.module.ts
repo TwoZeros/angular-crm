@@ -28,7 +28,7 @@ import {MatIconModule} from '@angular/material/icon';
         MatDatepickerModule,
         FormsModule,
         ReactiveFormsModule,
-        MatNativeDateModule
+        MatNativeDateModule,
     ],
     declarations: [],
     entryComponents: [],
@@ -48,7 +48,8 @@ import {MatIconModule} from '@angular/material/icon';
         ReactiveFormsModule,
         MatNativeDateModule,
         MatDialogModule,
-        MatIconModule
+        MatIconModule,
+
     ],
 })
 

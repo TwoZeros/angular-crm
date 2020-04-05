@@ -1,0 +1,43 @@
+<mat-card style="margin: 0 auto; width: 400px;">
+  <mat-card-title>
+    <h1> Добавить сотрудника </h1>
+    <a mat-raised-button color="" routerLink='/employee'>Back</a>
+  </mat-card-title>
+  <form class="my-form" novalidate #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+  <mat-card-content>
+   
+      <mat-form-field class="full-width">
+        <mat-label>First Name</mat-label>
+        <input autocomplete="off" matInput placeholder="First name"  [(ngModel)]="firstName"  name="firstName" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input autocomplete="off" matInput placeholder="Last Name" [(ngModel)]="secondName" name="secondName" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Middle Name</mat-label>
+        <input autocomplete="off" matInput placeholder="Middle Name" [(ngModel)]="middleName" name="middleName" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Phone number</mat-label>
+        <input autocomplete="off" matInput placeholder="Phone number" [(ngModel)]="phoneNumber" name="phoneNumber" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input autocomplete="off" matInput placeholder="Email" [(ngModel)]="email" name="middleName" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="birthDay"  name="birthDay" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    
+  </mat-card-content>
+  <mat-card-actions>
+  <input type="submit" [disabled]="myForm.invalid" color="primary" (click)='add' value="Добавить">
+{{birthDay | date: 'dd-MM-yyyy'}}
+</mat-card-actions>
+</form>
+</mat-card>

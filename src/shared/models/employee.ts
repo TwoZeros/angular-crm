@@ -6,6 +6,7 @@ export interface Employee {
     middleName: string,
     birthDay: string,
     created : string
-    contacts: object[]
+    phoneNumber:string,
+    email:string
     photo: string;
 }
