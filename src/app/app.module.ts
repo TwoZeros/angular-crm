@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainMenuComponent } from './front/main-menu/main-menu.component';
 import { MyMaterialModule } from 'src/shared/config/material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS  }   from '@angular/common/http';
 import { ParamInterceptor } from './api.interceptor';
@@ -16,7 +15,6 @@ import {isLoginedGuard} from './isLoginedGuard'
 @NgModule({
   declarations: [
     AppComponent,
-   MainMenuComponent,
   ],
   imports: [
     BrowserModule,
