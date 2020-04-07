@@ -9,12 +9,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS  }   from '@angular/common/http';
 import { ParamInterceptor } from './api.interceptor';
 import { DefaultModule } from './layouts/default/default.module';
 import { StartPageModule } from './layouts/startPage/startPage.module';
-import {isLoginedGuard} from './isLoginedGuard'
+import {isLoginedGuard} from './isLoginedGuard';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     BrowserModule,

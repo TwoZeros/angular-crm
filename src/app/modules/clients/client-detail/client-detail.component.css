@@ -1,0 +1,17 @@
+.example-card {
+    max-width: 400px;
+  }
+  .flex-container {
+    display: flex;
+  }
+  .info-row {
+    padding: 15px 0;
+    border-bottom: 1px solid silver;
+  }
+  .info-row>span {
+    font-weight: bold;
+    padding-left: 20px;
+  }
+  .p10 {
+    margin: 0 10px;
+  }

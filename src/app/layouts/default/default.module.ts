@@ -16,7 +16,13 @@ import { EmployeeDetailComponent } from '../../modules/employee/employee-detail/
 import {EmployeeAddComponent}      from '../../modules/employee/employee-add/employee-add.component'
 import {EmployeeUpdateComponent } from '../../modules/employee/employee-update/employee-update.component'
 import {EmployeeUploadAvatarComponent} from '../../modules/employee/employee-upload-avatar/employee-upload-avatar.component'
-
+import { ClientsListComponent } from '../../modules/clients/clients-list/clients-list.component'
+import { ClientDetailComponent } from '../../modules/clients/client-detail/client-detail.component';
+import { ClientUpdateComponent } from '../../modules/clients/client-update/client-update.component';
+import { ClientUpdateAvatarComponent } from '../../modules/clients/client-update-avatar/client-update-avatar.component';
+import { ClientAddComponent } from '../../modules/clients/client-add/client-add.component';
+import { ClientService } from 'src/shared/services/client.services';
+import { EmployeeService } from 'src/shared/services/employee.service';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -26,8 +32,12 @@ import {EmployeeUploadAvatarComponent} from '../../modules/employee/employee-upl
     EmployeeDetailComponent,
     EmployeeAddComponent,
     EmployeeUpdateComponent,
-    EmployeeUploadAvatarComponent
-    
+    EmployeeUploadAvatarComponent,
+    ClientsListComponent,
+    ClientDetailComponent,
+    ClientUpdateComponent,
+    ClientUpdateAvatarComponent,
+    ClientAddComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +48,9 @@ import {EmployeeUploadAvatarComponent} from '../../modules/employee/employee-upl
     MyMaterialModule
   ],
   providers: [
-    DashboardService
+    DashboardService,
+    ClientService,
+    EmployeeService
   ]
 })
 export class DefaultModule { }
