@@ -8,7 +8,6 @@ import { EmployeeListComponent } from './modules/employee/employee-list/employee
 import { EmployeeAddComponent } from './modules/employee/employee-add/employee-add.component';
 import { EmployeeUpdateComponent } from './modules/employee/employee-update/employee-update.component';
 import { EmployeeUploadAvatarComponent } from './modules/employee/employee-upload-avatar/employee-upload-avatar.component';
-
 import { ClientsListComponent } from './modules/clients/clients-list/clients-list.component'
 import { ClientDetailComponent } from './modules/clients/client-detail/client-detail.component';
 import { ClientUpdateComponent } from './modules/clients/client-update/client-update.component';
@@ -17,6 +16,7 @@ import { ClientAddComponent } from './modules/clients/client-add/client-add.comp
 import { StartPageComponent } from './layouts/startPage/startPage.component';
 import {UserLoginComponent} from './modules/user/user-login/user-login.component';
 import {isLoginedGuard} from './isLoginedGuard';
+import { SkillsListComponent } from './modules/skills/skills-list/skills.component';
 const routes: Routes = [
   {
     path: '',
@@ -35,10 +35,11 @@ const routes: Routes = [
     { path: 'client/:id', component: ClientDetailComponent, canActivate: [isLoginedGuard] },
     { path: 'client/:id/update', component: ClientUpdateComponent, canActivate: [isLoginedGuard] },
     { path: 'client/:id/upload-avatar', component: ClientUpdateAvatarComponent, canActivate: [isLoginedGuard] },
+    { path: 'skills', component: SkillsListComponent, canActivate: [isLoginedGuard] },
     ]
   },
   {
-    path: 'login', 
+    path: 'login',
     component: StartPageComponent,
     children: [{
       path: '',

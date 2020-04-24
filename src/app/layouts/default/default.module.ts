@@ -23,6 +23,8 @@ import { ClientUpdateAvatarComponent } from '../../modules/clients/client-update
 import { ClientAddComponent } from '../../modules/clients/client-add/client-add.component';
 import { ClientService } from 'src/shared/services/client.services';
 import { EmployeeService } from 'src/shared/services/employee.service';
+import { SkillsListComponent } from 'src/app/modules/skills/skills-list/skills.component';
+import { SkillsService } from 'src/shared/services/skills.service';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -37,7 +39,8 @@ import { EmployeeService } from 'src/shared/services/employee.service';
     ClientDetailComponent,
     ClientUpdateComponent,
     ClientUpdateAvatarComponent,
-    ClientAddComponent
+    ClientAddComponent,
+    SkillsListComponent,
   ],
   imports: [
     CommonModule,
@@ -50,7 +53,8 @@ import { EmployeeService } from 'src/shared/services/employee.service';
   providers: [
     DashboardService,
     ClientService,
-    EmployeeService
+    EmployeeService,
+    SkillsService,
   ]
 })
 export class DefaultModule { }
