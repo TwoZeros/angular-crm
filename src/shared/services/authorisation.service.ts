@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 export class AuthorisationService {
-  public uri = 'http://ec2-13-59-245-120.us-east-2.compute.amazonaws.com:5000/';
+  public uri = 'http://ec2-13-59-245-120.us-east-2.compute.amazonaws.com:5000';
   public token;
   constructor(private http: HttpClient, public router: Router) { }
 
@@ -34,6 +34,4 @@ export class AuthorisationService {
             return false;
         }
   }
-
-
 }
