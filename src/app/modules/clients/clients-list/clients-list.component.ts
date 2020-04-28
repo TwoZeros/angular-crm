@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {ClientService} from '../../../../shared/services/client.services';
-import { Client } from      '../../../../shared/models/Client';
+import { Client } from      '../../../../shared/models/client';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {Router} from '@angular/router';

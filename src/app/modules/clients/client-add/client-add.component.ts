@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import {Client} from '../../../../shared/models/Client';
+import {Client} from '../../../../shared/models/client';
 import { NgForm} from '@angular/forms';
 import {ClientService} from '../../../../shared/services/client.services'
 import {Router} from '@angular/router';
