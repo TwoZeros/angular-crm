@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "postinstall": "ng build --aot -prod",
+    "postinstall": "ng build",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
