@@ -33,7 +33,7 @@ export class SkillsAddComponent {
     this.EmployeeService.addSkills({
           name: this.nameSkill,
           middleName: this.descriptionSkill, 
-          groupSkillId: Number(this.groupId),
+          groupSkillId: Number(Number(this.groupId)),
         }).subscribe(status=> {
       
          })

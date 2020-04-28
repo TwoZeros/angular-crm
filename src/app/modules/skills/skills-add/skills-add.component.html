@@ -13,7 +13,7 @@
 
   <mat-form-field class="full-width">  
     <mat-label>Группа</mat-label>
-    <mat-select>
+    <mat-select [(ngModel)]="groupId" [ngModelOptions]="{standalone: true}"  name="groupId">
       <mat-option *ngFor="let skillGroup of skillGroups" [value]="skillGroup.value">
         {{skillGroup.viewValue}}
       </mat-option>
