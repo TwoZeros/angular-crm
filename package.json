@@ -3,16 +3,18 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "postinstall": "ng build --aot -prod",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start": "node server.js"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.0.2",
     "@angular/cdk": "^9.2.0",
+    "@angular/cli": "~9.0.3",
     "@angular/common": "~9.0.2",
     "@angular/compiler": "~9.0.2",
     "@angular/core": "~9.0.2",
@@ -22,6 +24,7 @@
     "@angular/platform-browser": "~9.0.2",
     "@angular/platform-browser-dynamic": "~9.0.2",
     "@angular/router": "~9.0.2",
+    "express": "^4.17.1",
     "highcharts": "^8.0.4",
     "highcharts-angular": "^2.4.0",
     "rxjs": "~6.5.4",
@@ -48,5 +51,9 @@
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~3.7.5"
+  },
+  "engines": {
+    "node": "13.5.0",
+    "npm": "6.13.4"
   }
 }
