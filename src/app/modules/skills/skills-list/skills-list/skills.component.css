@@ -14,10 +14,7 @@ table {
   td {
       text-align: center;
   }
-  tr.example-element-row:not(.example-expanded-row):hover {
-  background:Gray;
-    cursor: pointer;
-  }
+ 
 
   tr.example-element-row:not(.example-expanded-row):active {
     background: #efefef;
