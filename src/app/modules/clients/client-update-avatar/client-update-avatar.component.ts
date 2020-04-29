@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Client } from 'src/shared/models/client';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ClientService } from 'src/shared/services/client.services';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-client-update-avatar',
@@ -7,7 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientUpdateAvatarComponent implements OnInit {
 
-  constructor() { }
+
+  client: Client
+  photo: string
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private clientService: ClientService,
+    private location: Location,
+  ) { }
 
   ngOnInit(): void {
   }
