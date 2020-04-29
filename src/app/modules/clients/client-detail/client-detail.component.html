@@ -1,38 +1,37 @@
 <mat-toolbar>
     <a mat-raised-button class="p10" color="secondary" routerLink="/clients">Назад</a>
-      <h1 *ngIf="client">Клиент: {{client.secondName}} {{client.firstName}} </h1>
-    
+      <h1 *ngIf="client">Клиент: {{client.fullname}} </h1>
+
     </mat-toolbar>
   <div class="flex-container">
     <div style="margin:0 15px">
       <mat-card class="example-card">
         <mat-card-content>
            <img [src]="client.photo" style="width: 300px;">
-        
+
           </mat-card-content>
           <mat-card-actions>
             <button mat-raised-button routerLink="/client/{{client.id}}/upload-avatar">Update Photo</button>
-            <a mat-raised-button  *ngIf="client"  routerLink="/client/{{client.id}}/update">Eddit Info</a>
-            <button mat-raised-button color="warn" (click)="delete(client.id)">Delete</button>    
+            <a mat-raised-button  *ngIf="client"  routerLink="/client/{{client.id}}/update">Edit Info</a>
+            <button mat-raised-button color="warn" (click)="delete(client.id)">Delete</button>
           </mat-card-actions>
     </mat-card>
     </div>
     <div style=" width: 100%;">
       <mat-tab-group style="width: 100%;">
-        <mat-tab label="Инфо"> 
-          <p class="info-row" *ngIf="client"><span>ФИО </span>{{client.secondName}} {{client.firstName}} {{client.middleName}}</p>
-            <p class="info-row" *ngIf="client"><span>Дата рождения: </span>{{client.birthDay | date: 'dd-MM-yyyy'}}</p>
-   
+        <mat-tab label="Инфо">
+          <p class="info-row" *ngIf="client"><span>Имя </span>{{client.fullname}}</p>
+
+
           </mat-tab>
             <mat-tab label="Контакты" *ngIf="client" >
-            
+
             <p  class="info-row">
             <span>Номер телефона </span>{{client.phoneNumber}}</p>
-          <p><span>Электронная почта </span>{{client.email}}</p>  
-            
+          <p><span>Электронная почта </span>{{client.email}}</p>
+
          </mat-tab>
-        
+
       </mat-tab-group>
     </div>
   </div>
-     

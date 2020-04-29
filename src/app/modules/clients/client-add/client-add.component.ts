@@ -27,19 +27,19 @@ export class ClientAddComponent implements OnInit {
   }
   goBack() {
     this.location.back();
-    
+
   }
   onSubmit(form: NgForm){
     this.ClientService.addClient({
           firstName: this.firstName,
-          middleName: this.middleName, 
+          middleName: this.middleName,
           secondName: this.secondName,
           phoneNumber: this.phoneNumber,
           email: this.email,
           birthDay:this.birthDay}).subscribe(status=> {
-      
+
             this.router.navigate(
-              ['/clients'] 
+              ['/clients']
             );
           })
 }
