@@ -25,6 +25,7 @@ import { ClientService } from 'src/shared/services/client.services';
 import { EmployeeService } from 'src/shared/services/employee.service';
 import { SkillsListComponent } from 'src/app/modules/skills/skills-list/skills-list/skills.component';
 import { SkillsService } from 'src/shared/services/skills.service';
+import {GroupSkillsService} from 'src/shared/services/Groupskill.service';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -55,6 +56,7 @@ import { SkillsService } from 'src/shared/services/skills.service';
     ClientService,
     EmployeeService,
     SkillsService,
+    GroupSkillsService
   ]
 })
 export class DefaultModule { }

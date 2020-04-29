@@ -8,11 +8,11 @@ interface skillGroup {
   viewValue: string;
 }
 @Component({
-  selector: 'app-skills-add',
-  templateUrl: './skills-add.component.html',
-  styleUrls: ['./skills-add.component.css']
+  selector: 'app-skills-update',
+  templateUrl: './skills-update.component.html',
+  styleUrls: ['./skills-update.component.css']
 })
-export class SkillsAddComponent implements OnInit {
+export class SkillsUpdateComponent implements OnInit {
   nameSkill: string;
   descriptionSkill: String;
   groupId: Number;
@@ -21,7 +21,7 @@ export class SkillsAddComponent implements OnInit {
   constructor(
     private EmployeeService: SkillsService,
     private GroupSkillService: GroupSkillsService,
-    public dialogRef: MatDialogRef<SkillsAddComponent>,
+    public dialogRef: MatDialogRef<SkillsUpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   onNoClick(): void {
