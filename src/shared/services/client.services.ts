@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ClientService {
-  public uri = 'http://ec2-13-59-245-120.us-east-2.compute.amazonaws.com:5000/api/Client';
+  public uri = 'https://edupulse.ru/api/Client';
   constructor(private http: HttpClient){ }
 
   getClients(): Observable<any> {
