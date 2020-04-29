@@ -1,6 +1,7 @@
 <mat-toolbar>
   <h1>Список навыков </h1>
-  <!-- <a mat-raised-button color="accent" routerLink="/employee/add">Добавить</a> -->
+ <button mat-raised-button color="accent" style="margin-right:10px" (click)="createSkill()">Добавить </button>
+ <button mat-raised-button color="accent" >Создать группу</button> 
 </mat-toolbar>
 
 <mat-form-field>
@@ -15,20 +16,28 @@
   </ng-container>
 
   <ng-container  matColumnDef="name">
-    <th  *matHeaderCellDef>name</th>
+    <th  *matHeaderCellDef>Название</th>
     <td  *matCellDef="let elem">{{elem.name}}</td>
 </ng-container>
 
-  <ng-container matColumnDef="description">
-      <th  *matHeaderCellDef>description</th>
-      <td  *matCellDef="let elem">{{elem.description}}</td>
+
+  <ng-container matColumnDef="groupName">
+      <th *matHeaderCellDef>Группа</th>
+      <td
+                *matCellDef="let elem">{{elem.groupName}}</td>
   </ng-container>
 
-  <ng-container matColumnDef="groupId">
-      <th *matHeaderCellDef>groupId</th>
-      <td
-                *matCellDef="let elem">{{elem.groupId}}</td>
-  </ng-container>
+  <ng-container matColumnDef="actions" >
+    <th *matHeaderCellDef >Действия</th>
+    <td *matCellDef="let elem">
+      <button mat-icon-button color="warn" (click)="deleteSkill(elem.id)"aria-label="Example icon button with a heart icon">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button color="primary"  aria-label="Example icon button with a heart icon">
+        <mat-icon>edit</mat-icon>
+      </button>
+        </td>
+</ng-container>
 
   <!-- <ng-container matColumnDef="telephone">
       <th *matHeaderCellDef>telephone</th>
@@ -37,7 +46,7 @@
 
   <tr mat-header-row  *matHeaderRowDef="displayedColumns">
   </tr>
-<tr mat-row (click)="onRowClicked(row)"
+<tr mat-row 
   *matRowDef="let row; columns: displayedColumns"
   class="example-element-row">
 

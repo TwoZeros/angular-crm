@@ -21,23 +21,23 @@
   </ng-container>
   
     <ng-container matColumnDef="firstName">
-        <th  *matHeaderCellDef>first Name</th>
+        <th  *matHeaderCellDef>Имя</th>
         <td  *matCellDef="let elem">{{elem.firstName}}</td>
     </ng-container>
   
     <ng-container matColumnDef="secondName">
-        <th *matHeaderCellDef>last Name</th>
+        <th *matHeaderCellDef>Фамилия</th>
         <td 
                   *matCellDef="let elem">{{elem.secondName}}</td>
     </ng-container>
 
     <ng-container matColumnDef="birstDay">
-        <th *matHeaderCellDef>birthDay</th>
+        <th *matHeaderCellDef>День рождения</th>
         <td *matCellDef="let elem">{{elem.birthDay}}</td>
     </ng-container>
 
     <ng-container matColumnDef="created">
-      <th *matHeaderCellDef>created</th>
+      <th *matHeaderCellDef>Добавлен</th>
       <td *matCellDef="let elem">{{elem.created}}</td>
   </ng-container>
   

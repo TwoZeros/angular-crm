@@ -16,14 +16,15 @@ import { ClientAddComponent } from './modules/clients/client-add/client-add.comp
 import { StartPageComponent } from './layouts/startPage/startPage.component';
 import {UserLoginComponent} from './modules/user/user-login/user-login.component';
 import {isLoginedGuard} from './isLoginedGuard';
-import { SkillsListComponent } from './modules/skills/skills-list/skills.component';
+import { SkillsListComponent } from './modules/skills/skills-list/skills-list/skills.component';
 const routes: Routes = [
   {
     path: '',
     component: DefaultComponent,
     children: [{
       path: '',
-      component: DashboardComponent
+      component: DashboardComponent,
+      canActivate: [isLoginedGuard] 
     },
     { path: 'employee', component: EmployeeListComponent, canActivate: [isLoginedGuard] },
     { path: 'employee/add', component: EmployeeAddComponent, canActivate: [isLoginedGuard] },

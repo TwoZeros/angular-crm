@@ -1,4 +1,3 @@
-import {Skills} from '../models/skills'
 import { Observable, of } from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
@@ -9,7 +8,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SkillsService {
-  public uri = 'https://localhost:44334/api/Skills';
+  public uri = 'http://ec2-13-59-245-120.us-east-2.compute.amazonaws.com:5000/api/Skills';
   constructor(private http: HttpClient){ }
 
   getSkills(): Observable<any> {

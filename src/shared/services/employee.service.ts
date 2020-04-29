@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class EmployeeService {
-  public uri = 'http://ec2-34-201-245-214.compute-1.amazonaws.com/api/Employees';
+  public uri = 'http://ec2-13-59-245-120.us-east-2.compute.amazonaws.com:5000/api/Employees';
   constructor(private http: HttpClient){ }
 
   getEmployees(): Observable<any> {
