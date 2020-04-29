@@ -7,6 +7,6 @@ export interface Employee {
     birthDay: string,
     created : string
     phoneNumber:string,
-    email:string
+    email:string,
     photo: string;
 }

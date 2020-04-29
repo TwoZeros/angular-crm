@@ -25,12 +25,9 @@ export class ClientUpdateComponent implements OnInit {
     private location: Location,
   ) { }
 
-  goBack() {
-    this.location.back();
-
-  }
   ngOnInit(): void {
-    const currentIdClient = +this.route.snapshot.paramMap.get('id');
+    this.currentIdClient = +this.route.snapshot.paramMap.get('id');
+    this.GetClient();
   }
   // getClient() : void
   // {
@@ -56,7 +53,7 @@ export class ClientUpdateComponent implements OnInit {
       this.createForm()
     });
   }
-  SumbitUpdateClient(form: NgForm) : void
+  SumbitUpdateClient() : void
   {
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
@@ -67,7 +64,7 @@ export class ClientUpdateComponent implements OnInit {
       email: this.updateForm.value.email
     }).subscribe(status => {
       this.router.navigate(
-       ['/client/:id']
+       ['/client/{{currentIdClient}}']
       );
     })
   }
