@@ -11,9 +11,7 @@ import {Router} from '@angular/router';
 })
 export class ClientAddComponent implements OnInit {
   client: Client;
-  firstName : string;
-  secondName: String;
-  middleName: String;
+  fullName : string;
   phoneNumber: String;
   email: String;
   birthDay: Date
@@ -31,9 +29,7 @@ export class ClientAddComponent implements OnInit {
   }
   onSubmit(form: NgForm){
     this.ClientService.addClient({
-          firstName: this.firstName,
-          middleName: this.middleName,
-          secondName: this.secondName,
+          fullName: this.fullName,
           phoneNumber: this.phoneNumber,
           email: this.email,
           birthDay:this.birthDay}).subscribe(status=> {

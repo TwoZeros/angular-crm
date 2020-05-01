@@ -15,10 +15,6 @@
         <td  *matCellDef="let elem">{{elem.id}}</td>
     </ng-container>
 
-    <ng-container  matColumnDef="login">
-      <th  *matHeaderCellDef>login</th>
-      <td  *matCellDef="let elem">{{elem.login}}</td>
-  </ng-container>
   
     <ng-container matColumnDef="firstName">
         <th  *matHeaderCellDef>Имя</th>
@@ -41,10 +37,10 @@
       <td *matCellDef="let elem">{{elem.created}}</td>
   </ng-container>
   
-    <!-- <ng-container matColumnDef="telephone">
-        <th *matHeaderCellDef>telephone</th>
-        <td *matCellDef="let elem">{{elem.telephone}}</td>
-    </ng-container> -->
+    <ng-container matColumnDef="phoneNumber">
+        <th *matHeaderCellDef>Телефон</th>
+        <td *matCellDef="let elem">{{elem.phoneNumber}}</td>
+    </ng-container> 
     
     <tr mat-header-row  *matHeaderRowDef="displayedColumns">
         

@@ -15,7 +15,7 @@ export class EmployeeListComponent implements OnInit {
 
   dataSource ;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  displayedColumns: string[] = ['id', 'login', 'firstName', 'created']
+  displayedColumns: string[] = ['id', 'firstName', 'secondName','phoneNumber','created']
   employees : EmployeeList[]
   constructor(private EmployeeService: EmployeeService,private router: Router) { }
   getEmployees(): void {

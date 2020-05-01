@@ -13,7 +13,7 @@ import { clientList } from 'src/shared/models/clientList';
 export class ClientsListComponent implements OnInit {
   dataSource ;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  displayedColumns: string[] = ['id', 'fullname', 'created']
+  displayedColumns: string[] = ['id', 'fullName', 'created']
   clients : clientList[]
   constructor(private ClientService: ClientService,private router: Router) { }
   getClients(): void {

@@ -40,7 +40,7 @@ export class ClientUpdateComponent implements OnInit {
   createForm() : void {
     this.updateForm = new FormGroup({
 
-      fullname: new FormControl(this.client.fullname, [Validators.required]),
+      fullName: new FormControl(this.client.fullName, [Validators.required]),
       email: new FormControl(this.client.email, [Validators.required]),
       phoneNumber: new FormControl(this.client.phoneNumber, [Validators.required]),
   });
@@ -59,7 +59,7 @@ export class ClientUpdateComponent implements OnInit {
     console.log(id);
     this.clientService.updateClient(id, {
       id: id,
-      fullname: this.updateForm.value.fullname,
+      fullName: this.updateForm.value.fullName,
       phoneNumber: this.updateForm.value.phoneNumber,
       email: this.updateForm.value.email
     }).subscribe(status => {

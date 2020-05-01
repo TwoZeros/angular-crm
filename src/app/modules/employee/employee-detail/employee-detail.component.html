@@ -11,9 +11,9 @@
       
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button routerLink="/employee/{{employee.id}}/upload-avatar">Update Photo</button>
-          <a mat-raised-button  *ngIf="employee"  routerLink="/employee/{{employee.id}}/update">Eddit Info</a>
-          <button mat-raised-button color="warn" (click)="delete(employee.id)">Delete</button>    
+          <button mat-raised-button routerLink="/employee/{{employee.id}}/upload-avatar">Фото</button>
+          <a mat-raised-button  *ngIf="employee"  routerLink="/employee/{{employee.id}}/update">Изменить</a>
+          <button mat-raised-button color="warn" (click)="delete(employee.id)">Удалить</button>    
         </mat-card-actions>
   </mat-card>
   </div>
@@ -22,13 +22,13 @@
       <mat-tab label="Инфо"> 
         <p class="info-row" *ngIf="employee"><span>ФИО </span>{{employee.secondName}} {{employee.firstName}} {{employee.middleName}}</p>
           <p class="info-row" *ngIf="employee"><span>Дата рождения: </span>{{employee.birthDay | date: 'dd-MM-yyyy'}}</p>
- 
+          <p class="info-row">
+            <span>Номер телефона </span>{{employee.phoneNumber}}</p>
+          <p class="info-row"><span>Электронная почта </span>{{employee.email}}</p> 
         </mat-tab>
-          <mat-tab label="Контакты" *ngIf="employee" >
+          <mat-tab label="Задачи" *ngIf="employee" >
           
-          <p  class="info-row">
-          <span>Номер телефона </span>{{employee.phoneNumber}}</p>
-        <p><span>Электронная почта </span>{{employee.email}}</p>  
+      
           
        </mat-tab>
       

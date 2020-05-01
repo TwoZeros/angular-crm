@@ -1,6 +1,6 @@
 export interface clientList {
     id: number,
-    fullname: string,
+    fullName: string,
 
 
 }
