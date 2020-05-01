@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Client } from 'src/shared/models/Client';
+import { Client } from 'src/shared/models/client';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClientService } from 'src/shared/services/client.services';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
