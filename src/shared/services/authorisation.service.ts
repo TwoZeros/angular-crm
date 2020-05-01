@@ -34,6 +34,4 @@ export class AuthorisationService {
             return false;
         }
   }
-
-
 }

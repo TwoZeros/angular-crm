@@ -65,7 +65,7 @@ export class EmployeeUploadAvatarComponent implements OnInit {
     }).subscribe(status => {
 
       this.router.navigate(
-        ['/employee', this.currentIdEmployee]
+        ['/employee', this.currentIdEmployee] 
       );
     })
   }
