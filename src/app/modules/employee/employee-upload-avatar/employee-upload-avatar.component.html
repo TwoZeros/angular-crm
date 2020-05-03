@@ -1,24 +1,24 @@
 <mat-card style="margin: 0 auto; width: 400px;">
-    <mat-card-title>      <a mat-raised-button color="" routerLink='/employee{{currentIdEmployee}}'>Back</a>
+    <mat-card-title>      <a mat-raised-button color="" routerLink='/employee/{{currentIdEmployee}}'>Back</a>
 
       <h3> Update Photo: {{employee.secondName}} {{employee.firstName}}</h3>
-      <div id="imgTest"  >
-    <img [src]="employee.photo" style="max-width:400px;" class="avatar" alt="">    
-    </div>
 
     </mat-card-title>
+    <div id="imgTest"  >
+      <img [src]="employee.photo" style="max-width:400px;" class="avatar" alt="">    
+      </div>
     <form class="my-form" novalidate >
     <mat-card-content>
    
     </mat-card-content>
     <mat-card-actions>  
         <button mat-button color="warn" (click)="onClick()">  
-          Choese  
+          Выбрать  
         </button>  
 
         <button mat-button color="warn" (click)="upload()">  
             <mat-icon>Save</mat-icon>  
-            Save
+            Сохранить
         </button>  
     </mat-card-actions>  
     <input type="file" #fileUpload id="fileUpload" name="fileUpload" accept="image/*" style="display:none;" />

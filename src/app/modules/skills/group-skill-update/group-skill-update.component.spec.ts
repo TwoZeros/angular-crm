@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SkillsUpdateComponent } from './skills-update.component';
+import { GroupSkillsUpdateComponent } from './group-skill-update.component';
 
-describe('SkillsUpdateComponent', () => {
-  let component: SkillsUpdateComponent;
-  let fixture: ComponentFixture<SkillsUpdateComponent>;
+describe('GroupSkillsUpdateComponent', () => {
+  let component: GroupSkillsUpdateComponent;
+  let fixture: ComponentFixture<GroupSkillsUpdateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SkillsUpdateComponent ]
+      declarations: [ GroupSkillsUpdateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SkillsUpdateComponent);
+    fixture = TestBed.createComponent(GroupSkillsUpdateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

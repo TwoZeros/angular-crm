@@ -9,22 +9,22 @@ interface skillGroup {
   viewValue: string;
 }
 @Component({
-  selector: 'app-skills-update',
-  templateUrl: './skills-update.component.html',
-  styleUrls: ['./skills-update.component.css']
+  selector: 'app-group-skill-update',
+  templateUrl: './group-skill-update.component.html',
+  styleUrls: ['./group-skill-update.component.css']
 })
-export class SkillsUpdateComponent implements OnInit {
+export class GroupSkillsUpdateComponent implements OnInit {
   nameSkill: string;
   descriptionSkill: String;
   updateForm : FormGroup;
   groupId: Number;
   skillGroups;
-  skill;
+  group;
   
   constructor(
     private SkillsService: SkillsService,
     private GroupSkillService: GroupSkillsService,
-    public dialogRef: MatDialogRef<SkillsUpdateComponent>,
+    public dialogRef: MatDialogRef<GroupSkillsUpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   onNoClick(): void {
@@ -32,10 +32,9 @@ export class SkillsUpdateComponent implements OnInit {
   }
   submit(): void {
 
-    this.SkillsService.updateSkills(this.data.id,{ 
+    this.GroupSkillService.updateGroupSkill(this.data.id,{ 
       id:this.data.id,
       name:this.updateForm.value.name,
-      groupSkillId:this.updateForm.value.groupSkillId,
       
     }).subscribe(status =>{
       this.onNoClick();
@@ -44,20 +43,14 @@ export class SkillsUpdateComponent implements OnInit {
    
   }
   ngOnInit(): void {
-    this.getGroupList();
-    this.getSkill();
-  }
-  getGroupList() {
-    this.GroupSkillService.getGroups().subscribe(groups => { this.skillGroups = groups });
+    this.getGroup();
   }
 
-  getSkill(): void {
+  getGroup(): void {
  
-    this.SkillsService.getSkillsbyId(this.data.id)
-      .subscribe(skill => {
-        this.skill = skill;
-        console.log("test");
-        console.log(this.skill);
+    this.GroupSkillService.getGroupsSkillbyId(this.data.id)
+      .subscribe(group => {
+        this.group = group;
         this.createForm();
       }
         );
@@ -66,8 +59,7 @@ export class SkillsUpdateComponent implements OnInit {
 
   createForm(): void {
     this.updateForm = new FormGroup({
-      name: new FormControl(this.skill.name, [Validators.required]),
-      groupSkillId: new FormControl(this.skill.groupSkillId, [Validators.required]),
+      name: new FormControl(this.group.name, [Validators.required]),
   });
   }
 }

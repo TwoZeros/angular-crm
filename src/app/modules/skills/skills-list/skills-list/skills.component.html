@@ -1,7 +1,7 @@
 <mat-toolbar>
   <h1>Список навыков </h1>
- <button mat-raised-button color="accent" style="margin-right:10px" (click)="createSkill()">Добавить </button>
- <button mat-raised-button color="accent" >Создать группу</button> 
+ <button mat-raised-button color="accent" style="margin-right:10px" (click)="createSkill()">Добавить навык </button>
+ <button mat-raised-button color="accent" (click)="createGroupSkill()">Создать группу</button> 
 </mat-toolbar>
 <mat-tab-group>
   
@@ -32,7 +32,7 @@
       <ng-container matColumnDef="actions" >
         <th *matHeaderCellDef >Действия</th>
         <td *matCellDef="let elem">
-          <button mat-icon-button color="primary"  aria-label="Example icon button with a heart icon">
+          <button mat-icon-button color="primary" (click)="updateSkill(elem.id)" aria-label="Example icon button with a heart icon">
             <mat-icon>edit</mat-icon>
           </button>
           
@@ -42,11 +42,6 @@
       
             </td>
     </ng-container>
-    
-      <!-- <ng-container matColumnDef="telephone">
-          <th *matHeaderCellDef>telephone</th>
-          <td *matCellDef="let elem">{{elem.telephone}}</td>
-      </ng-container> -->
     
       <tr mat-header-row  *matHeaderRowDef="displayedColumns">
       </tr>
@@ -84,7 +79,7 @@
       <ng-container matColumnDef="action" >
         <th *matHeaderCellDef >Действия</th>
         <td *matCellDef="let elem">
-          <button mat-icon-button color="primary"  aria-label="Example icon button with a heart icon">
+          <button mat-icon-button color="primary" (click)="updateGroup(elem.id)" aria-label="Example icon button with a heart icon">
             <mat-icon>edit</mat-icon>
           </button>
          

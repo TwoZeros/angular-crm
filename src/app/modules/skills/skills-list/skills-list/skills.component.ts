@@ -2,13 +2,15 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { SkillsService } from '../../../../../shared/services/skills.service'
 import { SkillsList } from '../../../../../shared/models/skillsList';
 import { SkillsAddComponent } from '../../skills-add/skills-add.component';
+import { SkillsUpdateComponent } from '../../skills-update/skills-update.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { GroupSkillsService } from 'src/shared/services/Groupskill.service';
 import { GroupSkill } from 'src/shared/models/GroupSkill';
-
+import { GroupSkillAddComponent } from '../../group-skill-add/group-skill-add.component';
+import { GroupSkillsUpdateComponent } from '../../group-skill-update/group-skill-update.component';
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
@@ -54,6 +56,40 @@ export class SkillsListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.getSkills()
+    });
+  }
+  createGroupSkill(): void {
+    const dialogRef = this.dialog.open(GroupSkillAddComponent, {
+      width: '500px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getSkills();
+      this.getGroups();
+    });
+  }
+  updateSkill(id :number): void {
+    const dialogRef = this.dialog.open(SkillsUpdateComponent, {
+      width: '500px',
+      data: {id : id}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getSkills();
+      this.getGroups();
+    });
+  }
+
+  updateGroup(id :number): void {
+    const dialogRef = this.dialog.open(GroupSkillsUpdateComponent, {
+      width: '500px',
+      data: {id : id}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getSkills()
+      this.getGroups()
     });
   }
   deleteSkill(idSkill: number) {

@@ -10,15 +10,13 @@ import { ParamInterceptor } from './api.interceptor';
 import { DefaultModule } from './layouts/default/default.module';
 import { StartPageModule } from './layouts/startPage/startPage.module';
 import {isLoginedGuard} from './isLoginedGuard';
-import { SkillsAddComponent } from './modules/skills/skills-add/skills-add.component';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SkillsAddComponent,
-
   ],
   imports: [
     BrowserModule,
