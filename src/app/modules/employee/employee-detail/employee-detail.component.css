@@ -1,5 +1,6 @@
 .example-card {
     max-width: 400px;
+    padding-bottom:60px;
   }
   .flex-container {
     display: flex;
@@ -14,4 +15,18 @@
   }
   .p10 {
     margin: 0 10px;
+  }
+  .skill-group-name {
+    padding:5px 0;
+  }
+  .skill-box {
+    border:1px solid black; 
+    border-radius: 5px;
+    padding:3px 5px;
+    margin:3px 5px;
+  }
+  .skill-box-delete {
+    cursor: pointer;
+    color:red;
+    margin: 0 3px;
   }

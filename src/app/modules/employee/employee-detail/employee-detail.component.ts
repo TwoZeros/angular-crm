@@ -6,6 +6,8 @@ import {Router} from '@angular/router';
 import { EmployeeService }  from '../../../../shared/services/employee.service';
 import { Employee } from '../../../../shared/models/employee';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { EmployeeSkillsService } from 'src/shared/services/employeeSkills.service';
+import { EmployeeSkillAddComponent } from '../employee-skill-add/employee-skill-add.component';
 
 export interface DialogData {
 
@@ -19,20 +21,42 @@ export interface DialogData {
 export class EmployeeDetailComponent implements OnInit {
   employee : Employee
   photo: string;
+  employeeSkills;
+  isEditSkill = false;
   constructor(
     private router: Router,
   private route: ActivatedRoute,
   private EmployeeService: EmployeeService,
+  private EmployeeSkillsService: EmployeeSkillsService,
   private location: Location,
   public dialog: MatDialog
+
   ) { }
 
   
   ngOnInit(): void {
     this.getEmployee();  
+    this.getEmployeeSkill();    
   }
+  createSkill(): void {
+    const dialogRef = this.dialog.open(EmployeeSkillAddComponent, {
+      width: '500px',
+      data: {employeeId:this.route.snapshot.paramMap.get('id') }
+    });
 
-  
+    dialogRef.afterClosed().subscribe(result => {
+      this.getEmployeeSkill()
+    });
+  }
+  getEmployeeSkill(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    console.log(id);
+    this.EmployeeSkillsService.getEmployeeSkillsbyEmployeeId(id)
+      .subscribe(employeeSkills => {
+        console.log(employeeSkills);  
+        this.employeeSkills = employeeSkills}
+        );
+  }
   getEmployee(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.EmployeeService.getEmployee(id)
@@ -41,8 +65,18 @@ export class EmployeeDetailComponent implements OnInit {
         );
       
   }
+  deleteEmployeeSkill(id:number) {
+    if(!confirm("Вы хотите удалить этот навык у сотрудника?"))
+       return 0; 
+    this.EmployeeSkillsService.deleteEmployeeSkills(id)
+      .subscribe(employeeSkills => {
+        console.log(employeeSkills);
+        this.getEmployeeSkill();
+      }
+        );
+  }
   delete(id: number): void{
-    var conf =  confirm("You want delete this employee?")
+    var conf =  confirm("Вы хотите удалить сотрудника?")
     if(conf) {
       this.EmployeeService.deleteEmployee(id).subscribe(status=> {
       
@@ -51,6 +85,9 @@ export class EmployeeDetailComponent implements OnInit {
         );
       })
     }
+  }
+  toggleEdit() {
+    this.isEditSkill =!this.isEditSkill;
   }
 
 }

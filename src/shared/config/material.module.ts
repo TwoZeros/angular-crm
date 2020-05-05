@@ -6,7 +6,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from "@angular/material/table";
-import { MatSort } from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -31,7 +31,8 @@ import {MatSelectModule} from '@angular/material/select';
         FormsModule,
         ReactiveFormsModule,
         MatNativeDateModule,
-        MatSelectModule
+        MatSelectModule,
+        MatSortModule
     ],
     declarations: [],
     entryComponents: [],
@@ -52,7 +53,8 @@ import {MatSelectModule} from '@angular/material/select';
         MatNativeDateModule,
         MatDialogModule,
         MatIconModule,
-        MatSelectModule
+        MatSelectModule,
+        MatSortModule
     ],
 })
 

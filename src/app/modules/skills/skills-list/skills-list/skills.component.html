@@ -6,11 +6,11 @@
 <mat-tab-group>
   
   <mat-tab label="Навыки"> 
-    <mat-form-field>
+    <mat-form-field style="padding:5px 0">
       <mat-label>Фильтры</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="">
     </mat-form-field>
-    <table mat-table class="skill-table mat-elevation-z8" [dataSource]="dataSourceSkill">
+    <table matSort  #TableSkillSort="matSort" mat-table class="skill-table mat-elevation-z8" [dataSource]="dataSourceSkill">
     
       <ng-container  matColumnDef="id">
           <th  *matHeaderCellDef>id</th>
@@ -52,7 +52,7 @@
       </tr>
     
     </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator #TableSkillPaginator="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     
 
   </mat-tab>
@@ -60,8 +60,11 @@
   
   
   <mat-tab label="Группы"> 
-
-    <table mat-table class="skill-table mat-elevation-z8" [dataSource]="dataSourceGroup">
+    <mat-form-field style="padding:5px 0">
+      <mat-label>Фильтры</mat-label>
+      <input matInput (keyup)="applyFilterGroup($event)" placeholder="">
+    </mat-form-field>
+    <table  matSort #TableGroupSort="matSort" mat-table class="skill-table mat-elevation-z8" [dataSource]="dataSourceGroup">
     
       <ng-container  matColumnDef="id">
           <th  *matHeaderCellDef>id</th>
@@ -100,7 +103,7 @@
       </tr>
     
     </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator  #TableGroupPaginator="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     
 
    </mat-tab>

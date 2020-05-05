@@ -1,41 +1,61 @@
 <mat-toolbar>
   <a mat-raised-button class="p10" color="secondary" routerLink="/employee">Назад</a>
-    <h1 *ngIf="employee">Профиль: {{employee.secondName}} {{employee.firstName}} </h1>
-  
-  </mat-toolbar>
+  <h1 *ngIf="employee">Профиль: {{employee.secondName}} {{employee.firstName}} </h1>
+
+</mat-toolbar>
 <div class="flex-container">
   <div style="margin:0 15px">
     <mat-card class="example-card">
       <mat-card-content>
-         <img [src]="employee.photo" style="width: 300px;">
-      
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button routerLink="/employee/{{employee.id}}/upload-avatar">Фото</button>
-          <a mat-raised-button  *ngIf="employee"  routerLink="/employee/{{employee.id}}/update">Изменить</a>
-          <button mat-raised-button color="warn" (click)="delete(employee.id)">Удалить</button>    
-        </mat-card-actions>
-  </mat-card>
+        <img *ngIf="employee" [src]="employee.photo" style="width: 300px;">
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button routerLink="/employee/{{employee.id}}/upload-avatar">Фото</button>
+        <a mat-raised-button *ngIf="employee" routerLink="/employee/{{employee.id}}/update">Изменить</a>
+        <button mat-raised-button color="warn" (click)="delete(employee.id)">Удалить</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
   <div style=" width: 100%;">
-    <mat-tab-group style="width: 100%;">
-      <mat-tab label="Инфо"> 
-        <p class="info-row" *ngIf="employee"><span>ФИО </span>{{employee.secondName}} {{employee.firstName}} {{employee.middleName}}</p>
-          <p class="info-row" *ngIf="employee"><span>Дата рождения: </span>{{employee.birthDay | date: 'dd-MM-yyyy'}}</p>
-          <p class="info-row">
-            <span>Номер телефона </span>{{employee.phoneNumber}}</p>
-          <p class="info-row"><span>Электронная почта </span>{{employee.email}}</p> 
-        </mat-tab>
-          <mat-tab label="Задачи" *ngIf="employee" >
-          
-      
-          
-       </mat-tab>
-      
+    <mat-tab-group style="width: 100%; padding-bottom: 40px;">
+      <mat-tab label="Инфо">
+        <p class="info-row" *ngIf="employee"><span>ФИО </span>{{employee.secondName}} {{employee.firstName}}
+          {{employee.middleName}}</p>
+        <p class="info-row" *ngIf="employee"><span>Дата рождения: </span>{{employee.birthDay | date: 'dd-MM-yyyy'}}</p>
+        <p class="info-row">
+          <span>Номер телефона </span>{{employee.phoneNumber}}</p>
+        <p class="info-row"><span>Электронная почта </span>{{employee.email}}</p>
+        <p class="info-row"><span>Навыки</span>
+          <button mat-mini-fab color="primary" style="margin:0 10px; " (click)="createSkill()">
+            <mat-icon>add</mat-icon>
+          </button>
+          <button mat-mini-fab color="primary" style="margin:0 10px; " (click)="toggleEdit()">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </p>
+        <div style="margin-left:15px;" *ngFor="let group of employeeSkills">
+          <div class="skill-group-name">
+            {{group.name}}
+          </div>
+          <div style="display:flex">
+            <div *ngFor="let skill of group.skills" class="skill-box">
+              <div style="display:flex">
+                <div>{{skill.skillName}}</div>
+                <div class="skill-box-delete" *ngIf="isEditSkill" (click)="deleteEmployeeSkill(skill.id)">[x]</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </mat-tab>
+      <mat-tab label="Задачи" *ngIf="employee">
+
+
+
+      </mat-tab>
+
     </mat-tab-group>
   </div>
 </div>
-   
-    
-        
-  

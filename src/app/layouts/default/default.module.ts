@@ -30,6 +30,8 @@ import { SkillsUpdateComponent } from '../../modules/skills/skills-update/skills
 import {GroupSkillsService} from 'src/shared/services/Groupskill.service';
 import { GroupSkillAddComponent } from 'src/app/modules/skills/group-skill-add/group-skill-add.component';
 import { GroupSkillsUpdateComponent } from 'src/app/modules/skills/group-skill-update/group-skill-update.component';
+import { EmployeeSkillsService } from 'src/shared/services/employeeSkills.service';
+import { EmployeeSkillAddComponent } from 'src/app/modules/employee/employee-skill-add/employee-skill-add.component';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -40,6 +42,7 @@ import { GroupSkillsUpdateComponent } from 'src/app/modules/skills/group-skill-u
     EmployeeAddComponent,
     EmployeeUpdateComponent,
     EmployeeUploadAvatarComponent,
+    EmployeeSkillAddComponent,
     ClientsListComponent,
     ClientDetailComponent,
     ClientUpdateComponent,
@@ -64,7 +67,8 @@ import { GroupSkillsUpdateComponent } from 'src/app/modules/skills/group-skill-u
     ClientService,
     EmployeeService,
     SkillsService,
-    GroupSkillsService
+    GroupSkillsService,
+    EmployeeSkillsService
   ]
 })
 export class DefaultModule { }
