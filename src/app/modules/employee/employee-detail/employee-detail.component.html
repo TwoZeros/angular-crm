@@ -19,14 +19,19 @@
   </div>
   <div style=" width: 100%;">
     <mat-tab-group style="width: 100%; padding-bottom: 40px;">
-      <mat-tab label="Инфо">
+      <mat-tab label="Личные данные">
         <p class="info-row" *ngIf="employee"><span>ФИО </span>{{employee.secondName}} {{employee.firstName}}
           {{employee.middleName}}</p>
         <p class="info-row" *ngIf="employee"><span>Дата рождения: </span>{{employee.birthDay | date: 'dd-MM-yyyy'}}</p>
         <p class="info-row">
           <span>Номер телефона </span>{{employee.phoneNumber}}</p>
         <p class="info-row"><span>Электронная почта </span>{{employee.email}}</p>
-        <p class="info-row"><span>Навыки</span>
+       
+
+      </mat-tab>
+      <mat-tab label="Навыки" *ngIf="employee">
+
+        <p class="info-row">  
           <button mat-mini-fab color="primary" style="margin:0 10px; " (click)="createSkill()">
             <mat-icon>add</mat-icon>
           </button>
