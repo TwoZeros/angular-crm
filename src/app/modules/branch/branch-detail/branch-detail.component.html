@@ -1,0 +1,34 @@
+<mat-toolbar>
+  <a mat-raised-button class="p10" color="secondary" routerLink="/branch">Назад</a>
+    <h1 *ngIf="branch">Профиль: {{branch.name}}</h1>
+
+  </mat-toolbar>
+<div class="flex-container">
+  <div style="margin:0 15px">
+    <mat-card class="example-card">
+      <mat-card-content>
+
+
+        </mat-card-content>
+        <mat-card-actions>
+          <a mat-raised-button  *ngIf="branch"  routerLink="/branch/{{branch.id}}/update">Eddit Info</a>
+          <button mat-raised-button color="warn" (click)="delete(branch.id)">Delete</button>
+        </mat-card-actions>
+  </mat-card>
+  </div>
+  <div style=" width: 100%;">
+    <mat-tab-group style="width: 100%;">
+      <mat-tab label="Инфо">
+        <p class="info-row" *ngIf="branch"><span>Название подразделения: </span>{{branch.name}}</p>
+          <p class="info-row" *ngIf="branch"><span>Название компании: </span>{{branch.companyName}}</p>
+
+
+        </mat-tab>
+
+
+    </mat-tab-group>
+  </div>
+</div>
+
+
+

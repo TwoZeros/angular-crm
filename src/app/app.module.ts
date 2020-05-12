@@ -11,6 +11,10 @@ import { DefaultModule } from './layouts/default/default.module';
 import { StartPageModule } from './layouts/startPage/startPage.module';
 import {isLoginedGuard} from './isLoginedGuard';
 import { SkillsAddComponent } from './modules/skills/skills-add/skills-add.component';
+import { BranchListComponent } from './modules/branch/branch-list/branch-list.component';
+import { BranchAddComponent } from './modules/branch/branch-add/branch-add.component';
+import { BranchDetailComponent } from './modules/branch/branch-detail/branch-detail.component';
+import { BranchUpdateComponent } from './modules/branch/branch-update/branch-update.component';
 
 
 
@@ -18,6 +22,10 @@ import { SkillsAddComponent } from './modules/skills/skills-add/skills-add.compo
   declarations: [
     AppComponent,
     SkillsAddComponent,
+    BranchListComponent,
+    BranchAddComponent,
+    BranchDetailComponent,
+    BranchUpdateComponent,
 
   ],
   imports: [

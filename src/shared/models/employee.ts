@@ -8,5 +8,6 @@ export interface Employee {
     created : string
     phoneNumber:string,
     email:string,
-    photo: string;
+    photo: string,
+    branch: string,
 }

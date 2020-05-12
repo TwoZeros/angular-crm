@@ -27,27 +27,31 @@ export class EmployeeDetailComponent implements OnInit {
   public dialog: MatDialog
   ) { }
 
-  
+
   ngOnInit(): void {
-    this.getEmployee();  
+    this.getEmployee();
   }
 
-  
+
   getEmployee(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.EmployeeService.getEmployee(id)
       .subscribe(employee => {
-        this.employee = employee}
+        this.employee = employee
+        console.log(this.employee);
+
+      }
+
         );
-      
+
   }
   delete(id: number): void{
     var conf =  confirm("You want delete this employee?")
     if(conf) {
       this.EmployeeService.deleteEmployee(id).subscribe(status=> {
-      
+
         this.router.navigate(
-          ['/front/employee'] 
+          ['/front/employee']
         );
       })
     }

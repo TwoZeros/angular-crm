@@ -5,7 +5,7 @@
     </mat-card-title>
     <form [formGroup]="updateForm" class="my-form" novalidate  novalidate (ngSubmit)="submit()">
     <mat-card-content>
-     
+
         <mat-form-field class="full-width">
           <mat-label>First Name</mat-label>
           <input autocomplete="off" matInput placeholder="First name"  formControlName="firstName"  name="firstName" required>
@@ -14,7 +14,7 @@
           <mat-label>Last Name</mat-label>
           <input autocomplete="off" matInput placeholder="Last Name" formControlName="secondName" name="secondName" required>
         </mat-form-field>
-  
+
         <mat-form-field class="full-width">
           <mat-label>Middle Name</mat-label>
           <input autocomplete="off" matInput placeholder="Middle Name" formControlName="middleName" name="middleName" required>
@@ -33,7 +33,14 @@
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-      
+        <br>
+  <mat-form-field >
+    <mat-label>Select Department</mat-label>
+    <mat-select  matNativeControl [(ngModel)] = "selectedBranch" name = "branch"  formControlName="selectedBranch">
+      <mat-option *ngFor="let item of BranchesList" [value] = "item.id">{{item.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
     </mat-card-content>
     <mat-card-actions>
     <input type="submit" [disabled]="updateForm.invalid" color="primary" value="Добавить">

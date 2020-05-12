@@ -1,0 +1,35 @@
+<mat-card style="margin: 0 auto; width: 400px;" *ngIf="updateForm">
+  <mat-card-title>
+    <h1> Edit Branch </h1>
+    <a mat-raised-button color="" routerLink='/branch'>Back</a>
+  </mat-card-title>
+  <form [formGroup]="updateForm" class="my-form" novalidate  novalidate (ngSubmit)="submit()">
+  <mat-card-content>
+
+      <mat-form-field class="full-width">
+        <mat-label>Name</mat-label>
+        <input autocomplete="off" matInput placeholder="Name"  formControlName="Name"  name="Name" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>TimeZoneId</mat-label>
+        <input autocomplete="off" matInput placeholder="timezone" formControlName="timezone" name="timezone">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>LocalBranch</mat-label>
+        <input autocomplete="off" matInput placeholder="localBranch" formControlName="localBranch" name="localBranch" required>
+      </mat-form-field>
+      <mat-form-field >
+        <mat-label>Select Company</mat-label>
+        <mat-select matNativeControl [(ngModel)] = "selectedCompany" name = "company" formControlName="selectedCompany">
+          <mat-option *ngFor="let item of companies" [value] = "item.id">{{item.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+  </mat-card-content>
+  <mat-card-actions>
+  <input type="submit" [disabled]="updateForm.invalid" color="primary" value="Изменить">
+
+</mat-card-actions>
+</form>
+</mat-card>

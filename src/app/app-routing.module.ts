@@ -17,6 +17,10 @@ import { StartPageComponent } from './layouts/startPage/startPage.component';
 import {UserLoginComponent} from './modules/user/user-login/user-login.component';
 import {isLoginedGuard} from './isLoginedGuard';
 import { SkillsListComponent } from './modules/skills/skills-list/skills-list/skills.component';
+import { BranchListComponent } from './modules/branch/branch-list/branch-list.component';
+import { BranchAddComponent } from './modules/branch/branch-add/branch-add.component';
+import { BranchDetailComponent } from './modules/branch/branch-detail/branch-detail.component';
+import { BranchUpdateComponent } from './modules/branch/branch-update/branch-update.component';
 const routes: Routes = [
   {
     path: '',
@@ -24,7 +28,7 @@ const routes: Routes = [
     children: [{
       path: '',
       component: DashboardComponent,
-      canActivate: [isLoginedGuard] 
+      canActivate: [isLoginedGuard]
     },
     { path: 'employee', component: EmployeeListComponent, canActivate: [isLoginedGuard] },
     { path: 'employee/add', component: EmployeeAddComponent, canActivate: [isLoginedGuard] },
@@ -37,6 +41,10 @@ const routes: Routes = [
     { path: 'client/:id/update', component: ClientUpdateComponent, canActivate: [isLoginedGuard] },
     { path: 'client/:id/upload-avatar', component: ClientUpdateAvatarComponent, canActivate: [isLoginedGuard] },
     { path: 'skills', component: SkillsListComponent, canActivate: [isLoginedGuard] },
+    { path: 'branch', component: BranchListComponent, canActivate: [isLoginedGuard]},
+    { path: 'branch/add', component: BranchAddComponent, canActivate: [isLoginedGuard]},
+    { path: 'branch/:id',component: BranchDetailComponent, canActivate: [isLoginedGuard]},
+    {path: 'branch/:id/update', component: BranchUpdateComponent, canActivate: [isLoginedGuard]},
     ]
   },
   {

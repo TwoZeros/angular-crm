@@ -1,0 +1,44 @@
+<mat-toolbar>
+  <h1>Список подразделений </h1>
+  <a mat-raised-button color="accent" routerLink="/branch/add">Добавить</a>
+</mat-toolbar>
+
+<mat-form-field>
+  <mat-label>Фильтры</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="">
+</mat-form-field>
+<table mat-table class="branch-table mat-elevation-z8" [dataSource]="dataSource">
+
+  <ng-container  matColumnDef="id">
+      <th  *matHeaderCellDef>id</th>
+      <td  *matCellDef="let elem">{{elem.id}}</td>
+  </ng-container>
+
+  <ng-container  matColumnDef="name">
+    <th  *matHeaderCellDef>Name</th>
+    <td  *matCellDef="let elem">{{elem.name}}</td>
+</ng-container>
+
+  <ng-container matColumnDef="companyName">
+      <th  *matHeaderCellDef>Имя компании</th>
+      <td  *matCellDef="let elem">{{elem.companyName}}</td>
+  </ng-container>
+
+
+  <!-- <ng-container matColumnDef="telephone">
+      <th *matHeaderCellDef>telephone</th>
+      <td *matCellDef="let elem">{{elem.telephone}}</td>
+  </ng-container> -->
+
+  <tr mat-header-row  *matHeaderRowDef="displayedColumns">
+
+  </tr>
+
+<tr mat-row (click)="onRowClicked(row)"
+  *matRowDef="let row; columns: displayedColumns"
+  class="example-element-row">
+
+  </tr>
+
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
