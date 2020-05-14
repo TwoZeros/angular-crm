@@ -7,28 +7,28 @@
     <mat-card-content>
      
         <mat-form-field class="full-width">
-          <mat-label>First Name</mat-label>
+          <mat-label>Имя</mat-label>
           <input autocomplete="off" matInput placeholder="First name"  [(ngModel)]="firstName"  name="firstName" required>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <mat-label>Last Name</mat-label>
+          <mat-label>Фамилия</mat-label>
           <input autocomplete="off" matInput placeholder="Last Name" [(ngModel)]="secondName" name="secondName" required>
         </mat-form-field>
   
         <mat-form-field class="full-width">
-          <mat-label>Middle Name</mat-label>
+          <mat-label>Отчество</mat-label>
           <input autocomplete="off" matInput placeholder="Middle Name" [(ngModel)]="middleName" name="middleName" required>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <mat-label>Phone number</mat-label>
+          <mat-label>Номер телефона</mat-label>
           <input autocomplete="off" matInput placeholder="Phone number" [(ngModel)]="phoneNumber" name="phoneNumber" required>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <mat-label>Email</mat-label>
+          <mat-label>Электронная почта</mat-label>
           <input autocomplete="off" matInput placeholder="Email" [(ngModel)]="email" name="middleName" required>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Date of Birth</mat-label>
+          <mat-label>Дата рождения</mat-label>
           <input matInput [matDatepicker]="picker" [(ngModel)]="birthDay"  name="birthDay" placeholder="Choose a date">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
