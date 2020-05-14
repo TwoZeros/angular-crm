@@ -13,10 +13,10 @@ import {isLoginedGuard} from './isLoginedGuard';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     BrowserModule,

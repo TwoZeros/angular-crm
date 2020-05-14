@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Добавить навык</h1>
+<form class="my-form" novalidate #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+<div mat-dialog-content>
+    
+  <mat-form-field class="full-width">
+    <mat-label>Название</mat-label>
+    <input autocomplete="off" matInput placeholder="Название навыка"  [(ngModel)]="nameSkill"  name="NameSkill" required>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Описание</mat-label>
+    <input autocomplete="off" matInput placeholder="Описание" [(ngModel)]="descriptionSkill" name="DescriptionSkill" required>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">  
+    <mat-label>Группа</mat-label>
+    <mat-select [(ngModel)]="groupId" [ngModelOptions]="{standalone: true}"  name="groupId">
+      <mat-option *ngFor="let skillGroup of skillGroups" [value]="skillGroup.id">
+        {{skillGroup.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Закрыть</button>
+  <button type="submit" mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Создать</button>
+</div>
+</form>

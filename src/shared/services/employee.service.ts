@@ -9,17 +9,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class EmployeeService {
-  public uri = 'http://ec2-34-201-245-214.compute-1.amazonaws.com/api/Employees';
+  public uri = 'https://edupulse.ru/api/Employees';
   constructor(private http: HttpClient){ }
 
   getEmployees(): Observable<any> {
-    
-    return this.http.get(this.uri); 
+
+    return this.http.get(this.uri);
   }
 
   getEmployee(id: number): Observable<any> {
- 
-    
+
+
     return this.http.get(this.uri+"/"+id);
   }
   deleteEmployee(id: number): Observable<any> {
@@ -28,7 +28,7 @@ export class EmployeeService {
   }
 
   addEmployee(employee: object): Observable<any> {
-  
+
     return this.http.post(this.uri,employee);
   }
 
@@ -43,5 +43,5 @@ console.log(employee);
         return this.http.put(uri,employee);
       }
 
-  
+
 }

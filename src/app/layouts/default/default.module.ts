@@ -23,6 +23,15 @@ import { ClientUpdateAvatarComponent } from '../../modules/clients/client-update
 import { ClientAddComponent } from '../../modules/clients/client-add/client-add.component';
 import { ClientService } from 'src/shared/services/client.services';
 import { EmployeeService } from 'src/shared/services/employee.service';
+import { SkillsListComponent } from 'src/app/modules/skills/skills-list/skills-list/skills.component';
+import { SkillsService } from 'src/shared/services/skills.service';
+import { SkillsAddComponent } from '../../modules/skills/skills-add/skills-add.component';
+import { SkillsUpdateComponent } from '../../modules/skills/skills-update/skills-update.component';
+import {GroupSkillsService} from 'src/shared/services/Groupskill.service';
+import { GroupSkillAddComponent } from 'src/app/modules/skills/group-skill-add/group-skill-add.component';
+import { GroupSkillsUpdateComponent } from 'src/app/modules/skills/group-skill-update/group-skill-update.component';
+import { EmployeeSkillsService } from 'src/shared/services/employeeSkills.service';
+import { EmployeeSkillAddComponent } from 'src/app/modules/employee/employee-skill-add/employee-skill-add.component';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -33,11 +42,17 @@ import { EmployeeService } from 'src/shared/services/employee.service';
     EmployeeAddComponent,
     EmployeeUpdateComponent,
     EmployeeUploadAvatarComponent,
+    EmployeeSkillAddComponent,
     ClientsListComponent,
     ClientDetailComponent,
     ClientUpdateComponent,
     ClientUpdateAvatarComponent,
-    ClientAddComponent
+    ClientAddComponent,
+    SkillsListComponent,
+    SkillsAddComponent,
+    SkillsUpdateComponent,
+    GroupSkillAddComponent,
+    GroupSkillsUpdateComponent
   ],
   imports: [
     CommonModule,
@@ -50,7 +65,10 @@ import { EmployeeService } from 'src/shared/services/employee.service';
   providers: [
     DashboardService,
     ClientService,
-    EmployeeService
+    EmployeeService,
+    SkillsService,
+    GroupSkillsService,
+    EmployeeSkillsService
   ]
 })
 export class DefaultModule { }

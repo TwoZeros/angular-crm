@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Изменить Групппу</h1>
+<form  *ngIf="updateForm" [formGroup]="updateForm" class="my-form" novalidate  novalidate (ngSubmit)="submit()">
+  <mat-card-content>
+   
+      <mat-form-field class="full-width">
+        <mat-label>Название</mat-label>
+        <input autocomplete="off" matInput placeholder="Название"  formControlName="name" required>
+      </mat-form-field>
+     
+   
+</mat-card-content>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Закрыть</button>
+  <button type="submit" mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Сохранить</button>
+</div>
+</form>

@@ -3,52 +3,42 @@
     <h1>Список клиентов </h1>
     <a mat-raised-button color="accent" routerLink="/client/add">Добавить</a>
   </mat-toolbar>
-
+  
   <mat-form-field>
     <mat-label>Фильтры</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="">
   </mat-form-field>
 <table mat-table class="client-table mat-elevation-z8" [dataSource]="dataSource">
-  
+
     <ng-container  matColumnDef="id">
         <th  *matHeaderCellDef>id</th>
         <td  *matCellDef="let elem">{{elem.id}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="firstName">
+    <ng-container matColumnDef="fullName">
         <th  *matHeaderCellDef>Имя</th>
-        <td  *matCellDef="let elem">{{elem.firstName}}</td>
-    </ng-container>
-  
-    <ng-container matColumnDef="secondName">
-        <th *matHeaderCellDef>Фамилия</th>
-        <td  *matCellDef="let elem">{{elem.secondName}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="birstDay">
-        <th *matHeaderCellDef>День рождения</th>
-        <td *matCellDef="let elem">{{elem.birthDay}}</td>
+        <td  *matCellDef="let elem">{{elem.fullName}}</td>
     </ng-container>
 
     <ng-container matColumnDef="created">
       <th *matHeaderCellDef>Создан</th>
       <td *matCellDef="let elem">{{elem.created}}</td>
   </ng-container>
-  
+
     <!-- <ng-container matColumnDef="telephone">
         <th *matHeaderCellDef>telephone</th>
         <td *matCellDef="let elem">{{elem.telephone}}</td>
     </ng-container> -->
-    
+
     <tr mat-header-row  *matHeaderRowDef="displayedColumns">
-        
+
     </tr>
-    
-  <tr mat-row (click)="onRowClicked(row)" 
+
+  <tr mat-row (click)="onRowClicked(row)"
     *matRowDef="let row; columns: displayedColumns"
     class="example-element-row">
-      
-    </tr> 
-    
+
+    </tr>
+
 </table>
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

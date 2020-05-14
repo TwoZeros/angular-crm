@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import {Client} from '../../../../shared/models/Client'
+import {Client} from '../../../../shared/models/client';
 import { NgForm} from '@angular/forms';
 import {ClientService} from '../../../../shared/services/client.services'
 import {Router} from '@angular/router';
@@ -11,9 +11,7 @@ import {Router} from '@angular/router';
 })
 export class ClientAddComponent implements OnInit {
   client: Client;
-  firstName : string;
-  secondName: String;
-  middleName: String;
+  fullName : string;
   phoneNumber: String;
   email: String;
   birthDay: Date
@@ -27,19 +25,17 @@ export class ClientAddComponent implements OnInit {
   }
   goBack() {
     this.location.back();
-    
+
   }
   onSubmit(form: NgForm){
     this.ClientService.addClient({
-          firstName: this.firstName,
-          middleName: this.middleName, 
-          secondName: this.secondName,
+          fullName: this.fullName,
           phoneNumber: this.phoneNumber,
           email: this.email,
           birthDay:this.birthDay}).subscribe(status=> {
-      
+
             this.router.navigate(
-              ['/clients'] 
+              ['/clients']
             );
           })
 }

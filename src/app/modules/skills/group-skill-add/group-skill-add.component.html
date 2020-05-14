@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Добавить группу</h1>
+<form class="my-form" novalidate #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+<div mat-dialog-content>
+    
+  <mat-form-field class="full-width">
+    <mat-label>Название</mat-label>
+    <input autocomplete="off" matInput placeholder="Название навыка"  [(ngModel)]="nameGroup"  name="NameSkill" required>
+  </mat-form-field>
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Закрыть</button>
+  <button type="submit" mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Создать</button>
+</div>
+</form>

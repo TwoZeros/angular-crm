@@ -6,7 +6,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from "@angular/material/table";
-import { MatSort } from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -14,6 +14,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
+
 @NgModule({
     imports: [
         MatSliderModule,
@@ -29,6 +31,8 @@ import {MatIconModule} from '@angular/material/icon';
         FormsModule,
         ReactiveFormsModule,
         MatNativeDateModule,
+        MatSelectModule,
+        MatSortModule
     ],
     declarations: [],
     entryComponents: [],
@@ -49,7 +53,8 @@ import {MatIconModule} from '@angular/material/icon';
         MatNativeDateModule,
         MatDialogModule,
         MatIconModule,
-
+        MatSelectModule,
+        MatSortModule
     ],
 })
 

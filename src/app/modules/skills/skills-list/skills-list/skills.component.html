@@ -1,0 +1,111 @@
+<mat-toolbar>
+  <h1>Список навыков </h1>
+ <button mat-raised-button color="accent" style="margin-right:10px" (click)="createSkill()">Добавить навык </button>
+ <button mat-raised-button color="accent" (click)="createGroupSkill()">Создать группу</button> 
+</mat-toolbar>
+<mat-tab-group>
+  
+  <mat-tab label="Навыки"> 
+    <mat-form-field style="padding:5px 0">
+      <mat-label>Фильтры</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="">
+    </mat-form-field>
+    <table matSort  #TableSkillSort="matSort" mat-table class="skill-table mat-elevation-z8" [dataSource]="dataSourceSkill">
+    
+      <ng-container  matColumnDef="id">
+          <th  *matHeaderCellDef>id</th>
+          <td  *matCellDef="let elem">{{elem.id}}</td>
+      </ng-container>
+    
+      <ng-container  matColumnDef="name">
+        <th  *matHeaderCellDef>Название</th>
+        <td  *matCellDef="let elem">{{elem.name}}</td>
+    </ng-container>
+    
+    
+      <ng-container matColumnDef="groupName">
+          <th *matHeaderCellDef>Группа</th>
+          <td
+                    *matCellDef="let elem">{{elem.groupName}}</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="actions" >
+        <th *matHeaderCellDef >Действия</th>
+        <td *matCellDef="let elem">
+          <button mat-icon-button color="primary" (click)="updateSkill(elem.id)" aria-label="Example icon button with a heart icon">
+            <mat-icon>edit</mat-icon>
+          </button>
+          
+          <button mat-icon-button color="warn" (click)="deleteSkill(elem.id)"aria-label="Example icon button with a heart icon">
+            <mat-icon>delete</mat-icon>
+          </button>
+      
+            </td>
+    </ng-container>
+    
+      <tr mat-header-row  *matHeaderRowDef="displayedColumns">
+      </tr>
+    <tr mat-row 
+      *matRowDef="let row; columns: displayedColumns"
+      class="example-element-row">
+    
+      </tr>
+    
+    </table>
+    <mat-paginator #TableSkillPaginator="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    
+
+  </mat-tab>
+  
+  
+  
+  <mat-tab label="Группы"> 
+    <mat-form-field style="padding:5px 0">
+      <mat-label>Фильтры</mat-label>
+      <input matInput (keyup)="applyFilterGroup($event)" placeholder="">
+    </mat-form-field>
+    <table  matSort #TableGroupSort="matSort" mat-table class="skill-table mat-elevation-z8" [dataSource]="dataSourceGroup">
+    
+      <ng-container  matColumnDef="id">
+          <th  *matHeaderCellDef>id</th>
+          <td  *matCellDef="let elem">{{elem.id}}</td>
+      </ng-container>
+    
+      <ng-container  matColumnDef="name">
+        <th  *matHeaderCellDef>Название</th>
+        <td  *matCellDef="let elem">{{elem.name}}</td>
+    </ng-container>
+    
+    
+
+    
+      <ng-container matColumnDef="action" >
+        <th *matHeaderCellDef >Действия</th>
+        <td *matCellDef="let elem">
+          <button mat-icon-button color="primary" (click)="updateGroup(elem.id)" aria-label="Example icon button with a heart icon">
+            <mat-icon>edit</mat-icon>
+          </button>
+         
+          <button mat-icon-button color="warn" (click)="deleteGroup(elem.id)"aria-label="Example icon button with a heart icon">
+            <mat-icon>delete</mat-icon>
+          </button>
+         
+            </td>
+    </ng-container>
+    
+    
+      <tr mat-header-row  *matHeaderRowDef="displayedGroupColumns">
+      </tr>
+    <tr mat-row 
+      *matRowDef="let row; columns: displayedGroupColumns"
+      class="example-element-row">
+    
+      </tr>
+    
+    </table>
+    <mat-paginator  #TableGroupPaginator="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    
+
+   </mat-tab>
+
+</mat-tab-group>

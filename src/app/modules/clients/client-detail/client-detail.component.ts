@@ -23,27 +23,27 @@ export class ClientDetailComponent implements OnInit {
   private location: Location,
   ) { }
 
-  
+
   ngOnInit(): void {
-    this.getClient();  
+    this.getClient();
   }
 
-  
+
   getClient(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.ClientService.getClient(id)
       .subscribe(client => {
         this.client = client}
         );
-      
+
   }
   delete(id: number): void{
     var conf =  confirm("Вы действительно хотите удалить клиента?")
     if(conf) {
       this.ClientService.deleteClient(id).subscribe(status=> {
-      
+
         this.router.navigate(
-          ['/clients'] 
+          ['/clients']
         );
       })
     }

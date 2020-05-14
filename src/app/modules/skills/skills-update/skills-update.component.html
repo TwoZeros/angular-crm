@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Изменить навык</h1>
+<form  *ngIf="updateForm" [formGroup]="updateForm" class="my-form" novalidate  novalidate (ngSubmit)="submit()">
+  <mat-card-content>
+   
+      <mat-form-field class="full-width">
+        <mat-label>Название</mat-label>
+        <input autocomplete="off" matInput placeholder="Название"  formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+      <mat-label>Группа</mat-label>
+        <mat-select formControlName="groupSkillId" name="groupId">
+          <mat-option *ngFor="let skillGroup of skillGroups" [value]="skillGroup.id">
+            {{skillGroup.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+   
+</mat-card-content>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Закрыть</button>
+  <button type="submit" mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Сохранить</button>
+</div>
+</form>

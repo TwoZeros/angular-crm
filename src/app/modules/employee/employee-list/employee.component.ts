@@ -15,13 +15,13 @@ export class EmployeeListComponent implements OnInit {
 
   dataSource ;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  displayedColumns: string[] = ['id', 'login', 'firstName', 'secondName','birstDay', 'created']
+  displayedColumns: string[] = ['id', 'firstName', 'secondName','phoneNumber','created']
   employees : EmployeeList[]
   constructor(private EmployeeService: EmployeeService,private router: Router) { }
   getEmployees(): void {
     this.EmployeeService.getEmployees()
                         .subscribe(employees => {
-                          
+
                           this.employees = employees
                           this.dataSource = new MatTableDataSource<EmployeeList>(this.employees);
                           this.dataSource.paginator = this.paginator;
@@ -29,7 +29,7 @@ export class EmployeeListComponent implements OnInit {
   }
   onRowClicked(row : Employee) {
     this.router.navigate(
-      ['/employee', row.id], 
+      ['/employee', row.id],
     );
     console.log('Row clicked: ', row);
 }
@@ -42,7 +42,7 @@ applyFilter(event: Event) {
     //this.dataSource = new MatTableDataSource<EmployeeList>(this.employees);
     //this.dataSource.paginator = this.paginator;
 
-    
+
 
   }
 

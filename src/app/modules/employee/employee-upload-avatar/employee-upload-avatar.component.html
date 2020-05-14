@@ -1,12 +1,19 @@
 <mat-card style="margin: 0 auto; width: 400px;">
-    <mat-card-title>      <a mat-raised-button color="" routerLink='/front/employee'>Back</a>
+    <mat-card-title>      <a mat-raised-button color="" routerLink='/employee/{{currentIdEmployee}}'>Back</a>
 
+<<<<<<< HEAD
       <h3> Обновить фото {{employee.secondName}} {{employee.firstName}}</h3>
       <div id="imgTest"  >
     <img [src]="employee.photo" style="max-width:400px;" class="avatar" alt="">    
     </div>
+=======
+      <h3> Update Photo: {{employee.secondName}} {{employee.firstName}}</h3>
+>>>>>>> 20d2de257883128af2a395a5f1ae5bf7a1f66fe7
 
     </mat-card-title>
+    <div id="imgTest"  >
+      <img [src]="employee.photo" style="max-width:400px;" class="avatar" alt="">    
+      </div>
     <form class="my-form" novalidate >
     <mat-card-content>
    

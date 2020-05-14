@@ -1,1 +1,29 @@
-<p>client-update works!</p>
+<mat-card style="margin: 0 auto; width: 400px;" *ngIf="updateForm" >
+  <mat-card-title>
+    <h1> Edit client </h1>
+    <a mat-raised-button color="" routerLink='/client/{{currentIdClient}}'>Back</a>
+  </mat-card-title>
+  <form [formGroup]="updateForm" class="my-form" novalidate  novalidate (ngSubmit)="SumbitUpdateClient()">
+  <mat-card-content>
+
+      <mat-form-field class="full-width">
+        <mat-label>Full Name</mat-label>
+        <input autocomplete="off" matInput placeholder="Full name"  formControlName="fullName"  name="fullname" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Phone number</mat-label>
+        <input autocomplete="off" matInput placeholder="Phone number" formControlName="phoneNumber" name="phoneNumber" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input autocomplete="off" matInput placeholder="Email" formControlName="email" name="middleName" required>
+      </mat-form-field>
+
+  </mat-card-content>
+  <mat-card-actions>
+  <input type="submit" [disabled]="updateForm.invalid" color="primary" value="Добавить">
+
+</mat-card-actions>
+</form>
+</mat-card>

@@ -15,6 +15,7 @@
         <td  *matCellDef="let elem">{{elem.id}}</td>
     </ng-container>
 
+<<<<<<< HEAD
     <ng-container  matColumnDef="login">
       <th  *matHeaderCellDef>логин</th>
       <td  *matCellDef="let elem">{{elem.login}}</td>
@@ -22,29 +23,46 @@
   
     <ng-container matColumnDef="firstName">
         <th  *matHeaderCellDef>имя</th>
+=======
+  
+    <ng-container matColumnDef="firstName">
+        <th  *matHeaderCellDef>Имя</th>
+>>>>>>> 20d2de257883128af2a395a5f1ae5bf7a1f66fe7
         <td  *matCellDef="let elem">{{elem.firstName}}</td>
     </ng-container>
   
     <ng-container matColumnDef="secondName">
+<<<<<<< HEAD
         <th *matHeaderCellDef>фамилия</th>
+=======
+        <th *matHeaderCellDef>Фамилия</th>
+>>>>>>> 20d2de257883128af2a395a5f1ae5bf7a1f66fe7
         <td 
                   *matCellDef="let elem">{{elem.secondName}}</td>
     </ng-container>
 
     <ng-container matColumnDef="birstDay">
+<<<<<<< HEAD
         <th *matHeaderCellDef>день рождения</th>
+=======
+        <th *matHeaderCellDef>День рождения</th>
+>>>>>>> 20d2de257883128af2a395a5f1ae5bf7a1f66fe7
         <td *matCellDef="let elem">{{elem.birthDay}}</td>
     </ng-container>
 
     <ng-container matColumnDef="created">
+<<<<<<< HEAD
       <th *matHeaderCellDef>создан</th>
+=======
+      <th *matHeaderCellDef>Добавлен</th>
+>>>>>>> 20d2de257883128af2a395a5f1ae5bf7a1f66fe7
       <td *matCellDef="let elem">{{elem.created}}</td>
   </ng-container>
   
-    <!-- <ng-container matColumnDef="telephone">
-        <th *matHeaderCellDef>telephone</th>
-        <td *matCellDef="let elem">{{elem.telephone}}</td>
-    </ng-container> -->
+    <ng-container matColumnDef="phoneNumber">
+        <th *matHeaderCellDef>Телефон</th>
+        <td *matCellDef="let elem">{{elem.phoneNumber}}</td>
+    </ng-container> 
     
     <tr mat-header-row  *matHeaderRowDef="displayedColumns">
         
