@@ -15,6 +15,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
     imports: [
@@ -32,7 +34,9 @@ import {MatSelectModule} from '@angular/material/select';
         ReactiveFormsModule,
         MatNativeDateModule,
         MatSelectModule,
-        MatSortModule
+        MatSortModule,
+        MatSidenavModule,
+        MatDividerModule
     ],
     declarations: [],
     entryComponents: [],
@@ -54,7 +58,9 @@ import {MatSelectModule} from '@angular/material/select';
         MatDialogModule,
         MatIconModule,
         MatSelectModule,
-        MatSortModule
+        MatSortModule,
+        MatSidenavModule,
+        MatDividerModule
     ],
 })
 

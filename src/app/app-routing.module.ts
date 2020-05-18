@@ -17,6 +17,8 @@ import { StartPageComponent } from './layouts/startPage/startPage.component';
 import {UserLoginComponent} from './modules/user/user-login/user-login.component';
 import {isLoginedGuard} from './isLoginedGuard';
 import { SkillsListComponent } from './modules/skills/skills-list/skills-list/skills.component';
+import { SettingLayoutComponent } from './layouts/settings/pages/setting-layout/setting-layout.component';
+import { SettingStartPageComponent } from './layouts/settings/pages/setting-start-page/setting-start-page.component';
 const routes: Routes = [
   {
     path: '',
@@ -46,7 +48,13 @@ const routes: Routes = [
       path: '',
       component: UserLoginComponent
     },]
+  },
+  {
+    path: 'settings',
+    component: SettingLayoutComponent,
+    loadChildren: () => import(`./layouts/settings/settings.module`).then(m => m.SettingsModule)
   }
+  
 
 ];
 

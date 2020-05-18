@@ -10,6 +10,7 @@ import { ParamInterceptor } from './api.interceptor';
 import { DefaultModule } from './layouts/default/default.module';
 import { StartPageModule } from './layouts/startPage/startPage.module';
 import {isLoginedGuard} from './isLoginedGuard';
+import { SettingsModule } from './layouts/settings/settings.module';
 
 
 
@@ -25,8 +26,8 @@ import {isLoginedGuard} from './isLoginedGuard';
     MyMaterialModule,
     HttpClientModule,
     DefaultModule,
-    StartPageModule
-
+    StartPageModule,
+    SettingsModule
   ],
   exports: [
   ],
