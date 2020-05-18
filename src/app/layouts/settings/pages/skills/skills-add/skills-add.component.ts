@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { SkillsService } from '../../../../shared/services/skills.service';
+import { SkillsService } from '../../../../../../shared/services/skills.service';
 import { NgForm } from '@angular/forms';
 import { GroupSkillsService } from 'src/shared/services/Groupskill.service';
 interface skillGroup {

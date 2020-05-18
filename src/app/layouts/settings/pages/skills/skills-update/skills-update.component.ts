@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { SkillsService } from '../../../../shared/services/skills.service';
+import { SkillsService } from '../../../../../../shared/services/skills.service';
 import { FormGroup, FormControl, Validators, FormArray, FormsModule } from '@angular/forms';
 
 import { GroupSkillsService } from 'src/shared/services/Groupskill.service';
@@ -9,22 +9,22 @@ interface skillGroup {
   viewValue: string;
 }
 @Component({
-  selector: 'app-group-skill-update',
-  templateUrl: './group-skill-update.component.html',
-  styleUrls: ['./group-skill-update.component.css']
+  selector: 'app-skills-update',
+  templateUrl: './skills-update.component.html',
+  styleUrls: ['./skills-update.component.css']
 })
-export class GroupSkillsUpdateComponent implements OnInit {
+export class SkillsUpdateComponent implements OnInit {
   nameSkill: string;
   descriptionSkill: String;
   updateForm : FormGroup;
   groupId: Number;
   skillGroups;
-  group;
+  skill;
   
   constructor(
     private SkillsService: SkillsService,
     private GroupSkillService: GroupSkillsService,
-    public dialogRef: MatDialogRef<GroupSkillsUpdateComponent>,
+    public dialogRef: MatDialogRef<SkillsUpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   onNoClick(): void {
@@ -32,9 +32,10 @@ export class GroupSkillsUpdateComponent implements OnInit {
   }
   submit(): void {
 
-    this.GroupSkillService.updateGroupSkill(this.data.id,{ 
+    this.SkillsService.updateSkills(this.data.id,{ 
       id:this.data.id,
       name:this.updateForm.value.name,
+      groupSkillId:this.updateForm.value.groupSkillId,
       
     }).subscribe(status =>{
       this.onNoClick();
@@ -43,14 +44,20 @@ export class GroupSkillsUpdateComponent implements OnInit {
    
   }
   ngOnInit(): void {
-    this.getGroup();
+    this.getGroupList();
+    this.getSkill();
+  }
+  getGroupList() {
+    this.GroupSkillService.getGroups().subscribe(groups => { this.skillGroups = groups });
   }
 
-  getGroup(): void {
+  getSkill(): void {
  
-    this.GroupSkillService.getGroupsSkillbyId(this.data.id)
-      .subscribe(group => {
-        this.group = group;
+    this.SkillsService.getSkillsbyId(this.data.id)
+      .subscribe(skill => {
+        this.skill = skill;
+        console.log("test");
+        console.log(this.skill);
         this.createForm();
       }
         );
@@ -59,7 +66,8 @@ export class GroupSkillsUpdateComponent implements OnInit {
 
   createForm(): void {
     this.updateForm = new FormGroup({
-      name: new FormControl(this.group.name, [Validators.required]),
+      name: new FormControl(this.skill.name, [Validators.required]),
+      groupSkillId: new FormControl(this.skill.groupSkillId, [Validators.required]),
   });
   }
 }

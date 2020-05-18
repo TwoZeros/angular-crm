@@ -16,7 +16,6 @@ import { ClientAddComponent } from './modules/clients/client-add/client-add.comp
 import { StartPageComponent } from './layouts/startPage/startPage.component';
 import {UserLoginComponent} from './modules/user/user-login/user-login.component';
 import {isLoginedGuard} from './isLoginedGuard';
-import { SkillsListComponent } from './modules/skills/skills-list/skills-list/skills.component';
 import { SettingLayoutComponent } from './layouts/settings/pages/setting-layout/setting-layout.component';
 import { SettingStartPageComponent } from './layouts/settings/pages/setting-start-page/setting-start-page.component';
 const routes: Routes = [
@@ -38,7 +37,6 @@ const routes: Routes = [
     { path: 'client/:id', component: ClientDetailComponent, canActivate: [isLoginedGuard] },
     { path: 'client/:id/update', component: ClientUpdateComponent, canActivate: [isLoginedGuard] },
     { path: 'client/:id/upload-avatar', component: ClientUpdateAvatarComponent, canActivate: [isLoginedGuard] },
-    { path: 'skills', component: SkillsListComponent, canActivate: [isLoginedGuard] },
     ]
   },
   {
@@ -54,8 +52,6 @@ const routes: Routes = [
     component: SettingLayoutComponent,
     loadChildren: () => import(`./layouts/settings/settings.module`).then(m => m.SettingsModule)
   }
-  
-
 ];
 
 @NgModule({

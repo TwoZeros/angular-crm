@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SkillsService } from '../../../../../shared/services/skills.service'
-import { SkillsList } from '../../../../../shared/models/skillsList';
+import { SkillsService } from '../../../../../../../shared/services/skills.service'
+import { SkillsList } from '../../../../../../../shared/models/skillsList';
 import { SkillsAddComponent } from '../../skills-add/skills-add.component';
 import { SkillsUpdateComponent } from '../../skills-update/skills-update.component';
 import { MatTableDataSource } from '@angular/material/table';
