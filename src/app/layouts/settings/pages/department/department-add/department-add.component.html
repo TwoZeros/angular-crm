@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Добавить подразделение</h1>
+<form class="my-form" novalidate #myForm="ngForm">
+  <div mat-dialog-content>
+
+    <mat-form-field class="full-width">
+      <mat-label>Название</mat-label>
+      <input autocomplete="off" matInput placeholder="Название подразделения"  [(ngModel)]="nameDepartment"  name="nameDepartment" required>
+    </mat-form-field>
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Закрыть</button>
+    <button type="submit" mat-button [mat-dialog-close]="data.animal" (click)="onSubmit(myForm)">Создать</button>
+  </div>
+</form>

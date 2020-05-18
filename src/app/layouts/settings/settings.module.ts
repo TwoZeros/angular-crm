@@ -13,6 +13,9 @@ import { SkillsUpdateComponent } from './pages/skills/skills-update/skills-updat
 import { GroupSkillsUpdateComponent } from './pages/skills/group-skill-update/group-skill-update.component';
 import { GroupSkillsService } from 'src/shared/services/Groupskill.service';
 import { SkillsService } from 'src/shared/services/skills.service';
+import { DepartmentListComponent } from './pages/department/department-list/department-list.component';
+import { DepartmentAddComponent } from './pages/department/department-add/department-add.component';
+import { DepartmentUpdateComponent } from './pages/department/department-update/department-update.component';
 
 
 
@@ -24,8 +27,10 @@ import { SkillsService } from 'src/shared/services/skills.service';
    GroupSkillsUpdateComponent,
    SkillsAddComponent,
    SkillsListComponent,
-  SkillsUpdateComponent
-  ],
+  SkillsUpdateComponent,
+    DepartmentListComponent,
+    DepartmentAddComponent,
+    DepartmentUpdateComponent,],
   imports: [
     CommonModule,
     SettingRoutingModule,
