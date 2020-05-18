@@ -6,13 +6,19 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SettingLayoutComponent } from './pages/setting-layout/setting-layout.component';
 import { SettingRoutingModule } from './setting-routing.module';
+import { DepartmentListComponent } from './pages/department/department-list/department-list.component';
+import { DepartmentAddComponent } from './pages/department/department-add/department-add.component';
+import { DepartmentUpdateComponent } from './pages/department/department-update/department-update.component';
 
 
 
 @NgModule({
   declarations: [
     SettingStartPageComponent,
-    SettingLayoutComponent],
+    SettingLayoutComponent,
+    DepartmentListComponent,
+    DepartmentAddComponent,
+    DepartmentUpdateComponent,],
   imports: [
     CommonModule,
     SettingRoutingModule,

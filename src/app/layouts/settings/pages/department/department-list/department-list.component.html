@@ -1,0 +1,54 @@
+<a mat-raised-button class="p10" color="secondary" routerLink="/settings">Назад</a>
+<mat-toolbar>
+  <h1>Список подразделений </h1>
+  <button mat-raised-button color="accent" style="margin-right:10px" (click)="createDepartment()">Добавить подразделение </button>
+</mat-toolbar>
+<mat-tab-group>
+
+  <mat-tab label="Подразделения">
+    <mat-form-field style="padding:5px 0">
+      <mat-label>Фильтры</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="">
+    </mat-form-field>
+    <table matSort  #TableSkillSort="matSort" mat-table class="skill-table mat-elevation-z8" [dataSource]="dataSourceDepartment">
+
+      <ng-container  matColumnDef="id">
+        <th  *matHeaderCellDef>id</th>
+        <td  *matCellDef="let elem">{{elem.id}}</td>
+      </ng-container>
+
+      <ng-container  matColumnDef="name">
+        <th  *matHeaderCellDef>Название</th>
+        <td  *matCellDef="let elem">{{elem.name}}</td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="actions" >
+        <th *matHeaderCellDef >Действия</th>
+        <td *matCellDef="let elem">
+          <button mat-icon-button color="primary" (click)="updateDepartment(elem.id)" aria-label="Example icon button with a heart icon">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="warn" (click)="deleteDepartment(elem.id)"aria-label="Example icon button with a heart icon">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row  *matHeaderRowDef="displayedColumns">
+      </tr>
+      <tr mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          class="example-element-row">
+
+      </tr>
+
+    </table>
+    <mat-paginator #TableSkillPaginator="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
+  </mat-tab>
+
+</mat-tab-group>
