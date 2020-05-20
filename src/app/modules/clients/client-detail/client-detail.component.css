@@ -1,8 +1,21 @@
 .example-card {
     max-width: 400px;
   }
+ 
   .flex-container {
     display: flex;
+  }
+  .green {
+    margin:5px 0px;
+    padding:5px 10px;
+    border-radius: 10px;
+    background: rgba(0,255,0,0.1);
+  }
+  .red {
+    margin:5px 0px;
+    padding:5px 10px;
+    border-radius: 10px;
+    background: rgba(255,0,0,0.1);
   }
   .info-row {
     padding: 15px 0;
