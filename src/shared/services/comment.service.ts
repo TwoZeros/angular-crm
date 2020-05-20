@@ -41,11 +41,9 @@ console.log(comment);
     return this.http.put(this.uri+"/"+id,comment);
   }
 
-  uploadAvatarEmployee(id, employee: object): Observable<any> {
-    console.log(employee);
-    var uri=this.uri+"/"+id+"/upload-avatar"
-        return this.http.put(uri,employee);
-      }
+  getRatingClientByDay(id: number) {
+    return this.http.get(this.uri+"/getRatingsByDates/client/"+id);
+  }
 
 
 }

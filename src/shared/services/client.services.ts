@@ -17,10 +17,9 @@ export class ClientService {
   }
 
   getClient(id: number): Observable<any> {
-
-
     return this.http.get(this.uri+"/"+id);
   }
+
   deleteClient(id: number): Observable<any> {
 
     return this.http.delete(this.uri+"/"+id);

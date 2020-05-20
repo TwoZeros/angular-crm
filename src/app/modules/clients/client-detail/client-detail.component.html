@@ -69,8 +69,14 @@
       </div>
            
           </mat-tab>  
-
-      </mat-tab-group>  
+          <mat-tab label="Аналитика">
+         <div>
+          <app-raiting-client-chart [data]="DataChart" [nameClient]="client.fullName"> 
+          </app-raiting-client-chart>
+         </div>
+            
+          </mat-tab>    
+        </mat-tab-group>  
 
     </div>
   </div>

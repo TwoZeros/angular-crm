@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { AreaComponent } from './widgets/area/area.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { HeaderLoginComponent } from './components/header-login/header-login.component';
+import { RaitingClientChartComponent } from './widgets/RatingClientChart/rating-client-chart.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HeaderLoginComponent } from './components/header-login/header-login.com
     FooterComponent,
     SidebarComponent,
     AreaComponent,
+    RaitingClientChartComponent,
     HeaderLoginComponent
   ],
   imports: [
@@ -40,6 +42,7 @@ import { HeaderLoginComponent } from './components/header-login/header-login.com
     FooterComponent,
     SidebarComponent,
     AreaComponent,
+    RaitingClientChartComponent,
     HeaderLoginComponent
   ]
 })

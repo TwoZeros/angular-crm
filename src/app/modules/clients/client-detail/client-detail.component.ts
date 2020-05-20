@@ -20,6 +20,7 @@ export class ClientDetailComponent implements OnInit {
   CarmaComment:number;
   TextComment:string;
   Comments:any;
+  DataChart:any;
   constructor(
     private router: Router,
   private route: ActivatedRoute,
@@ -32,6 +33,7 @@ export class ClientDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getClient();
     this.getComments();
+    this.getDateForChart();
   }
 
 
@@ -42,6 +44,12 @@ export class ClientDetailComponent implements OnInit {
         this.client = client}
         );
 
+  }
+  getDateForChart():void {
+    this.CommentService.getRatingClientByDay(+this.route.snapshot.paramMap.get('id'))
+      .subscribe(DataChart => {
+        this.DataChart = DataChart}
+        );
   }
   addComment() {
     this.CommentService.addComment({
