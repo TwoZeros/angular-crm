@@ -45,7 +45,7 @@
         </div>
           
       <div *ngFor="let Comment of Comments">
-        <mat-card >
+        <mat-card [className]="Comment.karma >= 0 ? 'green' : 'red' " >
           <mat-card-header>
            
           
@@ -56,7 +56,7 @@
               {{Comment.createDate}}</mat-card-subtitle>
               <button mat-icon-button color="warn" (click)="deleteComment(Comment.id)"><mat-icon >delete</mat-icon></button>
             </mat-card-header>
-          <mat-card-content>
+          <mat-card-content > 
             <p>
               {{Comment.text}}
             </p>
