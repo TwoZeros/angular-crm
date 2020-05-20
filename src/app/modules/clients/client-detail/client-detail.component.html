@@ -24,8 +24,53 @@
           <p  class="info-row"> <span>Номер телефона </span>{{client.phoneNumber}}</p>
           <p class="info-row"><span>Электронная почта </span>{{client.email}}</p>
           </mat-tab>
+         
+         
+          <mat-tab label="Комментарии">
+         
+            <div style="margin-top: 10px">
+              <mat-form-field appearance="fill" style="width:100%;" >
+                <mat-label>Опишите событие:</mat-label>
+                <textarea matInput rows="3" [(ngModel)]="TextComment"></textarea>
+              </mat-form-field>
+            </div>
+        <div style="display: flex; justify-content:space-between;">
+          <div style="margin-bottom: 5px">Очки в карму 
+            <mat-slider min="-5" max="5" step="1" thumbLabel tickInterval="1" [(ngModel)]="CarmaComment"></mat-slider>
+          </div>
+      
+          <div>
+            <button mat-raised-button color="primary" (click)="addComment()">Отправить</button>
+          </div>
+        </div>
           
+      <div *ngFor="let Comment of Comments">
+        <mat-card >
+          <mat-card-header>
+           
+          
+            <mat-card-subtitle>
+              <mat-icon>account_circle</mat-icon>
+              {{Comment.userLogin}}
+              <mat-icon>access_time</mat-icon>
+              {{Comment.createDate}}</mat-card-subtitle>
+              <button mat-icon-button color="warn" (click)="deleteComment(Comment.id)"><mat-icon >delete</mat-icon></button>
+            </mat-card-header>
+          <mat-card-content>
+            <p>
+              {{Comment.text}}
+            </p>
+            <div>
+              Карма: {{Comment.karma}}
+            </div>
+          </mat-card-content>
+          
+        </mat-card>
+      </div>
+           
+          </mat-tab>  
 
-      </mat-tab-group>
+      </mat-tab-group>  
+
     </div>
   </div>

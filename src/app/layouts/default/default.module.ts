@@ -25,6 +25,9 @@ import { ClientService } from 'src/shared/services/client.services';
 import { EmployeeService } from 'src/shared/services/employee.service';
 import { EmployeeSkillsService } from 'src/shared/services/employeeSkills.service';
 import { EmployeeSkillAddComponent } from 'src/app/modules/employee/employee-skill-add/employee-skill-add.component';
+import { CommentService } from 'src/shared/services/comment.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ParamInterceptor } from 'src/app/api.interceptor';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -54,7 +57,14 @@ import { EmployeeSkillAddComponent } from 'src/app/modules/employee/employee-ski
     DashboardService,
     ClientService,
     EmployeeService,
-    EmployeeSkillsService
-  ]
+    EmployeeSkillsService,
+    CommentService,
+      {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ParamInterceptor,
+      multi: true
+    },
+  ]   
+  
 })
 export class DefaultModule { }
