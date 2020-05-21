@@ -21,7 +21,7 @@ export class AreaComponent implements OnInit {
         type: 'column'
       },
       title: {
-        text: 'Статистика заведения новых клиентов'
+        text: 'Статистика добавления клиентов'
       },
       xAxis: {
         categories: this.info.date,

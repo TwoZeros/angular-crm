@@ -1,83 +1,93 @@
-<ngx-spinner bdColor = "rgba(255, 255, 255, 1)" size = "medium" color = "#1b1a1a" type = "square-spin" [fullScreen] = "false"><p style="color:#1b1a1a" > Загрузка... </p></ngx-spinner>
+<ngx-spinner bdColor="rgba(255, 255, 255, 1)" size="medium" color="#1b1a1a" type="square-spin" [fullScreen]="false">
+  <p style="color:#1b1a1a"> Загрузка... </p>
+</ngx-spinner>
 
 <mat-toolbar>
-    <a mat-raised-button class="p10" color="secondary" routerLink="/clients">Назад</a>
-      <h1 *ngIf="client">Клиент: {{client.fullName}} </h1>
+  <a mat-raised-button class="p10" color="secondary" routerLink="/clients">Назад</a>
+  <h1 *ngIf="client">Клиент: {{client.fullName}} </h1>
 
-    </mat-toolbar>
-  <div class="flex-container" *ngIf="client">
-    <div style="margin:0 15px">
-      <mat-card class="example-card" >
-        <mat-card-content >
-           <img [src]="client.photo" style="width: 300px;">
+</mat-toolbar>
+<div class="flex-container" *ngIf="client">
+  <div style="margin:0 15px">
+    <mat-card class="example-card">
+      <mat-card-content>
+        <img [src]="client.photo" style="width: 300px;">
+        <div class="slider">
+          <div class="name">{{this.title}} ({{FullCarma}})</div>
+          <div class="count" [@counting]="{value: '*', params: {max_call: 50}}" [style.width.%]="this.percent"
+            [style.background]="this.percent >= 50? '#5affaa' : '#ff4c5b' ">
 
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-raised-button routerLink="/client/{{client.id}}/upload-avatar">Фото</button>
-            <a mat-raised-button  *ngIf="client"  routerLink="/client/{{client.id}}/update">Изменить</a>
-            <button mat-raised-button color="warn" (click)="delete(client.id)">Удалить</button>
-          </mat-card-actions>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button routerLink="/client/{{client.id}}/upload-avatar">Фото</button>
+        <a mat-raised-button *ngIf="client" routerLink="/client/{{client.id}}/update">Изменить</a>
+        <button mat-raised-button color="warn" (click)="delete(client.id)">Удалить</button>
+      </mat-card-actions>
     </mat-card>
-    </div>
-    <div style=" width: 100%;">
-      <mat-tab-group style="width: 100%;">
-        <mat-tab label="Инфо">
-          <p class="info-row" *ngIf="client"><span>Название </span>{{client.fullName}}</p>
-          <p  class="info-row"> <span>Номер телефона </span>{{client.phoneNumber}}</p>
-          <p class="info-row"><span>Электронная почта </span>{{client.email}}</p>
-          </mat-tab>
-         
-         
-          <mat-tab label="Комментарии">
-         
-            <div style="margin-top: 10px">
-              <mat-form-field appearance="fill" style="width:100%;" >
-                <mat-label>Опишите событие:</mat-label>
-                <textarea matInput rows="3" [(ngModel)]="TextComment"></textarea>
-              </mat-form-field>
-            </div>
+  </div>
+  <div style=" width: 100%;">
+    <mat-tab-group style="width: 100%;">
+      <mat-tab label="Инфо">
+        <p class="info-row" *ngIf="client"><span>Название </span>{{client.fullName}}</p>
+        <p class="info-row"> <span>Номер телефона </span>{{client.phoneNumber}}</p>
+        <p class="info-row"><span>Электронная почта </span>{{client.email}}</p>
+
+      </mat-tab>
+
+      <mat-tab label="Комментарии">
+
+        <div style="margin-top: 10px">
+          <mat-form-field appearance="fill" style="width:100%;">
+            <mat-label>Опишите событие:</mat-label>
+            <textarea matInput rows="3" [(ngModel)]="TextComment"></textarea>
+          </mat-form-field>
+        </div>
         <div style="display: flex; justify-content:space-between;">
-          <div style="margin-bottom: 5px">Очки в карму 
+          <div style="margin-bottom: 5px">Очки в карму
             <mat-slider min="-5" max="5" step="1" thumbLabel tickInterval="1" [(ngModel)]="CarmaComment"></mat-slider>
           </div>
-      
+
           <div>
             <button mat-raised-button color="primary" (click)="addComment()">Отправить</button>
           </div>
         </div>
-          
-      <div *ngFor="let Comment of Comments" style="margin-bottom: 30px; ">
-        <mat-card [className]="Comment.karma >= 0 ? 'green' : 'red' " >
-          <mat-card-header>
-           
-          
-            <mat-card-subtitle>
-              <mat-icon>account_circle</mat-icon>
-              {{Comment.userLogin}}
-              <mat-icon>access_time</mat-icon>
-              {{Comment.createDate}}</mat-card-subtitle>
-              <button mat-icon-button color="warn" (click)="deleteComment(Comment.id)"><mat-icon >delete</mat-icon></button>
-            </mat-card-header>
-          <mat-card-content > 
-            <p>
-              {{Comment.text}}
-            </p>
-            <div>
-              Карма: {{Comment.karma}}
-            </div>
-          </mat-card-content>
-          
-        </mat-card>
-      </div>
-           
-          </mat-tab>  
-          <mat-tab label="Аналитика">
-         <div *ngIf="DataChart">
-          <app-raiting-client-chart [data]="DataChart" [nameClient]="client.fullName"> 
-          </app-raiting-client-chart>
-         </div>
-          </mat-tab>    
-        </mat-tab-group>  
 
-    </div>
+        <div *ngFor="let Comment of Comments" style="margin-bottom: 30px; ">
+          <mat-card [className]="Comment.karma >= 0 ? 'green' : 'red' ">
+            <mat-card-header>
+
+
+              <mat-card-subtitle>
+                <mat-icon>account_circle</mat-icon>
+                {{Comment.userLogin}}
+                <mat-icon>access_time</mat-icon>
+                {{Comment.createDate}}
+              </mat-card-subtitle>
+              <button mat-icon-button color="warn" (click)="deleteComment(Comment.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                {{Comment.text}}
+              </p>
+              <div>
+                Карма: {{Comment.karma}}
+              </div>
+            </mat-card-content>
+
+          </mat-card>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Аналитика">
+        <div *ngIf="DataChart">
+          <app-raiting-client-chart [data]="DataChart" [nameClient]="client.fullName">
+          </app-raiting-client-chart>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </div>
+</div>

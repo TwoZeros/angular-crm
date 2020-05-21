@@ -1,4 +1,4 @@
-import {Employee} from '../models/employee'
+import {Employee} from '../models/employee';
 
 import { Observable, of } from 'rxjs';
 import {HttpClient} from '@angular/common/http';
@@ -16,9 +16,9 @@ export class CommentService {
 
     return this.http.get(this.uri);
   }
-  getCommentsbyIdClinet(id : number):Observable<any> {
+  getCommentsbyIdClinet(id: number): Observable<any> {
 
-    return this.http.get(this.uri+"/client/"+id);
+    return this.http.get(this.uri + "/client/" + id);
   }
 
   getComment(id: number): Observable<any> {
@@ -33,9 +33,11 @@ export class CommentService {
 
   addComment(comment: object): Observable<any> {
 
-    return this.http.post(this.uri,comment);
+    return this.http.post(this.uri, comment);
   }
-
+  getRating(id: number): Observable<any> {
+    return this.http.get(this.uri + "/getRating?id=" + id);
+  }
   updateComment(id,comment: object): Observable<any> {
 console.log(comment);
     return this.http.put(this.uri+"/"+id,comment);
