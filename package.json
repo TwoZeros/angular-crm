@@ -27,6 +27,7 @@
     "express": "^4.17.1",
     "highcharts": "^8.0.4",
     "highcharts-angular": "^2.4.0",
+    "ngx-spinner": "^9.0.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

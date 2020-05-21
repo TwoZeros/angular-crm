@@ -1,4 +1,5 @@
 import {Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AuthorisationService } from 'src/shared/services/authorisation.service';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +10,10 @@ export class HeaderComponent implements OnInit {
 
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
-
+  constructor(private AuthorizationSerive: AuthorisationService) { }
+logout() {
+  this.AuthorizationSerive.logout();
+}
   ngOnInit() { }
 
   toggleSideBar() {

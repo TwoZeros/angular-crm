@@ -1,12 +1,14 @@
+<ngx-spinner bdColor = "rgba(255, 255, 255, 1)" size = "medium" color = "#1b1a1a" type = "square-spin" [fullScreen] = "false"><p style="color:#1b1a1a" > Загрузка... </p></ngx-spinner>
+
 <mat-toolbar>
     <a mat-raised-button class="p10" color="secondary" routerLink="/clients">Назад</a>
       <h1 *ngIf="client">Клиент: {{client.fullName}} </h1>
 
     </mat-toolbar>
-  <div class="flex-container">
+  <div class="flex-container" *ngIf="client">
     <div style="margin:0 15px">
-      <mat-card class="example-card">
-        <mat-card-content>
+      <mat-card class="example-card" >
+        <mat-card-content >
            <img [src]="client.photo" style="width: 300px;">
 
           </mat-card-content>
@@ -44,7 +46,7 @@
           </div>
         </div>
           
-      <div *ngFor="let Comment of Comments">
+      <div *ngFor="let Comment of Comments" style="margin-bottom: 30px; ">
         <mat-card [className]="Comment.karma >= 0 ? 'green' : 'red' " >
           <mat-card-header>
            
@@ -70,7 +72,7 @@
            
           </mat-tab>  
           <mat-tab label="Аналитика">
-         <div>
+         <div *ngIf="DataChart">
           <app-raiting-client-chart [data]="DataChart" [nameClient]="client.fullName"> 
           </app-raiting-client-chart>
          </div>

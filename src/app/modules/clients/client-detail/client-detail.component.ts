@@ -7,6 +7,7 @@ import { ClientService }  from '../../../../shared/services/client.services';
 import { Client } from '../../../../shared/models/client';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CommentService } from 'src/shared/services/comment.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-client-detail',
@@ -22,6 +23,7 @@ export class ClientDetailComponent implements OnInit {
   Comments:any;
   DataChart:any;
   constructor(
+    private spinner: NgxSpinnerService,
     private router: Router,
   private route: ActivatedRoute,
   private ClientService: ClientService,
@@ -31,6 +33,7 @@ export class ClientDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.spinner.show();
     this.getClient();
     this.getComments();
     this.getDateForChart();
@@ -41,7 +44,8 @@ export class ClientDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.ClientService.getClient(id)
       .subscribe(client => {
-        this.client = client}
+        this.client = client
+      this.spinner.hide()}
         );
 
   }

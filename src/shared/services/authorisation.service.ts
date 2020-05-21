@@ -20,7 +20,7 @@ export class AuthorisationService {
   }
   logout() {
     localStorage.clear();
-    this.router.navigate(['/front/login']);
+    this.router.navigate(['/login']);
 
   }
   isLoginedUser(): boolean {

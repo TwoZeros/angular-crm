@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../../shared/services/dashboard.services';
+import { ClientService } from 'src/shared/services/client.services';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,11 +9,14 @@ import { DashboardService } from '../../../shared/services/dashboard.services';
 })
 export class DashboardComponent implements OnInit {
 
-  bigChart = [];
-  constructor(private dashboardService: DashboardService) { }
+  bigChart :any;
+  constructor(private ClientService: ClientService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
-    this.bigChart = this.dashboardService.bigChart();
+    this.spinner.show();
+    this.ClientService.getClientCountByDay().subscribe(res =>  {
+      this.bigChart= res;
+      this.spinner.hide()}) ;
   }
 
 }

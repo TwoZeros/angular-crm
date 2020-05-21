@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DefaultComponent } from './default.component';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.component';
 import { PostsComponent } from 'src/app/modules/posts/posts.component';
@@ -51,7 +51,8 @@ import { ParamInterceptor } from 'src/app/api.interceptor';
     SharedModule,
     MatSidenavModule,
     MatDividerModule,
-    MyMaterialModule
+    MyMaterialModule,
+    NgxSpinnerModule,
   ],
   providers: [
     DashboardService,

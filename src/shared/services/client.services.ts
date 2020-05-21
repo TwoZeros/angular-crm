@@ -15,6 +15,9 @@ export class ClientService {
 
     return this.http.get(this.uri);
   }
+  getClientCountByDay(): Observable<any> {
+    return this.http.get(this.uri +"/getClientCountByDay");
+  }
 
   getClient(id: number): Observable<any> {
     return this.http.get(this.uri+"/"+id);

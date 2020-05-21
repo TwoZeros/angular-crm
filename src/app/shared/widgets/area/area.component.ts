@@ -9,7 +9,7 @@ import HC_exporting from 'highcharts/modules/exporting';
 export class AreaComponent implements OnInit {
 
   chartOptions: {};
-  @Input() data: any = [];
+  @Input() info: any = [];
 
   Highcharts = Highcharts;
 
@@ -18,25 +18,33 @@ export class AreaComponent implements OnInit {
   ngOnInit() {
     this.chartOptions = {
       chart: {
-        type: 'area'
+        type: 'column'
       },
       title: {
-        text: 'Random DATA'
+        text: 'Статистика заведения новых клиентов'
       },
-      subtitle: {
-        text: 'Demo'
-      },
-      tooltip: {
-        split: true,
-        valueSuffix: ' millions'
-      },
-      credits: {
-        enabled: false
-      },
-      exporting: {
-        enabled: true,
-      },
-      series: this.data
+      xAxis: {
+        categories: this.info.date,
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Количество (шт)'
+        }
+    },
+   
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Новые клиенты',
+        data: this.info.count
+
+    }]
     };
 
     HC_exporting(Highcharts);
