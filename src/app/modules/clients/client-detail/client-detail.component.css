@@ -1,7 +1,7 @@
 .example-card {
     max-width: 400px;
   }
- 
+
   .flex-container {
     display: flex;
   }
@@ -28,3 +28,26 @@
   .p10 {
     margin: 0 10px;
   }
+.slider {
+  position: relative;
+  background-image: url(bglines.png);
+  display: flex;
+  width: 250px;
+  height: 35px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.count {
+  background: #5affaa;
+  border-radius: 10px;
+  height: 35px;
+
+}
+.name {
+  padding-top: 5px;
+  text-align: center;
+  position: absolute;
+  left:0;
+  width: 100%;
+}
+

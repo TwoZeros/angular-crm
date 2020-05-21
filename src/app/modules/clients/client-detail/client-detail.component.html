@@ -23,6 +23,17 @@
           <p class="info-row" *ngIf="client"><span>Название </span>{{client.fullName}}</p>
           <p  class="info-row"> <span>Номер телефона </span>{{client.phoneNumber}}</p>
           <p class="info-row"><span>Электронная почта </span>{{client.email}}</p>
+          <div class="info-row">
+        <span>Рейтинг
+
+          </span>
+            <div class="slider">
+              <div class="name">{{this.title}}</div>
+              <div class="count" [@counting]="{value: '*', params: {max_call: 50}}" [style.width.%]="this.percent" [style.background]="this.percent >= 50? '#5affaa' : '#ff4c5b' ">
+
+              </div>
+            </div>
+          </div>
 
           </mat-tab>
 <<<<<<< HEAD
