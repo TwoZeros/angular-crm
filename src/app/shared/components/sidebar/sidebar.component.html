@@ -1,15 +1,15 @@
 <mat-nav-list>
     <div class="profile-card">
         <div class="header">
-            <h2>Admin</h2>
-            <h4>example@email.com</h4>
+            <h2>{{userLogin}}</h2>
+            
         </div>
         <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Soufiane FADIL">
     </div>
 
     <mat-divider></mat-divider>
 
-    <h2 matSubheader>Pages</h2>
+    <h2 matSubheader>Страницы</h2>
 
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Главная</a>
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/employee">Сотрудники</a>
@@ -18,16 +18,6 @@
 
     <mat-divider></mat-divider>
 
-    <h2 matSubheader>Tools</h2>
-
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
-        <mat-icon>import_contacts</mat-icon>
-        Contacts
-    </a>
-
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
-        <mat-icon>contact_phone</mat-icon>
-        Leads
-    </a>
+    
 
 </mat-nav-list>

@@ -34,4 +34,7 @@ export class AuthorisationService {
             return false;
         }
   }
+  getLogin():String {
+    return localStorage.getItem('userName');
+  }
 }

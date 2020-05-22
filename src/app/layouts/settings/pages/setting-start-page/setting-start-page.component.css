@@ -12,3 +12,10 @@ mat-drawer-container {
 mat-drawer-content {
     padding: 20px;
 }
+.link {
+    color:black;
+}
+.link:visited {
+    color:black;
+}
+

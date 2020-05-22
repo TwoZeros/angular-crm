@@ -1,7 +1,8 @@
 <mat-card style="margin: 0 auto; width: 400px;" *ngIf="updateForm">
-    <mat-card-title>
-      <h1> Edit Employee </h1>
-      <a mat-raised-button color="" routerLink='/employee'>Back</a>
+    <mat-card-title style="display: flex;">
+      <a mat-raised-button color="" routerLink='/employee' style="margin-left: 5px;">Назад</a>
+      <h1>Редактировать сотрудника </h1>
+
     </mat-card-title>
     <form [formGroup]="updateForm" class="my-form" novalidate  novalidate (ngSubmit)="submit()">
     <mat-card-content>
