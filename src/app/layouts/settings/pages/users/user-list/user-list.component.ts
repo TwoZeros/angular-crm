@@ -64,7 +64,11 @@ export class UserListComponent implements OnInit {
 
   delete(id: number) {
 
-    if(confirm("Вы хотите удалить данного пользователя?")) {
+    if(confirm("Вы хотите удалить данного пользователя?")) {  
+      if(id==1) {
+        alert("Вы не можете удалить данного пользователя");
+        return 0;
+      }
       this.UserService.delete(id).subscribe(result=> {
         console.log(result);
         this.getUsers();
