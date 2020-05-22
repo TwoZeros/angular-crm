@@ -5,7 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {Router} from '@angular/router';
 import { clientList } from 'src/shared/models/clientList';
-import { NgxSpinnerService } from "ngx-spinner";
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-clients-list',
   templateUrl: './clients-list.component.html',
@@ -24,7 +24,7 @@ export class ClientsListComponent implements OnInit {
                           this.clients = clients
                           this.dataSource = new MatTableDataSource<clientList>(this.clients);
                           this.dataSource.paginator = this.paginator;
-                      
+
                           this.spinner.hide();
                         });
   }
@@ -41,7 +41,7 @@ applyFilter(event: Event) {
   ngOnInit(): void {
     this.spinner.show();
     this.getClients()
-    
+
     //this.dataSource = new MatTableDataSource<ClientList>(this.employees);
     //this.dataSource.paginator = this.paginator;
 

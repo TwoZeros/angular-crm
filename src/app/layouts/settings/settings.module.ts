@@ -16,6 +16,10 @@ import { SkillsService } from 'src/shared/services/skills.service';
 import { DepartmentListComponent } from './pages/department/department-list/department-list.component';
 import { DepartmentAddComponent } from './pages/department/department-add/department-add.component';
 import { DepartmentUpdateComponent } from './pages/department/department-update/department-update.component';
+import {NgxSpinnerModule} from "ngx-spinner";
+import { CarmaListComponent } from './pages/carma/carma-list/carma-list.component';
+import { CarmaAddComponent } from './pages/carma/carma-add/carma-add.component';
+import { CarmaUpdateComponent } from './pages/carma/carma-update/carma-update.component';
 
 
 
@@ -30,15 +34,19 @@ import { DepartmentUpdateComponent } from './pages/department/department-update/
   SkillsUpdateComponent,
     DepartmentListComponent,
     DepartmentAddComponent,
-    DepartmentUpdateComponent,],
-  imports: [
-    CommonModule,
-    SettingRoutingModule,
-    MyMaterialModule,
-    RouterModule,
-    SharedModule,
+    DepartmentUpdateComponent,
+    CarmaListComponent,
+    CarmaAddComponent,
+    CarmaUpdateComponent,],
+    imports: [
+        CommonModule,
+        SettingRoutingModule,
+        MyMaterialModule,
+        RouterModule,
+        SharedModule,
+        NgxSpinnerModule,
 
-  ],
+    ],
   providers: [
    GroupSkillsService,
    SkillsService,

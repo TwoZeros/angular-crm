@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Добавить Название</h1>
+<form class="my-form" novalidate #myForm="ngForm">
+  <div mat-dialog-content>
+
+    <mat-form-field class="full-width">
+      <mat-label>Название</mat-label>
+      <input autocomplete="off" matInput placeholder="Название"  [(ngModel)]="nameCarma"  name="nameCarma" required>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Минимальное значение</mat-label>
+      <input autocomplete="off" min="-100" max="100" type="number" matInput placeholder="0"  [(ngModel)]="beginCarma"  name="beginCarma" required>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Максимальное значение</mat-label>
+      <input autocomplete="off" min="-100" max="100" matInput  type="number" placeholder="0"  [(ngModel)]="endCarma"  name="endCarma" required>
+    </mat-form-field>
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Закрыть</button>
+    <button type="submit" mat-button [mat-dialog-close]="data.animal" (click)="onSubmit(myForm)">Создать</button>
+  </div>
+</form>

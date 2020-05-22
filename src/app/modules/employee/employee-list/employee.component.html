@@ -1,4 +1,4 @@
-
+<ngx-spinner bdColor = "rgba(255, 255, 255, 1)" size = "medium" color = "#1b1a1a" type = "square-spin" [fullScreen] = "false"><p style="color:#1b1a1a" > Загрузка... </p></ngx-spinner>
 <mat-toolbar>
     <h1>Список сотрудников </h1>
     <a mat-raised-button color="accent" routerLink="/employee/add">Добавить</a>
@@ -9,21 +9,21 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="">
   </mat-form-field>
 <table mat-table class="employee-table mat-elevation-z8" [dataSource]="dataSource">
-  
+
     <ng-container  matColumnDef="id">
         <th  *matHeaderCellDef>id</th>
         <td  *matCellDef="let elem">{{elem.id}}</td>
     </ng-container>
 
-  
+
     <ng-container matColumnDef="firstName">
         <th  *matHeaderCellDef>Имя</th>
         <td  *matCellDef="let elem">{{elem.firstName}}</td>
     </ng-container>
-  
+
     <ng-container matColumnDef="secondName">
         <th *matHeaderCellDef>Фамилия</th>
-        <td 
+        <td
                   *matCellDef="let elem">{{elem.secondName}}</td>
     </ng-container>
 
@@ -36,21 +36,21 @@
       <th *matHeaderCellDef>Добавлен</th>
       <td *matCellDef="let elem">{{elem.created}}</td>
   </ng-container>
-  
+
     <ng-container matColumnDef="phoneNumber">
         <th *matHeaderCellDef>Телефон</th>
         <td *matCellDef="let elem">{{elem.phoneNumber}}</td>
-    </ng-container> 
-    
+    </ng-container>
+
     <tr mat-header-row  *matHeaderRowDef="displayedColumns">
-        
+
     </tr>
-    
-  <tr mat-row (click)="onRowClicked(row)" 
+
+  <tr mat-row (click)="onRowClicked(row)"
     *matRowDef="let row; columns: displayedColumns"
     class="example-element-row">
-      
-    </tr> 
-    
+
+    </tr>
+
 </table>
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

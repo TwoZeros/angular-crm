@@ -8,6 +8,7 @@ import {department} from "../../../../../../shared/models/department";
 import {DepartmentService} from "../../../../../../shared/services/department.service";
 import {DepartmentAddComponent} from "../department-add/department-add.component";
 import {DepartmentUpdateComponent} from "../department-update/department-update.component";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-department-list',
@@ -25,6 +26,7 @@ export class DepartmentListComponent implements OnInit {
 
   departments: department[]
   constructor(private DepartmentService: DepartmentService,
+              private spinner: NgxSpinnerService,
               private router: Router,
               public dialog: MatDialog) { }
   getDepartments(): void {
@@ -35,6 +37,7 @@ export class DepartmentListComponent implements OnInit {
         this.dataSourceDepartment = new MatTableDataSource<department>(this.departments);
         this.dataSourceDepartment.paginator = this.tableSkillPaginator;
         this.dataSourceDepartment.sort = this.tableSkillSort;
+        this.spinner.hide();
       });
   }
 
@@ -76,7 +79,8 @@ export class DepartmentListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getDepartments()
+    this.spinner.show();
+    this.getDepartments();
   }
 
 }
