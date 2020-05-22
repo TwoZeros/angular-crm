@@ -21,6 +21,9 @@ import { UserAddComponent } from './pages/users/user-add/user-add.component';
 import { UserUpdateComponent } from './pages/users/user-update/user-update.component';
 import { UserService } from 'src/shared/services/user.service';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CarmaListComponent } from './pages/carma/carma-list/carma-list.component';
+import { CarmaAddComponent } from './pages/carma/carma-add/carma-add.component';
+import { CarmaUpdateComponent } from './pages/carma/carma-update/carma-update.component';
 
 
 
@@ -38,7 +41,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     DepartmentUpdateComponent,
     UserListComponent,
     UserAddComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
+    CarmaListComponent,
+    CarmaAddComponent,
+    CarmaUpdateComponent
   ],
   imports: [
     CommonModule,
@@ -46,8 +52,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MyMaterialModule,
     RouterModule,
     SharedModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    
   ],
+  
   providers: [
    GroupSkillsService,
    SkillsService,

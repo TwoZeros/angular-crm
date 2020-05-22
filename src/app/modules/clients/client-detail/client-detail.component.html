@@ -1,11 +1,12 @@
-<ngx-spinner bdColor="rgba(255, 255, 255, 1)" size="medium" color="#1b1a1a" type="square-spin" [fullScreen]="false">
-  <p style="color:#1b1a1a"> Загрузка... </p>
-</ngx-spinner>
+
 
 <mat-toolbar class="flex-container-title flex-container">
   <a mat-raised-button class="p10" color="secondary" routerLink="/clients">Назад</a>
   <h1 *ngIf="client">Клиент: {{client.fullName}} </h1>
-
+  
+  <ngx-spinner bdColor="rgba(255, 255, 255, 1)" size="medium" color="#1b1a1a" type="square-spin" [fullScreen]="false">
+    <p style="color:#1b1a1a"> Загрузка... </p>
+  </ngx-spinner>
 </mat-toolbar>
 <div class="flex-container" *ngIf="client">
   <div style="margin:0 15px">

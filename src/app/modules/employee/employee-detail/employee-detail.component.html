@@ -1,9 +1,10 @@
-<mat-toolbar class="flex-container flex-container-title">
+<mat-toolbar *ngIf="employee" class="flex-container flex-container-title">
   <a mat-raised-button class="p10" color="secondary" routerLink="/employee">Назад</a>
   <h1 *ngIf="employee">Профиль: {{employee.secondName}} {{employee.firstName}} </h1>
+  <ngx-spinner bdColor = "rgba(255, 255, 255, 1)" size = "medium" color = "#1b1a1a" type = "square-spin" [fullScreen] = "false"><p style="color:#1b1a1a" > Загрузка... </p></ngx-spinner>
 
 </mat-toolbar>
-<div class="flex-container">
+<div class="flex-container" *ngIf="employee">
   <div style="margin:0 15px">
     <mat-card class="example-card">
       <mat-card-content>
@@ -12,7 +13,7 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button routerLink="/employee/{{employee.id}}/upload-avatar">Фото</button>
-        <a mat-raised-button *ngIf="employee" routerLink="/employee/{{employee.id}}/update">Изменить</a>
+        <a mat-raised-button  routerLink="/employee/{{employee.id}}/update">Изменить</a>
         <button mat-raised-button color="warn" (click)="delete(employee.id)">Удалить</button>
       </mat-card-actions>
     </mat-card>

@@ -4,7 +4,7 @@ import { SkillsList } from '../../../../../../../shared/models/skillsList';
 import { SkillsAddComponent } from '../../skills-add/skills-add.component';
 import { SkillsUpdateComponent } from '../../skills-update/skills-update.component';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort'; 
+import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -12,7 +12,7 @@ import { GroupSkillsService } from 'src/shared/services/Groupskill.service';
 import { GroupSkill } from 'src/shared/models/GroupSkill';
 import { GroupSkillAddComponent } from '../../group-skill-add/group-skill-add.component';
 import { GroupSkillsUpdateComponent } from '../../group-skill-update/group-skill-update.component';
-
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
@@ -26,17 +26,18 @@ export class SkillsListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild('TableSkillPaginator', {static: true}) tableSkillPaginator: MatPaginator;
   @ViewChild('TableSkillSort', {static: true}) tableSkillSort: MatSort;
-  
+
   dataSourceGroup;
   displayedGroupColumns: string[] = ['id','name', 'action'];
   @ViewChild('TableGroupPaginator', {static: true}) tableGroupPaginator: MatPaginator;
   @ViewChild('TableGroupSort', {static: true}) tableGroupSort: MatSort;
-  
-  
+
+
   skills: SkillsList[]
   groups: GroupSkill[]
-  constructor(private SkillsService: SkillsService, 
+  constructor(private SkillsService: SkillsService,
               private GroupSkillService: GroupSkillsService,
+              private spinner: NgxSpinnerService,
               private router: Router,
               public dialog: MatDialog) { }
   getSkills(): void {
@@ -57,6 +58,7 @@ export class SkillsListComponent implements OnInit {
         this.dataSourceGroup = new MatTableDataSource<GroupSkill>(this.groups);
         this.dataSourceGroup.paginator = this.tableGroupPaginator;
         this.dataSourceGroup.sort = this.tableGroupSort;
+        this.spinner.hide();
       });
   }
   createSkill(): void {
@@ -104,7 +106,7 @@ export class SkillsListComponent implements OnInit {
     });
   }
   deleteSkill(idSkill: number) {
-    
+
     if(confirm("Вы хотите удалить данный навык?")) {
       this.SkillsService.deleteSkills(idSkill).subscribe(result=> {
         console.log(result);
@@ -112,11 +114,11 @@ export class SkillsListComponent implements OnInit {
         this.getGroups();
       })
     }
-   
+
   }
 
   deleteGroup(id: number) {
-    
+
     if(confirm("Вы хотите удалить группу?")) {
       this.GroupSkillService.deleteGroupSkill(id).subscribe(result=> {
         console.log(result);
@@ -124,7 +126,7 @@ export class SkillsListComponent implements OnInit {
         this.getSkills();
       })
     }
-   
+
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -135,8 +137,9 @@ export class SkillsListComponent implements OnInit {
     this.dataSourceGroup.filter = filterValue.trim().toLowerCase();
   }
   ngOnInit(): void {
-    this.getSkills()
-    this.getGroups()
+    this.spinner.show();
+    this.getSkills();
+    this.getGroups();
   }
 
 }

@@ -8,6 +8,7 @@ import { Employee } from '../../../../shared/models/employee';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EmployeeSkillsService } from 'src/shared/services/employeeSkills.service';
 import { EmployeeSkillAddComponent } from '../employee-skill-add/employee-skill-add.component';
+import { NgxSpinnerService } from "ngx-spinner";
 
 export interface DialogData {
 
@@ -29,12 +30,14 @@ export class EmployeeDetailComponent implements OnInit {
   private EmployeeService: EmployeeService,
   private EmployeeSkillsService: EmployeeSkillsService,
   private location: Location,
-  public dialog: MatDialog
+  public dialog: MatDialog,
+  private spinner: NgxSpinnerService
 
   ) { }
 
   
   ngOnInit(): void {
+    this.spinner.show();
     this.getEmployee();  
     this.getEmployeeSkill();    
   }
@@ -61,7 +64,9 @@ export class EmployeeDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.EmployeeService.getEmployee(id)
       .subscribe(employee => {
-        this.employee = employee}
+        this.employee = employee
+      this.spinner.hide()
+    }
         );
       
   }
