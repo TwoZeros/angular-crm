@@ -31,8 +31,8 @@
     <mat-tab-group style="width: 100%;">
       <mat-tab label="Инфо">
         <p class="info-row" *ngIf="client"><span>Название </span>{{client.fullName}}</p>
-        <p class="info-row"> <span>Номер телефона </span>{{client.phoneNumber}}</p>
-        <p class="info-row"><span>Электронная почта </span>{{client.email}}</p>
+        <p class="info-row"> <span>Номер телефона </span><a style="color:black" href="tel:{{client.phoneNumber}}">{{client.phoneNumber}}</a></p>
+        <p class="info-row"><span>Электронная почта </span><a style="color:black"  href="mailto:{{client.email}}">{{client.email}}</a></p>
 
       </mat-tab>
 

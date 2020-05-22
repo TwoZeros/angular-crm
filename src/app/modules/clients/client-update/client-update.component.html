@@ -1,7 +1,7 @@
 <mat-card style="margin: 0 auto; width: 400px;" *ngIf="updateForm" >
   <mat-card-title>
     <h1> Редактировать клиента</h1>
-    <a mat-raised-button color="" routerLink='/client/{{currentIdClient}}'>Back</a>
+    <a mat-raised-button color="" routerLink='/client/{{currentIdClient}}'>Назад</a>
   </mat-card-title>
   <form [formGroup]="updateForm" class="my-form" novalidate  novalidate (ngSubmit)="SumbitUpdateClient()">
   <mat-card-content>
