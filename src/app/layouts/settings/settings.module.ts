@@ -16,6 +16,11 @@ import { SkillsService } from 'src/shared/services/skills.service';
 import { DepartmentListComponent } from './pages/department/department-list/department-list.component';
 import { DepartmentAddComponent } from './pages/department/department-add/department-add.component';
 import { DepartmentUpdateComponent } from './pages/department/department-update/department-update.component';
+import { UserListComponent } from './pages/users/user-list/user-list.component';
+import { UserAddComponent } from './pages/users/user-add/user-add.component';
+import { UserUpdateComponent } from './pages/users/user-update/user-update.component';
+import { UserService } from 'src/shared/services/user.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -30,18 +35,23 @@ import { DepartmentUpdateComponent } from './pages/department/department-update/
   SkillsUpdateComponent,
     DepartmentListComponent,
     DepartmentAddComponent,
-    DepartmentUpdateComponent,],
+    DepartmentUpdateComponent,
+    UserListComponent,
+    UserAddComponent,
+    UserUpdateComponent
+  ],
   imports: [
     CommonModule,
     SettingRoutingModule,
     MyMaterialModule,
     RouterModule,
     SharedModule,
-
+    NgxSpinnerModule
   ],
   providers: [
    GroupSkillsService,
    SkillsService,
+   UserService
   ]
 })
 export class SettingsModule { }

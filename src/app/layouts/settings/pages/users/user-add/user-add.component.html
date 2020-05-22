@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Добавить пользователя</h1>
+<form class="my-form" novalidate #myForm="ngForm">
+  <div mat-dialog-content>
+
+    <mat-form-field class="full-width">
+      <mat-label>Логин</mat-label>
+      <input autocomplete="off" matInput placeholder="Логин"  [(ngModel)]="userLogin"  name="nameDepartment" required>
+    </mat-form-field>
+    <mat-form-field class="full-width">  
+      <mat-label>Роль</mat-label>
+      <mat-select [(ngModel)]="userRole"  name="role">
+        <mat-option value="Employee">
+          Сотрудник
+        </mat-option>
+        <mat-option value="Admin">
+          Администратор
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Пароль</mat-label>
+      <input type="password" autocomplete="off" matInput placeholder="Пароль"  [(ngModel)]="userPassword"  name="userPassword" required>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Закрыть</button>
+    <button type="submit" mat-button [mat-dialog-close]="data.animal" (click)="onSubmit(myForm)">Создать</button>
+  </div>
+</form>

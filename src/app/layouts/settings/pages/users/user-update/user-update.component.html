@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Изменить пользователя</h1>
+<form  *ngIf="updateForm" [formGroup]="updateForm" class="my-form" novalidate  novalidate >
+  <mat-card-content>
+
+    <mat-form-field class="full-width">
+      <mat-label>Логин</mat-label>
+      <input autocomplete="off" matInput placeholder="Логин"  formControlName="login" required>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">  
+      <mat-label>Роль</mat-label>
+      <mat-select formControlName="role"  name="role">
+        <mat-option value="Employee">
+          Сотрудник
+        </mat-option>
+        <mat-option value="Admin">
+         Администратор
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Пароль</mat-label>
+      <input type="password" autocomplete="off" matInput placeholder="Пароль"  formControlName="password" required>
+    </mat-form-field>
+
+  </mat-card-content>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Закрыть</button>
+    <button type="submit" mat-button  cdkFocusInitial (click)="submit()">Сохранить</button>
+  </div>
+</form>
