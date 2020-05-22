@@ -20,11 +20,11 @@ import {CarmaUpdateComponent} from "../carma-update/carma-update.component";
 })
 
 export class CarmaListComponent implements OnInit {
-  dataSourceDepartment;
+  dataSourceCarma;
   displayedColumns: string[] = ['id', 'name', 'begin', 'end', 'actions'];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild('TableSkillPaginator', {static: true}) tableSkillPaginator: MatPaginator;
-  @ViewChild('TableSkillSort', {static: true}) tableSkillSort: MatSort;
+  @ViewChild('TableCarmaPaginator', {static: true}) tableCarmaPaginator: MatPaginator;
+  @ViewChild('TableCarmaSort', {static: true}) tableCarmaSort: MatSort;
 
 
 
@@ -39,9 +39,9 @@ export class CarmaListComponent implements OnInit {
         console.log(carmas);
         this.carmas = carmas;
         console.log(this.carmas);
-        this.dataSourceDepartment = new MatTableDataSource<Carma>(this.carmas);
-        this.dataSourceDepartment.paginator = this.tableSkillPaginator;
-        this.dataSourceDepartment.sort = this.tableSkillSort;
+        this.dataSourceCarma = new MatTableDataSource<Carma>(this.carmas);
+        this.dataSourceCarma.paginator = this.tableCarmaPaginator;
+        this.dataSourceCarma.sort = this.tableCarmaSort;
         this.spinner.hide();
       });
   }
@@ -83,7 +83,7 @@ export class CarmaListComponent implements OnInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSourceDepartment.filter = filterValue.trim().toLowerCase();
+    this.dataSourceCarma.filter = filterValue.trim().toLowerCase();
   }
 
   ngOnInit(): void {
