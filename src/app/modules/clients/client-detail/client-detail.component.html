@@ -2,7 +2,7 @@
   <p style="color:#1b1a1a"> Загрузка... </p>
 </ngx-spinner>
 
-<mat-toolbar>
+<mat-toolbar class="flex-container-title flex-container">
   <a mat-raised-button class="p10" color="secondary" routerLink="/clients">Назад</a>
   <h1 *ngIf="client">Клиент: {{client.fullName}} </h1>
 
@@ -84,7 +84,7 @@
 
       <mat-tab label="Аналитика">
         <div *ngIf="DataChart">
-          <app-raiting-client-chart [data]="DataChart" [nameClient]="client.fullName">
+          <app-raiting-client-chart style="width: 100%;" [data]="DataChart" [nameClient]="client.fullName">
           </app-raiting-client-chart>
         </div>
       </mat-tab>

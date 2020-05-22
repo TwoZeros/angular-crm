@@ -1,9 +1,19 @@
 .example-card {
     max-width: 400px;
   }
+  @media screen and (max-width: 800px){
+    .flex-container {
+      flex-wrap: wrap;
+      justify-content: center;
 
+    }
+    .flex-container-title {
+      justify-content: center;
+      height: 100px;
+    }
+  }
   .flex-container {
-    display: flex;
+    display: flex;   
   }
   .green {
     margin:5px 0px;
