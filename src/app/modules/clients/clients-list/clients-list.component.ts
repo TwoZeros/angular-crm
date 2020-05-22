@@ -6,6 +6,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {Router} from '@angular/router';
 import { clientList } from 'src/shared/models/clientList';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { CommentService } from 'src/shared/services/comment.service';
+import { CarmaService } from 'src/shared/services/carma.service';
 @Component({
   selector: 'app-clients-list',
   templateUrl: './clients-list.component.html',
@@ -13,10 +15,17 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class ClientsListComponent implements OnInit {
   dataSource ;
+  FullCarma;
+  title;
+  percent;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  displayedColumns: string[] = ['id', 'fullName', 'created']
+  displayedColumns: string[] = ['id', 'fullName', 'rating','phoneNumber','created']
   clients : clientList[]
-  constructor(private ClientService: ClientService,private spinner: NgxSpinnerService, private router: Router) { }
+  constructor(private ClientService: ClientService,
+    private CommentService: CommentService,
+    private spinner: NgxSpinnerService, 
+    private CarmaService: CarmaService,
+    private router: Router) { }
   getClients(): void {
     this.ClientService.getClients()
                         .subscribe(clients => {
@@ -48,4 +57,7 @@ applyFilter(event: Event) {
 
 
   }
+
+ 
 }
+

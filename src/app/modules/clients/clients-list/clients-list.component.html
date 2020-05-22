@@ -20,6 +20,16 @@
         <td  *matCellDef="let elem">{{elem.fullName}}</td>
     </ng-container>
 
+    <ng-container matColumnDef="rating">
+      <th  *matHeaderCellDef>Рейтинг</th>
+      <td  *matCellDef="let elem">{{elem.rating}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="phoneNumber">
+    <th  *matHeaderCellDef>Телефон</th>
+    <td  *matCellDef="let elem">{{elem.phoneNumber}}</td>
+</ng-container>
+  
     <ng-container matColumnDef="created">
       <th *matHeaderCellDef>Создан</th>
       <td *matCellDef="let elem">{{elem.created}}</td>
