@@ -43,7 +43,6 @@ export class SkillsListComponent implements OnInit {
   getSkills(): void {
     this.SkillsService.getSkills()
       .subscribe(skills => {
-        console.log(skills)
         this.skills = skills
         this.dataSourceSkill = new MatTableDataSource<SkillsList>(this.skills);
         this.dataSourceSkill.paginator = this.tableSkillPaginator;

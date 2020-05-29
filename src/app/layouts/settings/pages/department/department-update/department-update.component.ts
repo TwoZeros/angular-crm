@@ -49,7 +49,6 @@ export class DepartmentUpdateComponent implements OnInit {
     this.DepartmentService.getDepartment(this.data.id)
       .subscribe(depart => {
           this.department = depart;
-          console.log("test");
           console.log(this.department);
           this.createForm();
         }

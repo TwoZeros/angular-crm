@@ -27,6 +27,11 @@ export class UserLoginComponent implements OnInit {
       this.error = "Ошибка";
   });
   }
+  loginAuto():void {
+    this.username="Test";
+    this.password="12345678";
+    this.login();
+  }
   ngOnInit(): void {
   }
 

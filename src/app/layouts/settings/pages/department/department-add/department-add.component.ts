@@ -23,7 +23,6 @@ export class DepartmentAddComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   onNoClick(): void {
-    console.log("run00");
     this.dialogRef.close();
   
   }

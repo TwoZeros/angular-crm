@@ -28,6 +28,7 @@ import { EmployeeSkillAddComponent } from 'src/app/modules/employee/employee-ski
 import { CommentService } from 'src/shared/services/comment.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ParamInterceptor } from 'src/app/api.interceptor';
+import { AuthorisationService } from 'src/shared/services/authorisation.service';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -55,6 +56,7 @@ import { ParamInterceptor } from 'src/app/api.interceptor';
     NgxSpinnerModule,
   ],
   providers: [
+    AuthorisationService,
     DashboardService,
     ClientService,
     EmployeeService,

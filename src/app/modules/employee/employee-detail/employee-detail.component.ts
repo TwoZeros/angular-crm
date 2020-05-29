@@ -9,6 +9,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { EmployeeSkillsService } from 'src/shared/services/employeeSkills.service';
 import { EmployeeSkillAddComponent } from '../employee-skill-add/employee-skill-add.component';
 import { NgxSpinnerService } from "ngx-spinner";
+import { AuthorisationService } from 'src/shared/services/authorisation.service';
 
 export interface DialogData {
 
@@ -24,7 +25,9 @@ export class EmployeeDetailComponent implements OnInit {
   photo: string;
   employeeSkills;
   isEditSkill = false;
+  userLogin;
   constructor(
+    private AuthorizationService: AuthorisationService,
     private router: Router,
   private route: ActivatedRoute,
   private EmployeeService: EmployeeService,
@@ -40,6 +43,8 @@ export class EmployeeDetailComponent implements OnInit {
     this.spinner.show();
     this.getEmployee();  
     this.getEmployeeSkill();    
+    this.userLogin = this.AuthorizationService.getLogin();
+
   }
   createSkill(): void {
     const dialogRef = this.dialog.open(EmployeeSkillAddComponent, {

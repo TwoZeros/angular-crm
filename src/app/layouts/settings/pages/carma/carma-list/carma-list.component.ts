@@ -36,9 +36,7 @@ export class CarmaListComponent implements OnInit {
   getCarmas(): void {
     this.CarmaService.getCarmas()
       .subscribe(carmas => {
-        console.log(carmas);
         this.carmas = carmas;
-        console.log(this.carmas);
         this.dataSourceCarma = new MatTableDataSource<Carma>(this.carmas);
         this.dataSourceCarma.paginator = this.tableCarmaPaginator;
         this.dataSourceCarma.sort = this.tableCarmaSort;
@@ -74,7 +72,6 @@ export class CarmaListComponent implements OnInit {
 
     if(confirm("Вы хотите удалить данное название?")) {
       this.CarmaService.deleteCarma(idDep).subscribe(result=> {
-        console.log(result);
         this.getCarmas();
       })
     }

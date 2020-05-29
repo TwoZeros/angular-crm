@@ -14,7 +14,7 @@
       <mat-card-actions>
         <button mat-raised-button routerLink="/employee/{{employee.id}}/upload-avatar">Фото</button>
         <a mat-raised-button  routerLink="/employee/{{employee.id}}/update">Изменить</a>
-        <button mat-raised-button color="warn" (click)="delete(employee.id)">Удалить</button>
+        <button *ngIf="userLogin!='Test'" mat-raised-button color="warn" (click)="delete(employee.id)">Удалить</button>
       </mat-card-actions>
     </mat-card>
   </div>

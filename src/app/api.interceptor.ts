@@ -8,7 +8,6 @@ export class ParamInterceptor implements HttpInterceptor {
         const jwt = localStorage.getItem('accessToken');
        
         if (!!jwt) {
-          console.log("token yes");
          req = req.clone({
            setHeaders: {
              Authorization: `Bearer ${jwt}`
