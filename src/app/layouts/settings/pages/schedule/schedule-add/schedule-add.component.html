@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>Добавить График работы</h1>
+<form class="my-form" novalidate #myForm="ngForm">
+  <div mat-dialog-content>
+
+    <mat-form-field class="full-width">
+      <mat-label>Название</mat-label>
+      <input autocomplete="off" matInput  [(ngModel)]="nameSchedule"  name="nameDepartment" required>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Год</mat-label>
+      <input type="number" autocomplete="off" matInput  [(ngModel)]="year"  name="year" required>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Понедельник</mat-label>
+      <input type="number" autocomplete="off" matInput [(ngModel)]="monday" name="monday"   required>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Втонирник</mat-label>
+      <input type="number" autocomplete="off" matInput  [(ngModel)]="tuesday" name="tuesday" required>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Среда</mat-label>
+      <input type="number" autocomplete="off" matInput  [(ngModel)]="wednesday" name="wednesday"   required>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Четверг</mat-label>
+      <input type="number" autocomplete="off" matInput  [(ngModel)]="thursday" name="thursday"  required>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Пятница</mat-label>
+      <input type="number" autocomplete="off" matInput  [(ngModel)]="friday" name="friday"   required>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Суббота</mat-label>
+      <input type="number" autocomplete="off" matInput  [(ngModel)]="saturday" name="saturday" required>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Воскресенье</mat-label>
+      <input type="number" autocomplete="off" matInput  [(ngModel)]="sunday" name="sunday"  required>
+    </mat-form-field>
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Закрыть</button>
+    <button type="submit" mat-button [mat-dialog-close]="data.animal" (click)="onSubmit(myForm)">Создать</button>
+  </div>
+</form>

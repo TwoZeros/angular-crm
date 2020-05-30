@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+      "experimentalDecorators": true
+  },
+  "files": [],     //add a "files" array (in my case empty)
+  "exclude": [
+      "node_modules"
+  ]
+}

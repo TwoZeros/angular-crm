@@ -6,6 +6,7 @@ import { SettingStartPageComponent } from './pages/setting-start-page/setting-st
 import { SkillsListComponent } from './pages/skills/skills-list/skills-list/skills.component';
 import { UserListComponent } from './pages/users/user-list/user-list.component';
 import {CarmaListComponent} from "./pages/carma/carma-list/carma-list.component";
+import { ScheduleListComponent } from './pages/schedule/schedule-list/schedule-list.component';
 
 const routes: Routes = [
   { path: '', component: SettingStartPageComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'department', component: DepartmentListComponent},
   {path: 'users', component: UserListComponent},
   {path: 'carma', component: CarmaListComponent},
+  {path: 'schedule', component: ScheduleListComponent},
 
 ];
 

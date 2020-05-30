@@ -1,0 +1,87 @@
+<ngx-spinner bdColor = "rgba(255, 255, 255, 1)" size = "medium" color = "#1b1a1a" type = "square-spin" [fullScreen] = "false"><p style="color:#1b1a1a" > Загрузка... </p></ngx-spinner>
+<mat-toolbar>
+  <a mat-raised-button class="p10" color="secondary" routerLink="/settings" style="margin-right:10px">Назад</a>
+  <h1>Графики работы </h1>
+  <button mat-raised-button color="accent" style="margin-right:10px" (click)="createSchedule()">Добавить </button>
+</mat-toolbar>
+
+
+
+    <mat-form-field style="padding:5px 0">
+      <mat-label>Фильтры</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="">
+    </mat-form-field>
+    <table matSort  #TableSkillSort="matSort" mat-table class="schedule-table mat-elevation-z8" [dataSource]="dataSourceSchedule">
+
+     
+      <ng-container  matColumnDef="id">
+        <th  *matHeaderCellDef>Id</th>
+        <td  *matCellDef="let elem">{{elem.id}}</td>
+      </ng-container>
+      <ng-container  matColumnDef="name">
+        <th  *matHeaderCellDef>Название</th>
+        <td  *matCellDef="let elem">{{elem.name}}</td>
+      </ng-container>
+      
+      <ng-container  matColumnDef="year">
+        <th  *matHeaderCellDef>Год</th>
+        <td  *matCellDef="let elem">{{elem.year}}</td>
+      </ng-container>
+
+      <ng-container  matColumnDef="monday">
+        <th  *matHeaderCellDef>Пн</th>
+        <td  *matCellDef="let elem">{{elem.monday}}</td>
+      </ng-container>
+      <ng-container  matColumnDef="tuesday">
+        <th  *matHeaderCellDef>Вт</th>
+        <td  *matCellDef="let elem">{{elem.tuesday}}</td>
+      </ng-container>
+      <ng-container  matColumnDef="wednesday">
+        <th  *matHeaderCellDef>Ср</th>
+        <td  *matCellDef="let elem">{{elem.wednesday}}</td>
+      </ng-container>
+      <ng-container  matColumnDef="thursday">
+        <th  *matHeaderCellDef>Чт</th>
+        <td  *matCellDef="let elem">{{elem.thursday}}</td>
+      </ng-container>
+      <ng-container  matColumnDef="friday">
+        <th  *matHeaderCellDef>Пт</th>
+        <td  *matCellDef="let elem">{{elem.friday}}</td>
+      </ng-container>
+      <ng-container  matColumnDef="saturday">
+        <th  *matHeaderCellDef>Сб</th>
+        <td  *matCellDef="let elem">{{elem.saturday}}</td>
+      </ng-container>
+      <ng-container  matColumnDef="sunday">
+        <th  *matHeaderCellDef>Вс</th>
+        <td  *matCellDef="let elem">{{elem.sunday}}</td>
+      </ng-container>
+      
+      <ng-container matColumnDef="actions" >
+        <th *matHeaderCellDef >Действия</th>
+        <td *matCellDef="let elem">
+          <button mat-icon-button color="primary" (click)="updateSchedule(elem.id)" aria-label="Example icon button with a heart icon">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="warn" (click)="deleteSchedule(elem.id)"aria-label="Example icon button with a heart icon">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+        </td>
+      </ng-container>
+
+      <tr mat-header-row  *matHeaderRowDef="displayedColumns">
+      </tr>
+      <tr mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          class="example-element-row">
+
+      </tr>
+
+    </table>
+    <mat-paginator #TableSkillPaginator="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
+
+
