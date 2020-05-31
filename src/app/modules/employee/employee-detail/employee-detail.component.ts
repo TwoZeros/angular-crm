@@ -6,10 +6,11 @@ import {Router} from '@angular/router';
 import { EmployeeService }  from '../../../../shared/services/employee.service';
 import { Employee } from '../../../../shared/models/employee';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { EmployeeSkillsService } from 'src/shared/services/employeeSkills.service';
+import { EmployeeSkillsService } from '../../../../shared/services/employeeSkills.service';
 import { EmployeeSkillAddComponent } from '../employee-skill-add/employee-skill-add.component';
 import { NgxSpinnerService } from "ngx-spinner";
-import { AuthorisationService } from 'src/shared/services/authorisation.service';
+import { AuthorisationService } from '../../../../shared/services/authorisation.service';
+import { EmployeeScheduleService } from '../../../../shared/services/employeeSchedule.service';
 
 export interface DialogData {
 
@@ -24,10 +25,11 @@ export class EmployeeDetailComponent implements OnInit {
   employee : Employee
   photo: string;
   employeeSkills;
-  isEditSkill = false;
+  isEditSkill = false;  
   userLogin;
   constructor(
     private AuthorizationService: AuthorisationService,
+    private EmployeeScheduleService : EmployeeScheduleService,
     private router: Router,
   private route: ActivatedRoute,
   private EmployeeService: EmployeeService,

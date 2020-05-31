@@ -19,9 +19,9 @@ export class ScheduleAddComponent implements OnInit {
   friday;
   saturday;
   sunday;
-  hollidayName;
-  hollidayDate;
-  hollidays: Array<{ name: string; date: Date }>;
+  holidayName;
+  holidayDate;
+  holidays: Array<{ name: string; date: Date }>;
   constructor(
     private ScheduleService: ScheduleService,
     public dialogRef: MatDialogRef<ScheduleAddComponent>,
@@ -31,15 +31,15 @@ export class ScheduleAddComponent implements OnInit {
     this.dialogRef.close();
 
   }
-  addHolliday() {
-    if (!this.hollidayName || !this.hollidayDate)
+  addHoliday() {
+    if (!this.holidayName || !this.holidayDate)
       return 0;
-    this.hollidays.push({ "name": this.hollidayName, "date": this.hollidayDate });
-    console.log(this.hollidays);
+    this.holidays.push({ "name": this.holidayName, "date": this.holidayDate });
+    console.log(this.holidays);
     this.clearFormAddHoliday();
   }
-  deleteHolliday(id: number) {
-    this.hollidays = this.removeElementByIndex(this.hollidays, id);
+  deleteHoliday(id: number) {
+    this.holidays = this.removeElementByIndex(this.holidays, id);
   }
   removeElementByIndex(array, index) {
     delete array[index];
@@ -49,8 +49,8 @@ export class ScheduleAddComponent implements OnInit {
     return array;
   }
   clearFormAddHoliday() {
-    this.hollidayName = ''
-    this.hollidayDate = null;
+    this.holidayName = ''
+    this.holidayDate = null;
   }
   onSubmit(form: NgForm) {
     let elem = {
@@ -65,10 +65,10 @@ export class ScheduleAddComponent implements OnInit {
         saturday: this.saturday,
         sunday: this.sunday
       },
-      hollidays: this.hollidays
+      hollidays: this.holidays
 
     }
-    console.log(elem);
+    console.log(elem);  
     this.ScheduleService.addSchedule({
       name: this.nameSchedule,
       year: this.year,
@@ -81,14 +81,14 @@ export class ScheduleAddComponent implements OnInit {
         saturday: this.saturday,
         sunday: this.sunday
       },
-      hollidays: this.hollidays
+      holidays: this.holidays
 
     }).subscribe(status => {
 
     })
   }
   ngOnInit(): void {
-    this.hollidays = new Array();
+    this.holidays = new Array();
   }
 
 
