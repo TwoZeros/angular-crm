@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Добавить график</h1>
+<form class="my-form" novalidate #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+  <div mat-dialog-content>
+
+    <mat-form-field class="full-width">
+      <mat-label>График</mat-label>
+      <mat-select [(ngModel)]="scheduleId" [ngModelOptions]="{standalone: true}"  name="scheduleId">
+        <mat-option *ngFor="let schedule of schedules" [value]="schedule.id">
+          {{schedule.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Date of Begin</mat-label>
+      <input matInput [matDatepicker]="begin" [(ngModel)]="beginDate"  name="beginDate" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="begin"></mat-datepicker-toggle>
+      <mat-datepicker #begin></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Date of End</mat-label>
+      <input matInput [matDatepicker]="end" [(ngModel)]="endDate"  name="endDate" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+      <mat-datepicker #end></mat-datepicker>
+    </mat-form-field>
+
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Закрыть</button>
+    <button type="submit" mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Добавить</button>
+  </div>
+</form>

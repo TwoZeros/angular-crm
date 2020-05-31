@@ -30,8 +30,11 @@
   .skill-group-name {
     padding:5px 0;
   }
+  .schedule-date-name {
+    padding: 5px 0;
+  }
   .skill-box {
-    border:1px solid black; 
+    border:1px solid black;
     border-radius: 5px;
     padding:3px 5px;
     margin:3px 5px;

@@ -11,6 +11,7 @@ import { DefaultModule } from './layouts/default/default.module';
 import { StartPageModule } from './layouts/startPage/startPage.module';
 import {isLoginedGuard} from './isLoginedGuard';
 import { SettingsModule } from './layouts/settings/settings.module';
+import { EmployeeScheduleAddComponent } from './modules/employee/employee-schedule-add/employee-schedule-add.component';
 
 
 
@@ -18,6 +19,7 @@ import { SettingsModule } from './layouts/settings/settings.module';
 @NgModule({
   declarations: [
     AppComponent,
+    EmployeeScheduleAddComponent,
   ],
   imports: [
     BrowserModule,
