@@ -42,7 +42,7 @@ export class ScheduleListComponent implements OnInit {
 
   createSchedule(): void {
     const dialogRef = this.dialog.open(ScheduleAddComponent, {
-      width: '500px',
+      width: '700px',
       data: {}
     });
 
@@ -52,7 +52,7 @@ export class ScheduleListComponent implements OnInit {
   }
   updateSchedule(id :number): void {
     const dialogRef = this.dialog.open(ScheduleUpdateComponent, {
-      width: '500px',
+      width: '600px',
       data: {id : id}
     });
 

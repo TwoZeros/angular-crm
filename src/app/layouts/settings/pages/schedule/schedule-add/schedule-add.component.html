@@ -11,34 +11,63 @@
       <mat-label>Год</mat-label>
       <input type="number" autocomplete="off" matInput  [(ngModel)]="year"  name="year" required>
     </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Понедельник</mat-label>
-      <input type="number" autocomplete="off" matInput [(ngModel)]="monday" name="monday"   required>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Втонирник</mat-label>
-      <input type="number" autocomplete="off" matInput  [(ngModel)]="tuesday" name="tuesday" required>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Среда</mat-label>
-      <input type="number" autocomplete="off" matInput  [(ngModel)]="wednesday" name="wednesday"   required>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Четверг</mat-label>
-      <input type="number" autocomplete="off" matInput  [(ngModel)]="thursday" name="thursday"  required>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Пятница</mat-label>
-      <input type="number" autocomplete="off" matInput  [(ngModel)]="friday" name="friday"   required>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Суббота</mat-label>
-      <input type="number" autocomplete="off" matInput  [(ngModel)]="saturday" name="saturday" required>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Воскресенье</mat-label>
-      <input type="number" autocomplete="off" matInput  [(ngModel)]="sunday" name="sunday"  required>
-    </mat-form-field>
+
+    <mat-tab-group style="width: 100%;">
+      <mat-tab label="По дням недели">
+        <div style="display: flex;"> 
+          <mat-form-field class="day-input">
+            <mat-label>Пн</mat-label>
+            <input type="number" autocomplete="off" matInput [(ngModel)]="monday" name="monday"   required>
+          </mat-form-field>
+          <mat-form-field class="day-input">
+            <mat-label>Вт</mat-label>
+            <input type="number" autocomplete="off" matInput  [(ngModel)]="tuesday" name="tuesday" required>
+          </mat-form-field>
+          <mat-form-field class="day-input">
+            <mat-label>Ср</mat-label>
+            <input type="number" autocomplete="off" matInput  [(ngModel)]="wednesday" name="wednesday"   required>
+          </mat-form-field>
+          <mat-form-field class="day-input">
+            <mat-label>Чт</mat-label>
+            <input type="number" autocomplete="off" matInput  [(ngModel)]="thursday" name="thursday"  required>
+          </mat-form-field>
+          <mat-form-field class="day-input" >
+            <mat-label>Пт</mat-label>
+            <input type="number" autocomplete="off" matInput  [(ngModel)]="friday" name="friday"   required>
+          </mat-form-field>
+          <mat-form-field class="day-input">
+            <mat-label>Сб</mat-label>
+            <input type="number" autocomplete="off" matInput  [(ngModel)]="saturday" name="saturday" required>
+          </mat-form-field>
+          <mat-form-field class="day-input">
+            <mat-label>Вс</mat-label>
+            <input type="number" autocomplete="off" matInput  [(ngModel)]="sunday" name="sunday"  required>
+          </mat-form-field>
+        </div>
+      
+      </mat-tab>
+      <mat-tab label="Праздники">
+        <h2 style="text-align: center; padding-top: 15px;">Добавить праздник</h2>
+        <mat-form-field style="margin-right: 10px;">
+          <mat-label>Название</mat-label>
+          <input type="text" autocomplete="off" matInput  [(ngModel)]="hollidayName" name="saturday" required>
+        </mat-form-field>
+        <mat-form-field >
+          <mat-label>Дата</mat-label>
+          <input type="date" autocomplete="off" matInput  [(ngModel)]="hollidayDate" name="saturday" required>
+        </mat-form-field>
+        <input type="button" value="Добавить" (click)="addHolliday()">
+        
+        <h2 style="text-align: center;">Список праздников</h2>
+        <p *ngIf="hollidays.length==0">Список праздников пуст</p>
+        <ul>
+          <li *ngFor="let item of hollidays; let i = index">{{i+1}} ) {{item.date}} {{item.name}}
+             <button (click)="deleteHolliday(i)">X</button>
+            </li>
+        </ul>
+      </mat-tab>
+  </mat-tab-group>
+    
 
   </div>
 
