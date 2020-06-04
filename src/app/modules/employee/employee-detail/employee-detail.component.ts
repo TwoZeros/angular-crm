@@ -11,6 +11,8 @@ import { EmployeeSkillAddComponent } from '../employee-skill-add/employee-skill-
 import { NgxSpinnerService } from "ngx-spinner";
 import { AuthorisationService } from '../../../../shared/services/authorisation.service';
 import { EmployeeScheduleService } from '../../../../shared/services/employeeSchedule.service';
+import {Schedule} from "../../../../shared/models/schedule";
+import {EmployeeScheduleAddComponent} from "../employee-schedule-add/employee-schedule-add.component";
 
 export interface DialogData {
 
@@ -22,11 +24,14 @@ export interface DialogData {
   styleUrls: ['./employee-detail.component.css']
 })
 export class EmployeeDetailComponent implements OnInit {
+  schedule: Schedule
   employee : Employee
   photo: string;
   employeeSkills;
-  isEditSkill = false;  
+  isEditSkill = false;
   userLogin;
+  str: string;
+  employeeSchedule;
   constructor(
     private AuthorizationService: AuthorisationService,
     private EmployeeScheduleService : EmployeeScheduleService,
@@ -40,11 +45,12 @@ export class EmployeeDetailComponent implements OnInit {
 
   ) { }
 
-  
+
   ngOnInit(): void {
     this.spinner.show();
-    this.getEmployee();  
-    this.getEmployeeSkill();    
+    this.getEmployee();
+    this.getEmployeeSkill();
+    this.getScheduleByEmployee();
     this.userLogin = this.AuthorizationService.getLogin();
 
   }
@@ -58,12 +64,21 @@ export class EmployeeDetailComponent implements OnInit {
       this.getEmployeeSkill()
     });
   }
+  createScheduleToEmployee() : void {
+    const dialogRef = this.dialog.open(EmployeeScheduleAddComponent, {
+      width: '500px',
+      data: {employeeId:this.route.snapshot.paramMap.get('id')}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getScheduleByEmployee()
+    });
+  }
   getEmployeeSkill(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id);
     this.EmployeeSkillsService.getEmployeeSkillsbyEmployeeId(id)
       .subscribe(employeeSkills => {
-        console.log(employeeSkills);  
+        console.log(employeeSkills);
         this.employeeSkills = employeeSkills}
         );
   }
@@ -75,11 +90,20 @@ export class EmployeeDetailComponent implements OnInit {
       this.spinner.hide()
     }
         );
-      
+
+  }
+  getScheduleByEmployee() : void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.EmployeeScheduleService.getEmployeeSchedulebyIdEmployee(id)
+      .subscribe(schedule => {
+        console.log(schedule);
+        this.employeeSchedule = schedule;
+      })
+
   }
   deleteEmployeeSkill(id:number) {
     if(!confirm("Вы хотите удалить этот навык у сотрудника?"))
-       return 0; 
+       return 0;
     this.EmployeeSkillsService.deleteEmployeeSkills(id)
       .subscribe(employeeSkills => {
         console.log(employeeSkills);
@@ -87,13 +111,23 @@ export class EmployeeDetailComponent implements OnInit {
       }
         );
   }
+  deleteScheduleByEmployee(id:number) {
+    if(!confirm("Вы хотите удалить этот навык у сотрудника?"))
+      return 0;
+    this.EmployeeScheduleService.deleteEmployeeSchedule(id)
+      .subscribe(employeeSchedule => {
+          console.log(employeeSchedule);
+          this.getScheduleByEmployee();
+        }
+      );
+  }
   delete(id: number): void{
     var conf =  confirm("Вы хотите удалить сотрудника?")
     if(conf) {
       this.EmployeeService.deleteEmployee(id).subscribe(status=> {
-      
+
         this.router.navigate(
-          ['/front/employee'] 
+          ['/front/employee']
         );
       })
     }

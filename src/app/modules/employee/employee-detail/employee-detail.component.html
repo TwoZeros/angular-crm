@@ -1,4 +1,4 @@
-<mat-toolbar *ngIf="employee" class="flex-container flex-container-title">
+    <mat-toolbar *ngIf="employee" class="flex-container flex-container-title">
   <a mat-raised-button class="p10" color="secondary" routerLink="/employee">Назад</a>
   <h1 *ngIf="employee">Профиль: {{employee.secondName}} {{employee.firstName}} </h1>
   <ngx-spinner bdColor = "rgba(255, 255, 255, 1)" size = "medium" color = "#1b1a1a" type = "square-spin" [fullScreen] = "false"><p style="color:#1b1a1a" > Загрузка... </p></ngx-spinner>
@@ -27,12 +27,12 @@
         <p class="info-row">
           <span>Номер телефона </span>{{employee.phoneNumber}}</p>
         <p class="info-row"><span>Электронная почта </span>{{employee.email}}</p>
-       
+
 
       </mat-tab>
       <mat-tab label="Навыки" *ngIf="employee">
 
-        <p class="info-row">  
+        <p class="info-row">
           <button mat-mini-fab color="primary" style="margin:0 10px; " (click)="createSkill()">
             <mat-icon>add</mat-icon>
           </button>
@@ -56,7 +56,33 @@
         </div>
 
       </mat-tab>
-    
+      <mat-tab label="Графики" *ngIf="employee">
+
+        <p class="info-row">
+          <button mat-mini-fab color="primary" style="margin:0 10px; " (click)="createScheduleToEmployee()">
+            <mat-icon>add</mat-icon>
+          </button>
+          <button mat-mini-fab color="primary" style="margin:0 10px; " (click)="toggleEdit()">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </p>
+        <div style="margin-left:15px;" *ngFor="let schedule of employeeSchedule">
+          <div class="schedule-date-name">
+            С {{schedule.begin.split('T',1)}} По {{schedule.end.split('T',1)}}
+          </div>
+          <div style="display:flex">
+            <div  class="skill-box">
+              <div style="display:flex">
+                <div>График {{schedule.sheduleName}}</div>
+                <div class="skill-box-delete" *ngIf="isEditSkill" (click)="deleteScheduleByEmployee(schedule.id)">[x]</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </mat-tab>
+
 
     </mat-tab-group>
   </div>

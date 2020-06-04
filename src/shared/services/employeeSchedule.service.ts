@@ -30,7 +30,7 @@ export class EmployeeScheduleService {
 
   addEmployeeSchedule(schedule: object): Observable<any> {
 
-    return this.http.post(this.uri,schedule);
+    return this.http.post(this.uri, schedule);
   }
 
   updateEmployeeSchedule(id,schedule: object): Observable<any> {
