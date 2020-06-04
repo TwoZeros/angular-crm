@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyMaterialModule } from 'src/shared/config/material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS  }   from '@angular/common/http';
+/// <reference path="../../node_modules/anychart/dist/index.d.ts"/>
+
 import { ParamInterceptor } from './api.interceptor';
 import { DefaultModule } from './layouts/default/default.module';
 import { StartPageModule } from './layouts/startPage/startPage.module';

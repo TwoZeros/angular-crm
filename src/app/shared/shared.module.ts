@@ -1,3 +1,5 @@
+/// <reference path="../../../node_modules/anychart/dist/index.d.ts"/>
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
@@ -15,6 +17,8 @@ import { AreaComponent } from './widgets/area/area.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { HeaderLoginComponent } from './components/header-login/header-login.component';
 import { RaitingClientChartComponent } from './widgets/RatingClientChart/rating-client-chart.component';
+import { ChartComponent } from './chart/chart.component';
+import { DemoDataProviderService } from './demo-data-provider.service';
 
 @NgModule({
   declarations: [
@@ -23,8 +27,10 @@ import { RaitingClientChartComponent } from './widgets/RatingClientChart/rating-
     SidebarComponent,
     AreaComponent,
     RaitingClientChartComponent,
-    HeaderLoginComponent
+    HeaderLoginComponent,
+    ChartComponent
   ],
+  providers: [DemoDataProviderService],
   imports: [
     CommonModule,
     MatDividerModule,
@@ -43,7 +49,8 @@ import { RaitingClientChartComponent } from './widgets/RatingClientChart/rating-
     SidebarComponent,
     AreaComponent,
     RaitingClientChartComponent,
-    HeaderLoginComponent
+    HeaderLoginComponent,
+    ChartComponent
   ]
 })
 export class SharedModule { }
