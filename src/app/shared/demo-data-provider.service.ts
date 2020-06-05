@@ -60,7 +60,7 @@ public getResData() {
               {
                 "start": "2016-10-03",
                 "end": "2016-10-03",
-                "minutesPerDay": 180
+                "minutesPerDay": 100
               }
             ],
             "fill": "#2274a5"

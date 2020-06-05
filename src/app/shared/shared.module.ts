@@ -19,6 +19,7 @@ import { HeaderLoginComponent } from './components/header-login/header-login.com
 import { RaitingClientChartComponent } from './widgets/RatingClientChart/rating-client-chart.component';
 import { ChartComponent } from './chart/chart.component';
 import { DemoDataProviderService } from './demo-data-provider.service';
+import { DashboardResourceService } from '../../shared/services/dashboardResource.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { DemoDataProviderService } from './demo-data-provider.service';
     HeaderLoginComponent,
     ChartComponent
   ],
-  providers: [DemoDataProviderService],
+  providers: [DemoDataProviderService, DashboardResourceService],
   imports: [
     CommonModule,
     MatDividerModule,
