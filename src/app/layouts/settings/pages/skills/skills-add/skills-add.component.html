@@ -14,7 +14,7 @@
   <mat-form-field class="full-width">  
     <mat-label>Группа</mat-label>
     <mat-select [(ngModel)]="groupId" [ngModelOptions]="{standalone: true}"  name="groupId">
-      <mat-option *ngFor="let skillGroup of skillGroups" (click)="onSubmit(myForm)" [value]="skillGroup.id">
+      <mat-option *ngFor="let skillGroup of skillGroups"  [value]="skillGroup.id">
         {{skillGroup.name}}
       </mat-option>
     </mat-select>
@@ -23,6 +23,6 @@
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Закрыть</button>
-  <button type="submit" mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Создать</button>
+  <button (click)="onSubmit(myForm)"mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Создать</button>
 </div>
 </form>

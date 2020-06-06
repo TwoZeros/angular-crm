@@ -20,6 +20,7 @@ import { RaitingClientChartComponent } from './widgets/RatingClientChart/rating-
 import { ChartComponent } from './chart/chart.component';
 import { DemoDataProviderService } from './demo-data-provider.service';
 import { DashboardResourceService } from '../../shared/services/dashboardResource.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DashboardResourceService } from '../../shared/services/dashboardResourc
     MatMenuModule,
     MatListModule,
     RouterModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    NgxSpinnerModule
   ],
   exports:[
     HeaderComponent,
