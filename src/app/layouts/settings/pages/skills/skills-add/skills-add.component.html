@@ -23,6 +23,6 @@
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Закрыть</button>
-  <button type="submit" mat-button [mat-dialog-close]="data.animal" (click)="onSubmit(myForm)" cdkFocusInitial>Создать</button>
+  <button (click)="onSubmit(myForm)"mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Создать</button>
 </div>
 </form>

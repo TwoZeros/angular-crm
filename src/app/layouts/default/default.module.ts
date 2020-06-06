@@ -21,6 +21,8 @@ import { ClientDetailComponent } from '../../modules/clients/client-detail/clien
 import { ClientUpdateComponent } from '../../modules/clients/client-update/client-update.component';
 import { ClientUpdateAvatarComponent } from '../../modules/clients/client-update-avatar/client-update-avatar.component';
 import { ClientAddComponent } from '../../modules/clients/client-add/client-add.component';
+import { ProjectWorkAddComponent } from '../../modules/projectwork-add/projectwork-add.component';
+
 import { ClientService } from 'src/shared/services/client.services';
 import { EmployeeService } from 'src/shared/services/employee.service';
 import { EmployeeSkillsService } from 'src/shared/services/employeeSkills.service';
@@ -29,6 +31,7 @@ import { CommentService } from 'src/shared/services/comment.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ParamInterceptor } from 'src/app/api.interceptor';
 import { AuthorisationService } from 'src/shared/services/authorisation.service';
+import { ProjectWorkService } from '../../../shared/services/projectwork.service';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -45,6 +48,7 @@ import { AuthorisationService } from 'src/shared/services/authorisation.service'
     ClientUpdateComponent,
     ClientUpdateAvatarComponent,
     ClientAddComponent,
+    ProjectWorkAddComponent
   ],
   imports: [
     CommonModule,
@@ -62,6 +66,7 @@ import { AuthorisationService } from 'src/shared/services/authorisation.service'
     EmployeeService,
     EmployeeSkillsService,
     CommentService,
+    ProjectWorkService,
       {
       provide: HTTP_INTERCEPTORS,
       useClass: ParamInterceptor,

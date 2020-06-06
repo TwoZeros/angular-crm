@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { DemoDataProviderService } from '../demo-data-provider.service';
 import { Subscription } from 'rxjs';
 import { DashboardResourceService } from '../../../shared/services/dashboardResource.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -20,7 +21,9 @@ data:any;
 
 
 
-  constructor(private dataService_: DemoDataProviderService, private DashboardResourceService: DashboardResourceService) {
+  constructor(private dataService_: DemoDataProviderService,
+    private spinner: NgxSpinnerService,
+    private DashboardResourceService: DashboardResourceService) {
     //  this.subscription = this.dataService_.dataSetChanged$.subscribe(
     //    dataSet => this.chart.data(this.dataService_.getData(dataSet))
     //  );
@@ -31,9 +34,8 @@ data:any;
  
 
   ngOnInit() {
-    // Default data set mapping, hardcoded here.
-      
-    // create a chart and set loaded data
+    this.spinner.show();
+
     this.DashboardResourceService.getAllResource().subscribe(data=>{
       this.data =data;
       let chart = anychart.resource(this.data);
@@ -70,9 +72,11 @@ data:any;
       resourceList.tags().background('#70d0f5').fontColor('#fff');
       chart.container('chart-container');
       chart.draw();
+      this.spinner.hide();
     });
-   
-   
+  
+
+  
     }
 
 
