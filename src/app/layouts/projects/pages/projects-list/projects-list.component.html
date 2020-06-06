@@ -1,0 +1,62 @@
+<ngx-spinner bdColor = "rgba(255, 255, 255, 1)" size = "medium" color = "#1b1a1a" type = "square-spin" [fullScreen] = "false"><p style="color:#1b1a1a" > Загрузка... </p></ngx-spinner>
+<mat-toolbar>
+  <h1>Список проектов </h1>
+  <button mat-raised-button color="accent" style="margin-right:10px" (click)="createProject()">Добавить проект </button>
+</mat-toolbar>
+
+<mat-form-field>
+  <mat-label>Фильтры</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="">
+</mat-form-field>
+<table mat-table class="client-table mat-elevation-z8" [dataSource]="dataSource">
+
+  <ng-container  matColumnDef="id">
+    <th  *matHeaderCellDef>id</th>
+    <td  *matCellDef="let elem">{{elem.id}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th  *matHeaderCellDef>Имя</th>
+    <td  *matCellDef="let elem">{{elem.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="projectManagerName">
+    <th  *matHeaderCellDef>Имя менеджера</th>
+    <td  *matCellDef="let elem">{{elem.projectManagerName}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="totalHour">
+    <th  *matHeaderCellDef>Часы</th>
+    <td  *matCellDef="let elem">{{elem.totalHour}}</td>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="telephone">
+      <th *matHeaderCellDef>telephone</th>
+      <td *matCellDef="let elem">{{elem.telephone}}</td>
+  </ng-container> -->
+  <ng-container matColumnDef="actions" >
+    <th *matHeaderCellDef >Действия</th>
+    <td *matCellDef="let elem">
+      <button mat-icon-button color="primary" (click)="updateProject(elem.id)" aria-label="Example icon button with a heart icon">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button mat-icon-button color="warn" (click)="deleteProject(elem.id)"aria-label="Example icon button with a heart icon">
+        <mat-icon>delete</mat-icon>
+      </button>
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row  *matHeaderRowDef="displayedColumns">
+
+  </tr>
+
+  <tr mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      class="example-element-row">
+
+  </tr>
+
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

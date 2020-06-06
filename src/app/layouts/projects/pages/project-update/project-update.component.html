@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Проект</h1>
+<form *ngIf="updateForm" [formGroup]="updateForm" class="my-form" novalidate  novalidate>
+  <div mat-dialog-content>
+
+    <mat-form-field class="full-width">
+      <mat-label>Название</mat-label>
+      <input autocomplete="off" matInput placeholder="Название проекта"  formControlName="name"   required>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Менеджер</mat-label>
+      <mat-select formControlName="projectManagerId"  name="projectManagerId">
+        <mat-option *ngFor="let manager of employeeList"  [value]="manager.id">
+          {{manager.firstName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Часы</mat-label>
+      <input autocomplete="off"  matInput placeholder="Время проекта" formControlName="totalHour"  required>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Описание</mat-label>
+      <input autocomplete="off" matInput placeholder="Описание проекта"  formControlName="description"  required>
+    </mat-form-field>
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Закрыть</button>
+    <button type="submit" mat-button [mat-dialog-close]="data.animal" (click)="submit()">Обновить</button>
+  </div>
+</form>

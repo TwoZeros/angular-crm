@@ -1,0 +1,24 @@
+/* Structure */
+h1 {
+  margin-right: 10px;
+}
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+
+}
+td {
+  text-align: center;
+}
+tr.example-element-row:not(.example-expanded-row):hover {
+  background:Gray;
+  cursor: pointer;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}

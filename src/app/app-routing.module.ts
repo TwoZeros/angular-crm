@@ -18,6 +18,7 @@ import {UserLoginComponent} from './modules/user/user-login/user-login.component
 import {isLoginedGuard} from './isLoginedGuard';
 import { SettingLayoutComponent } from './layouts/settings/pages/setting-layout/setting-layout.component';
 import { SettingStartPageComponent } from './layouts/settings/pages/setting-start-page/setting-start-page.component';
+import {ProjectLayoutComponent} from "./layouts/projects/pages/project-layout/project-layout.component";
 const routes: Routes = [
   {
     path: '',
@@ -25,7 +26,7 @@ const routes: Routes = [
     children: [{
       path: '',
       component: DashboardComponent,
-      canActivate: [isLoginedGuard] 
+      canActivate: [isLoginedGuard]
     },
     { path: 'employee', component: EmployeeListComponent, canActivate: [isLoginedGuard] },
     { path: 'employee/add', component: EmployeeAddComponent, canActivate: [isLoginedGuard] },
@@ -51,6 +52,11 @@ const routes: Routes = [
     path: 'settings',
     component: SettingLayoutComponent,
     loadChildren: () => import(`./layouts/settings/settings.module`).then(m => m.SettingsModule)
+  },
+  {
+    path: 'projects',
+    component: ProjectLayoutComponent,
+    loadChildren: () => import('./layouts/projects/projects.module').then(m => m.ProjectsModule)
   }
 ];
 

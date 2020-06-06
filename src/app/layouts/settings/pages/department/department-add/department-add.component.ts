@@ -24,10 +24,10 @@ export class DepartmentAddComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
-  
+
   }
   onSubmit(form: NgForm) {
-    
+
     this.DepartmentService.addDepartment({
       name: this.nameDepartment,
     }).subscribe(status => {
