@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { NgForm } from '@angular/forms';
 import { EmployeeService } from '../../../shared/services/employee.service';
 import { ProjectWorkService } from '../../../shared/services/projectwork.service';
+import { ProjectService } from '../../../shared/services/project.service';
 
 @Component({
   selector: 'app-projectwork-add',
@@ -12,8 +13,9 @@ import { ProjectWorkService } from '../../../shared/services/projectwork.service
 })
 export class ProjectWorkAddComponent implements OnInit {
   nameWork: string;
-  startTime;
-  deadlineTime;
+  startTime: Date;
+  deadlineTime : Date;
+  projects;
   fill;
   skillGroups;
   employees;
@@ -22,6 +24,7 @@ export class ProjectWorkAddComponent implements OnInit {
   employeeId: Number;
   constructor(
     private EmployeeService: EmployeeService,
+    private ProjectService: ProjectService,
     private ProjectWorkService: ProjectWorkService,
     public dialogRef: MatDialogRef<ProjectWorkAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
@@ -32,8 +35,8 @@ export class ProjectWorkAddComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.ProjectWorkService.add({
       name: this.nameWork,
-      startTime: this.startTime,
-      deadlineTime: this.deadlineTime,
+      startTime: this.startTime.toISOString().slice(0,10),
+      deadlineTime: this.deadlineTime.toISOString().slice(0,10),
       fill : this.fill,
       projectId: this.projectId,
       employeeId:this.employeeId,
@@ -48,6 +51,7 @@ export class ProjectWorkAddComponent implements OnInit {
   }
   getGroupList() {
     this.EmployeeService.getEmployees().subscribe(employees => { this.employees = employees });
-  
+    this.ProjectService.getProjects().subscribe(projects => { this.projects = projects });
+
   }
 }

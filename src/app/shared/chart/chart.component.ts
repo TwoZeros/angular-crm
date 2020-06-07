@@ -3,7 +3,9 @@ import { DemoDataProviderService } from '../demo-data-provider.service';
 import { Subscription } from 'rxjs';
 import { DashboardResourceService } from '../../../shared/services/dashboardResource.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-
+import { NgForm } from '@angular/forms';
+import { SkillsService } from '../../../shared/services/skills.service';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-chart',
@@ -11,18 +13,23 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnInit, AfterViewInit {
-
+  
   subscription: Subscription;
-data:any;
+  data:any;
+  dataStart;
+  dataEnd;
+  selectedSkill = new FormControl();
+  skills;
 
 
 
-
-
-
+getSkills() {
+  this.skillServive.getSkills().subscribe(res=>this.skills = res);
+}
 
   constructor(private dataService_: DemoDataProviderService,
     private spinner: NgxSpinnerService,
+    private skillServive : SkillsService,
     private DashboardResourceService: DashboardResourceService) {
     //  this.subscription = this.dataService_.dataSetChanged$.subscribe(
     //    dataSet => this.chart.data(this.dataService_.getData(dataSet))
@@ -32,13 +39,34 @@ data:any;
 
   @ViewChild('chartContainer') container;
  
+  onFind(form: NgForm){
+  
+    if(this.selectedSkill.value!=null &&this.selectedSkill.value.length!=0) {
+      
+      this.DashboardResourceService.findByPeriodAndSkill(
+        this.dataStart.toISOString().slice(0,10),
+        this.dataEnd.toISOString().slice(0,10),
+        this.selectedSkill.value
+      ).subscribe(data=>{
+        this.createChart(data);
+      })
+    }
+    else {
 
-  ngOnInit() {
-    this.spinner.show();
-
-    this.DashboardResourceService.getAllResource().subscribe(data=>{
-      this.data =data;
-      let chart = anychart.resource(this.data);
+      this.DashboardResourceService.findByPeriod(
+        this.dataStart.toISOString().slice(0,10),
+         this.dataEnd.toISOString().slice(0,10)).subscribe(data=> {
+          this.data =data;
+             this.createChart(this.data); 
+            })
+    
+      }
+ 
+}
+createChart(data) {
+  document.querySelector('div#chart-container').innerHTML = "";
+  this.spinner.show();
+  let chart = anychart.resource(data);
       console.log(this.data);
       //chart.currentStartDate('2016-10-05');
       chart
@@ -58,7 +86,10 @@ data:any;
       chart.logo().fill({
         src: 'https://cdn.anychart.com/images/resource-chart/logo.png'
       });
-
+       // Currently selected tree data item
+       var selectedItem;
+       var activities = chart.activities();
+      
       var resourceList = chart.resourceList();
       resourceList.types({
         fontColor: '#4CAF50',
@@ -67,17 +98,27 @@ data:any;
 
       // Set images settings.
       resourceList.images().size(85);
-
+      
       // Set tags settings.
       resourceList.tags().background('#70d0f5').fontColor('#fff');
       chart.container('chart-container');
+      
       chart.draw();
       this.spinner.hide();
+}
+  ngOnInit() {
+    
+    this.spinner.show();
+this.getSkills();
+    this.DashboardResourceService.getAllResource().subscribe(data=>{
+      this.data =data;
+    this.createChart(this.data);
+      
     });
   
 
   
-    }
+    };
 
 
   

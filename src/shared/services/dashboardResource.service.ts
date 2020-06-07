@@ -16,7 +16,13 @@ export class DashboardResourceService {
 
     return this.http.get(this.uri+"/getAll");
   }
+  findByPeriod(startTime, endTime): Observable<any> {
 
+    return this.http.get(this.uri+"/getWorksInPeriod?Start="+startTime+"&End="+endTime);
+  }
+  findByPeriodAndSkill(startTime,endTime, skills): Observable<any> {
+    return this.http.post(this.uri+"/getEmployeeWithSkill?Start="+startTime+"&End="+endTime, skills)
+  }
   
 
 }

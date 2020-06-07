@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   }
   createWork(): void {
     const dialogRef = this.dialog.open(ProjectWorkAddComponent, {
-      width: '500px',
+      width: '550px',
       data: {}
     });
 

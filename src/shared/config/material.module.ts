@@ -17,6 +17,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
     imports: [
@@ -36,7 +37,8 @@ import { MatDividerModule } from '@angular/material/divider';
         MatSelectModule,
         MatSortModule,
         MatSidenavModule,
-        MatDividerModule
+        MatDividerModule,
+        MatAutocompleteModule
     ],
     declarations: [],
     entryComponents: [],
@@ -60,7 +62,8 @@ import { MatDividerModule } from '@angular/material/divider';
         MatSelectModule,
         MatSortModule,
         MatSidenavModule,
-        MatDividerModule
+        MatDividerModule,
+        MatAutocompleteModule
     ],
 })
 

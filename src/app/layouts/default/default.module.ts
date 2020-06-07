@@ -32,6 +32,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ParamInterceptor } from 'src/app/api.interceptor';
 import { AuthorisationService } from 'src/shared/services/authorisation.service';
 import { ProjectWorkService } from '../../../shared/services/projectwork.service';
+import { ProjectService } from '../../../shared/services/project.service';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -67,6 +68,7 @@ import { ProjectWorkService } from '../../../shared/services/projectwork.service
     EmployeeSkillsService,
     CommentService,
     ProjectWorkService,
+    ProjectService,
       {
       provide: HTTP_INTERCEPTORS,
       useClass: ParamInterceptor,

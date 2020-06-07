@@ -21,6 +21,9 @@ import { ChartComponent } from './chart/chart.component';
 import { DemoDataProviderService } from './demo-data-provider.service';
 import { DashboardResourceService } from '../../shared/services/dashboardResource.service';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { FormsModule } from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MyMaterialModule } from '../../shared/config/material.module';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatListModule,
     RouterModule,
     HighchartsChartModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    FormsModule,
+    MatDatepickerModule,
+    MyMaterialModule
   ],
   exports:[
     HeaderComponent,

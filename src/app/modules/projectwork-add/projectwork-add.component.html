@@ -5,24 +5,31 @@
       <mat-label>Название</mat-label>
       <input autocomplete="off" matInput placeholder="Название работы" [(ngModel)]="nameWork" name="nameWork" required>
     </mat-form-field>
+ 
     <mat-form-field>
       <mat-label>Проект</mat-label>
-      <input autocomplete="off" matInput type="number" placeholder="Проект" [(ngModel)]="projectId" name="projectId"
-        required>
+      <mat-select [(ngModel)]="projectId" [ngModelOptions]="{standalone: true}" name="employeeId">
+        <mat-option *ngFor="let project of projects" [value]="project.id">
+          {{project.name}} 
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Часовая нагрузка</mat-label>
       <input autocomplete="off" matInput type="number" placeholder="Нагрузка" [(ngModel)]="hours" name="hours" required>
     </mat-form-field>
-    <mat-form-field class="full-width">
+    <mat-form-field>
       <mat-label>Начало</mat-label>
-      <input autocomplete="off" type="date" matInput placeholder="Начало" [(ngModel)]="startTime" name="startTime"
-        required>
+      <input matInput [matDatepicker]="pickerStart" [(ngModel)]="startTime"  name="birthDay" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+      <mat-datepicker #pickerStart ></mat-datepicker>
     </mat-form-field>
-    <mat-form-field class="full-width">
+    {{startTime}}
+    <mat-form-field>
       <mat-label>Конец</mat-label>
-      <input autocomplete="off" type="date" matInput placeholder="Конец" [(ngModel)]="deadlineTime" name="deadlineTime"
-        required>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="deadlineTime"  name="birthDay" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker ></mat-datepicker>
     </mat-form-field>
     <mat-form-field class="full-width">
       <mat-label>Исполнитель</mat-label>
@@ -35,7 +42,7 @@
 
     <mat-form-field class="full-width">
       <mat-label>Заливка</mat-label>
-      <input autocomplete="off" type="color" matInput placeholder="Конец" [(ngModel)]="fill" name="fill" required>
+      <input matInput autocomplete="off" type="color" matInput placeholder="Конец" [(ngModel)]="fill" name="fill" required>
     </mat-form-field>
     <div mat-dialog-actions>
       <button mat-button (click)="onNoClick()">Закрыть</button>
