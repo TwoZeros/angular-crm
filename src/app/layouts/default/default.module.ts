@@ -21,7 +21,6 @@ import { ClientDetailComponent } from '../../modules/clients/client-detail/clien
 import { ClientUpdateComponent } from '../../modules/clients/client-update/client-update.component';
 import { ClientUpdateAvatarComponent } from '../../modules/clients/client-update-avatar/client-update-avatar.component';
 import { ClientAddComponent } from '../../modules/clients/client-add/client-add.component';
-import { ProjectWorkAddComponent } from '../../modules/projectwork-add/projectwork-add.component';
 
 import { ClientService } from 'src/shared/services/client.services';
 import { EmployeeService } from 'src/shared/services/employee.service';
@@ -49,7 +48,7 @@ import { ProjectService } from '../../../shared/services/project.service';
     ClientUpdateComponent,
     ClientUpdateAvatarComponent,
     ClientAddComponent,
-    ProjectWorkAddComponent
+
   ],
   imports: [
     CommonModule,

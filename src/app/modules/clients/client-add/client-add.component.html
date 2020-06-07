@@ -1,7 +1,7 @@
 <mat-card style="margin: 0 auto; width: 400px;">
     <mat-card-title>
       <h1> Добавить клиента </h1>
-      <a mat-raised-button color="" routerLink='/clients'>Back</a>
+      <a mat-raised-button color="" routerLink='/clients'>Назад</a>
     </mat-card-title>
     <form class="my-form" novalidate #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
     <mat-card-content>
@@ -12,11 +12,11 @@
         </mat-form-field>
     
         <mat-form-field class="full-width">
-          <mat-label>Phone number</mat-label>
+          <mat-label>Номер телефона</mat-label>
           <input autocomplete="off" matInput placeholder="Phone number" [(ngModel)]="phoneNumber" name="phoneNumber" required>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <mat-label>Email</mat-label>
+          <mat-label>Почта</mat-label>
           <input autocomplete="off" matInput placeholder="Email" [(ngModel)]="email" name="middleName" required>
         </mat-form-field>
       

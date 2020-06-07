@@ -24,7 +24,6 @@
       <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
       <mat-datepicker #pickerStart ></mat-datepicker>
     </mat-form-field>
-    {{startTime}}
     <mat-form-field>
       <mat-label>Конец</mat-label>
       <input matInput [matDatepicker]="picker" [(ngModel)]="deadlineTime"  name="birthDay" placeholder="Choose a date">

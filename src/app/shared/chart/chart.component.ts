@@ -6,6 +6,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { NgForm } from '@angular/forms';
 import { SkillsService } from '../../../shared/services/skills.service';
 import {FormControl} from '@angular/forms';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ProjectWorkAddComponent } from '../../modules/projectwork-add/projectwork-add.component';
 
 @Component({
   selector: 'app-chart',
@@ -22,7 +24,17 @@ export class ChartComponent implements OnInit, AfterViewInit {
   skills;
 
 
+  createWork(): void {
+    const dialogRef = this.dialog.open(ProjectWorkAddComponent, {
+      width: '550px',
+      data: {}
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if(result)
+        this.onFind(null);
+    });
+  }
 getSkills() {
   this.skillServive.getSkills().subscribe(res=>this.skills = res);
 }
@@ -30,7 +42,8 @@ getSkills() {
   constructor(private dataService_: DemoDataProviderService,
     private spinner: NgxSpinnerService,
     private skillServive : SkillsService,
-    private DashboardResourceService: DashboardResourceService) {
+    private DashboardResourceService: DashboardResourceService,
+    public dialog: MatDialog) {
     //  this.subscription = this.dataService_.dataSetChanged$.subscribe(
     //    dataSet => this.chart.data(this.dataService_.getData(dataSet))
     //  );
@@ -42,7 +55,6 @@ getSkills() {
   onFind(form: NgForm){
   
     if(this.selectedSkill.value!=null &&this.selectedSkill.value.length!=0) {
-      
       this.DashboardResourceService.findByPeriodAndSkill(
         this.dataStart.toISOString().slice(0,10),
         this.dataEnd.toISOString().slice(0,10),
@@ -70,10 +82,10 @@ createChart(data) {
       console.log(this.data);
       //chart.currentStartDate('2016-10-05');
       chart
-        .zoomLevel(0)
-        .timeTrackingMode('activity-per-resource')
+        .zoomLevel(1)
+        .timeTrackingMode('activity-per-resource');
        
-
+      chart.resourceListWidth(190);
       chart.calendar().availabilities([
         {
           each: 'day',
@@ -82,6 +94,7 @@ createChart(data) {
           isWorking: true
         }
       ]);
+  
 
       chart.logo().fill({
         src: 'https://cdn.anychart.com/images/resource-chart/logo.png'
@@ -97,7 +110,7 @@ createChart(data) {
       });
 
       // Set images settings.
-      resourceList.images().size(85);
+      resourceList.images().size(50);
       
       // Set tags settings.
       resourceList.tags().background('#70d0f5').fontColor('#fff');

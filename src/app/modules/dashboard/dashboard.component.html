@@ -1,14 +1,6 @@
 <ngx-spinner bdColor = "rgba(255, 255, 255, 1)" size = "medium" color = "#1b1a1a" type = "square-spin" [fullScreen] = "false"><p style="color:#1b1a1a" > Загрузка... </p></ngx-spinner>
 
-<button mat-mini-fab color="accent" (click)="createWork()" >
-    <mat-icon>add</mat-icon>
-  </button>
-
-<div *ngIf="isVisibleChart">
-    <div>
-    <app-widget-area [info]="bigChart"></app-widget-area>
-</div>
+    <app-widget-area style="height: 100%;" [info]="bigChart"></app-widget-area>
 
 <mat-divider></mat-divider>
 
-</div>

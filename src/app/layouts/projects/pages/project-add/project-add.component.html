@@ -11,7 +11,7 @@
       <mat-label>Менеджер</mat-label>
       <mat-select [(ngModel)]="projectManagerId" [ngModelOptions]="{standalone: true}"  name="groupId">
         <mat-option *ngFor="let manager of employeeList"  [value]="manager.id">
-          {{manager.firstName}}
+          {{manager.secondName}} {{manager.firstName}}
         </mat-option>
       </mat-select>
     </mat-form-field>

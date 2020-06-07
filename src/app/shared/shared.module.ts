@@ -24,6 +24,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { FormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MyMaterialModule } from '../../shared/config/material.module';
+import { ProjectWorkAddComponent } from '../modules/projectwork-add/projectwork-add.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MyMaterialModule } from '../../shared/config/material.module';
     AreaComponent,
     RaitingClientChartComponent,
     HeaderLoginComponent,
+    ProjectWorkAddComponent,
     ChartComponent
   ],
   providers: [DemoDataProviderService, DashboardResourceService],
@@ -59,7 +61,8 @@ import { MyMaterialModule } from '../../shared/config/material.module';
     AreaComponent,
     RaitingClientChartComponent,
     HeaderLoginComponent,
-    ChartComponent
+    ChartComponent,
+    
   ]
 })
 export class SharedModule { }
