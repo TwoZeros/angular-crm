@@ -25,6 +25,7 @@ import { FormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MyMaterialModule } from '../../shared/config/material.module';
 import { ProjectWorkAddComponent } from '../modules/projectwork-add/projectwork-add.component';
+import { ProjectWorkUpdateComponent } from '../modules/projectwork-update/projectwork-update.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ProjectWorkAddComponent } from '../modules/projectwork-add/projectwork-
     RaitingClientChartComponent,
     HeaderLoginComponent,
     ProjectWorkAddComponent,
+    ProjectWorkUpdateComponent,
     ChartComponent
   ],
   providers: [DemoDataProviderService, DashboardResourceService],

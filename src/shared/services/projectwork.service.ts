@@ -31,9 +31,9 @@ export class ProjectWorkService {
     return this.http.post(this.uri,ProjectWorks);
   }
 
-  updateSkills(id,skills: object): Observable<any> {
-console.log(skills);
-    return this.http.put(this.uri+"/"+id,skills);
+  update(id,projectWork: object): Observable<any> {
+console.log(projectWork);
+    return this.http.put(this.uri+"/"+id,projectWork);
   }
 
 }

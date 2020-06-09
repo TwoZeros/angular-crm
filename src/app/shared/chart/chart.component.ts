@@ -8,6 +8,7 @@ import { SkillsService } from '../../../shared/services/skills.service';
 import {FormControl} from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ProjectWorkAddComponent } from '../../modules/projectwork-add/projectwork-add.component';
+import { ProjectWorkUpdateComponent } from '../../modules/projectwork-update/projectwork-update.component';
 
 @Component({
   selector: 'app-chart',
@@ -53,14 +54,22 @@ getSkills() {
   @ViewChild('chartContainer') container;
  
   onFind(form: NgForm){
-  
+    var that = this;
+    if(!this.dataStart || !this.dataEnd) {
+      this.data = this.DashboardResourceService.getAllResource().subscribe(data=>{
+         var that = this;
+      this.createChart(data, that);
+      });
+     
+    }
+
     if(this.selectedSkill.value!=null &&this.selectedSkill.value.length!=0) {
       this.DashboardResourceService.findByPeriodAndSkill(
         this.dataStart.toISOString().slice(0,10),
         this.dataEnd.toISOString().slice(0,10),
         this.selectedSkill.value
       ).subscribe(data=>{
-        this.createChart(data);
+        this.createChart(data,that);
       })
     }
     else {
@@ -69,13 +78,15 @@ getSkills() {
         this.dataStart.toISOString().slice(0,10),
          this.dataEnd.toISOString().slice(0,10)).subscribe(data=> {
           this.data =data;
-             this.createChart(this.data); 
+             this.createChart(this.data,that); 
             })
     
       }
  
 }
-createChart(data) {
+
+createChart(data, that) {
+  
   document.querySelector('div#chart-container').innerHTML = "";
   this.spinner.show();
   let chart = anychart.resource(data);
@@ -108,7 +119,17 @@ createChart(data) {
         fontColor: '#4CAF50',
         fontSize: 12
       });
-
+      chart.listen('pointClick', function(e) {
+       // this.ProjectWorkAddComponent.updateProjectWork();
+        const dialogRef = that.dialog.open(ProjectWorkUpdateComponent, {
+          width: '500px',
+          data: {id : e['data']['projectWorkId']}
+        });
+      
+        dialogRef.afterClosed().subscribe(result => {
+          that.onFind(null);
+        });
+      });
       // Set images settings.
       resourceList.images().size(50);
       
@@ -118,6 +139,10 @@ createChart(data) {
       
       chart.draw();
       this.spinner.hide();
+
+    }
+updateProjectWork(id :number): void {
+  
 }
   ngOnInit() {
     
@@ -125,15 +150,15 @@ createChart(data) {
 this.getSkills();
     this.DashboardResourceService.getAllResource().subscribe(data=>{
       this.data =data;
-    this.createChart(this.data);
+      var that = this;
+    this.createChart(this.data, that);
       
     });
-  
+    
 
   
     };
-
-
+   
   
 
   ngAfterViewInit() {
