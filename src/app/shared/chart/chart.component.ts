@@ -108,7 +108,7 @@ createChart(data, that) {
   
 
       chart.logo().fill({
-        src: 'https://cdn.anychart.com/images/resource-chart/logo.png'
+        src: 'https://psv4.userapi.com/c856532/u143709092/docs/d1/ac258d702886/logo2.jpg?extra=RPp7SIm6_XEzkG01KzpeNY_VJkoNqmYoUJA_liKPde5viZJXlUBDPxl79PwC5_HEumwhmyZJOLT-gC8OrhJ2KRgCdhMLxHs8tLeHRpwQQHE8F94X9iSPS9ptaqykUgSZCP2BJCVI78XCRf6D'
       });
        // Currently selected tree data item
        var selectedItem;
