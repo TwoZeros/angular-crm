@@ -32,11 +32,18 @@ export class ProjectWorkAddComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+  getDateToString(date : Date): string {
+    date.setDate(date.getDate() + 1);
+    let year = date.getFullYear();
+    let month = date.getMonth()+1;
+  return year+"-"+month +"-"+date.getUTCDate();
+  }
   onSubmit(form: NgForm) {
     this.ProjectWorkService.add({
       name: this.nameWork,
-      startTime: this.startTime.getFullYear()+"-"+(this.startTime.getMonth() +1) +"-"+this.startTime.getDay(),
-      deadlineTime: this.deadlineTime.getFullYear()+"-"+(this.deadlineTime.getMonth() +1)+"-"+this.deadlineTime.getDay(),
+      startTime: this.getDateToString(this.startTime),
+      deadlineTime: this.getDateToString(this.deadlineTime),
       fill : this.fill,
       projectId: this.projectId,
       employeeId:this.employeeId,
@@ -54,4 +61,5 @@ export class ProjectWorkAddComponent implements OnInit {
     this.ProjectService.getProjects().subscribe(projects => { this.projects = projects });
 
   }
+  
 }

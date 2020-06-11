@@ -52,10 +52,17 @@ getSkills() {
 
 
   @ViewChild('chartContainer') container;
- 
+  
+  getDateToString(date : Date): string {
+    date.setDate(date.getDate() + 1);
+    let year = date.getFullYear();
+    let month = date.getMonth()+1;
+  return year+"-"+month +"-"+date.getUTCDate();
+  
+}
   onFind(form: NgForm){
     var that = this;
-    if(!this.dataStart || !this.dataEnd) {
+    if(this.dataStart==null || this.dataEnd==null) {
       this.data = this.DashboardResourceService.getAllResource().subscribe(data=>{
          var that = this;
       this.createChart(data, that);
@@ -65,8 +72,8 @@ getSkills() {
 
     if(this.selectedSkill.value!=null &&this.selectedSkill.value.length!=0) {
       this.DashboardResourceService.findByPeriodAndSkill(
-        this.dataStart.toISOString().slice(0,10),
-        this.dataEnd.toISOString().slice(0,10),
+        this.getDateToString(this.dataStart),
+        this.getDateToString(this.dataEnd),
         this.selectedSkill.value
       ).subscribe(data=>{
         this.createChart(data,that);
@@ -75,8 +82,8 @@ getSkills() {
     else {
 
       this.DashboardResourceService.findByPeriod(
-        this.dataStart.toISOString().slice(0,10),
-         this.dataEnd.toISOString().slice(0,10)).subscribe(data=> {
+        this.getDateToString(this.dataStart),
+         this.getDateToString(this.dataEnd)).subscribe(data=> {
           this.data =data;
              this.createChart(this.data,that); 
             })
@@ -107,9 +114,6 @@ createChart(data, that) {
       ]);
   
 
-      chart.logo().fill({
-        src: 'https://psv4.userapi.com/c856532/u143709092/docs/d1/ac258d702886/logo2.jpg?extra=RPp7SIm6_XEzkG01KzpeNY_VJkoNqmYoUJA_liKPde5viZJXlUBDPxl79PwC5_HEumwhmyZJOLT-gC8OrhJ2KRgCdhMLxHs8tLeHRpwQQHE8F94X9iSPS9ptaqykUgSZCP2BJCVI78XCRf6D'
-      });
        // Currently selected tree data item
        var selectedItem;
        var activities = chart.activities();
