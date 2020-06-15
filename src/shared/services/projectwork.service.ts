@@ -28,7 +28,7 @@ export class ProjectWorkService {
 
   add(ProjectWorks: object): Observable<any> {
 
-    return this.http.post(this.uri,ProjectWorks);
+    return this.http.post(this.uri+"/AddRange",ProjectWorks);
   }
 
   update(id,projectWork: object): Observable<any> {
