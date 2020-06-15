@@ -10,6 +10,8 @@ import {ProjectService} from "../../../../../shared/services/project.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ProjectAddComponent} from "../project-add/project-add.component";
 import {ProjectUpdateComponent} from "../project-update/project-update.component";
+import {Employee} from "../../../../../shared/models/employee";
+import {ProjectDetailComponent} from "../../project-detail/project-detail.component";
 
 @Component({
   selector: 'app-projects-list',
@@ -19,7 +21,7 @@ import {ProjectUpdateComponent} from "../project-update/project-update.component
 export class ProjectsListComponent implements OnInit {
   dataSource ;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  displayedColumns: string[] = ['id', 'name', 'projectManagerName', 'totalHour', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'projectManagerName', 'projectClientName', 'factHour', 'totalHour', 'actions'];
   projects: Project[];
   constructor(private ProjectService: ProjectService,
               private spinner: NgxSpinnerService,
@@ -37,6 +39,15 @@ export class ProjectsListComponent implements OnInit {
       });
   }
 
+  onRowClicked(row: Project) {
+    const dialogRef = this.dialog.open(ProjectDetailComponent, {
+      width: '500px',
+      data: {}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getProjects();
+    });
+  }
   createProject(): void {
     const dialogRef = this.dialog.open(ProjectAddComponent, {
       width: '500px',
@@ -44,7 +55,7 @@ export class ProjectsListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.getProjects()
+      this.getProjects();
     });
   }
   updateProject(id :number): void {

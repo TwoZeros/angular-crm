@@ -87,6 +87,7 @@ export class EmployeeDetailComponent implements OnInit {
     this.EmployeeService.getEmployee(id)
       .subscribe(employee => {
         this.employee = employee
+        console.log(employee);
       this.spinner.hide()
     }
         );
@@ -127,7 +128,7 @@ export class EmployeeDetailComponent implements OnInit {
       this.EmployeeService.deleteEmployee(id).subscribe(status=> {
 
         this.router.navigate(
-          ['/front/employee']
+          ['/employee']
         );
       })
     }

@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {EmployeeService} from '../../../../../shared/services/employee.service';
 import {ProjectService} from '../../../../../shared/services/project.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {ClientService} from "../../../../../shared/services/client.services";
 
 @Component({
   selector: 'app-project-add',
@@ -14,11 +15,14 @@ export class ProjectAddComponent implements OnInit {
   projectManagerId: number;
   totalHour: number;
   description: string;
+  projectClientId;
+  clientList;
   employeeList;
 
   constructor(
     private ProjectService: ProjectService,
     private EmployeeSevice: EmployeeService,
+    private ClientService: ClientService,
     public dialogRef: MatDialogRef<ProjectAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -31,11 +35,19 @@ export class ProjectAddComponent implements OnInit {
     this.ProjectService.addProject({
       name: this.nameProject,
       projectManagerId: this.projectManagerId,
+      projectClientId: this.projectClientId,
       totalHour: this.totalHour,
       description: this.description,
     }).subscribe(status => {
 
     });
+  }
+  getClients() : void {
+    this.ClientService.getClients()
+      .subscribe(client => {
+        this.clientList = client;
+        console.log(this.clientList);
+      });
   }
   getEmployees(): void {
     this.EmployeeSevice.getEmployees(
@@ -47,5 +59,6 @@ export class ProjectAddComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getEmployees();
+    this.getClients();
   }
 }

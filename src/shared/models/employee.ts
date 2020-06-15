@@ -5,6 +5,7 @@ export interface Employee {
     secondName: string,
     middleName: string,
     birthDay: string,
+    departamentName: string,
     created : string
     phoneNumber:string,
     email:string,

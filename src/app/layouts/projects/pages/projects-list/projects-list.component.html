@@ -25,6 +25,16 @@
     <td  *matCellDef="let elem">{{elem.projectManagerName}}</td>
   </ng-container>
 
+  <ng-container matColumnDef="projectClientName">
+    <th  *matHeaderCellDef>Имя клиента</th>
+    <td  *matCellDef="let elem">{{elem.projectClientName}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="factHour">
+    <th  *matHeaderCellDef>Запланировано</th>
+    <td  *matCellDef="let elem">{{elem.factHour}}</td>
+  </ng-container>
+
   <ng-container matColumnDef="totalHour">
     <th  *matHeaderCellDef>Часы</th>
     <td  *matCellDef="let elem">{{elem.totalHour}}</td>

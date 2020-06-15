@@ -44,10 +44,10 @@ export class ProjectUpdateComponent implements OnInit {
   }
   async ngOnInit() {
     await this.getEmployees();
-    this.getProject();
+    await this.getProject();
   }
 
-  async getEmployees() {
+ async getEmployees() {
     this.EmployeeSevice.getEmployees(
     ).subscribe(employee => {
       this.employeeList = employee;
@@ -56,7 +56,7 @@ export class ProjectUpdateComponent implements OnInit {
     console.log(this.employee);
   }
 
-  getProject(): void {
+  async getProject() {
 
     this.ProjectService.getProject(this.data.id)
       .subscribe(proj => {

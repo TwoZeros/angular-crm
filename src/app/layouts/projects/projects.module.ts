@@ -11,6 +11,7 @@ import {ProjectLayoutComponent} from "./pages/project-layout/project-layout.comp
 import {ProjectService} from "../../../shared/services/project.service";
 import { ProjectAddComponent } from './pages/project-add/project-add.component';
 import { ProjectUpdateComponent } from './pages/project-update/project-update.component';
+import { ProjectDetailComponent } from './project-detail/project-detail.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ProjectUpdateComponent } from './pages/project-update/project-update.co
     ProjectLayoutComponent,
     ProjectAddComponent,
     ProjectUpdateComponent,
+    ProjectDetailComponent,
   ],
   imports: [
     CommonModule,
