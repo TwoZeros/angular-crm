@@ -6,6 +6,8 @@ import { EmployeeService }  from '../../../../shared/services/employee.service';
 import { Employee } from '../../../../shared/models/employee';
 import { FormGroup, FormControl, Validators, FormArray, FormsModule } from '@angular/forms';
 import {DepartmentService} from "../../../../shared/services/department.service";
+import {pipe} from "rxjs";
+import {tap} from "rxjs/operators";
 @Component({
   selector: 'app-employee-update',
   templateUrl: './employee-update.component.html',
@@ -16,6 +18,7 @@ export class EmployeeUpdateComponent implements OnInit {
   updateForm : FormGroup;
   departmentId;
   departmentGroup;
+  depart;
   currentIdEmployee : number;
   constructor(
     private router: Router,
@@ -26,17 +29,28 @@ export class EmployeeUpdateComponent implements OnInit {
   ) { }
 
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.currentIdEmployee = +this.route.snapshot.paramMap.get('id');
-    this.getDepartment();
-    this.getEmployee();
+    await this.getEmployee();
   }
+
+
+
   getDepartment() {
     this.DepartmentService.getDepartments()
       .subscribe(depart => {
         this.departmentGroup = depart;
+        for(this.depart of this.departmentGroup) {
+          if(this.depart.name === this.employee.departamentName) {
+            this.departmentId = this.depart.id;
+            console.log(this.departmentId);
+            this.createForm();
+          }
+        }
         console.log(depart);
+
       });
+
   }
   createForm(): void {
     this.updateForm = new FormGroup({
@@ -46,6 +60,7 @@ export class EmployeeUpdateComponent implements OnInit {
       middleName: new FormControl(this.employee.middleName, [Validators.required]),
       email: new FormControl(this.employee.email, [Validators.required]),
       phoneNumber: new FormControl(this.employee.phoneNumber, [Validators.required]),
+      department: new FormControl(this.departmentId, [Validators.required]),
       birthDay: new FormControl(new Date(this.employee.birthDay)),
   });
   }
@@ -67,12 +82,13 @@ export class EmployeeUpdateComponent implements OnInit {
     } );
 
   }
-  getEmployee(): void {
+  async getEmployee() {
 
     this.EmployeeService.getEmployee(this.currentIdEmployee)
       .subscribe(employee => {
         this.employee = employee;
         this.createForm();
+        this.getDepartment();
       }
         );
 

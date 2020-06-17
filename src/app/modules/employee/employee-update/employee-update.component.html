@@ -29,7 +29,7 @@
           <input autocomplete="off" matInput placeholder="Email" formControlName="email" name="middleName" required>
         </mat-form-field>
       <mat-form-field class="full-width">
-        <mat-label>Группа</mat-label>
+        <mat-label>Подразделение</mat-label>
         <mat-select [(ngModel)]="departmentId" [ngModelOptions]="{standalone: true}"  name="department">
           <mat-option *ngFor="let depart of departmentGroup"  [value]="depart.id">
             {{depart.name}}

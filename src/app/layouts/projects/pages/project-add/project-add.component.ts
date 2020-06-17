@@ -42,7 +42,7 @@ export class ProjectAddComponent implements OnInit {
 
     });
   }
-  getClients() : void {
+  getClients(): void {
     this.ClientService.getClients()
       .subscribe(client => {
         this.clientList = client;

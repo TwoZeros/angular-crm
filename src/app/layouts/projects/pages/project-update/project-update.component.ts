@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ProjectService} from "../../../../../shared/services/project.service";
 import {EmployeeService} from "../../../../../shared/services/employee.service";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-project-update',
@@ -16,6 +17,7 @@ export class ProjectUpdateComponent implements OnInit {
   ManagerId;
   employee;
   employeeList;
+  employ;
 
   constructor(
     private ProjectService: ProjectService,
@@ -29,9 +31,9 @@ export class ProjectUpdateComponent implements OnInit {
   submit(): void {
 
     this.ProjectService.updateProject(this.data.id,{
-      id: this.data.id,
+      id: +this.data.id,
       name: this.updateForm.value.name,
-      projectManagerId: this.updateForm.value.projectManagerId,
+      projectManagerId: +this.updateForm.value.projectManagerId,
       totalHour: this.updateForm.value.totalHour,
       description: this.updateForm.value.description,
 
@@ -43,32 +45,31 @@ export class ProjectUpdateComponent implements OnInit {
 
   }
   async ngOnInit() {
-    await this.getEmployees();
     await this.getProject();
   }
-
- async getEmployees() {
+  getEmployees() {
     this.EmployeeSevice.getEmployees(
     ).subscribe(employee => {
       this.employeeList = employee;
       console.log(this.employeeList);
+      for(this.employ of this.employeeList) {
+        if (this.project.projectManagerName === this.employ.secondName + ' ' + this.employ.firstName) {
+          this.ManagerId = this.employ.id;
+          console.log(this.ManagerId);
+          this.createForm();
+        }
+      }
     });
     console.log(this.employee);
   }
 
-  async getProject() {
-
+  async  getProject() {
     this.ProjectService.getProject(this.data.id)
       .subscribe(proj => {
           this.project = proj;
           console.log(this.project);
-          for(let i = 0; i < this.employeeList.length; i++) {
-            if (this.project.projectManagerName === this.employeeList[i].firstName) {
-              this.ManagerId = this.employeeList[i].id;
-              console.log(this.ManagerId);
-            }
-          }
           this.createForm();
+          this.getEmployees();
         }
       );
 
