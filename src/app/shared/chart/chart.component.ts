@@ -9,6 +9,7 @@ import {FormControl} from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ProjectWorkAddComponent } from '../../modules/projectwork-add/projectwork-add.component';
 import { ProjectWorkUpdateComponent } from '../../modules/projectwork-update/projectwork-update.component';
+import { DepartmentService } from '../../../shared/services/department.service';
 
 @Component({
   selector: 'app-chart',
@@ -23,7 +24,12 @@ export class ChartComponent implements OnInit, AfterViewInit {
   dataEnd;
   selectedSkill = new FormControl();
   skills;
-
+  departments;
+  selectedDepartments = new FormControl();
+  
+  deleteSelectedSkill() {
+this.selectedSkill =null;
+}
 
   createWork(): void {
     const dialogRef = this.dialog.open(ProjectWorkAddComponent, {
@@ -44,6 +50,7 @@ getSkills() {
     private spinner: NgxSpinnerService,
     private skillServive : SkillsService,
     private DashboardResourceService: DashboardResourceService,
+    private DepartmentService : DepartmentService,
     public dialog: MatDialog) {
     //  this.subscription = this.dataService_.dataSetChanged$.subscribe(
     //    dataSet => this.chart.data(this.dataService_.getData(dataSet))
@@ -69,7 +76,15 @@ getSkills() {
       });
      
     }
-
+    if(this.selectedDepartments.value!=null &&this.selectedDepartments.value.length!=0) {
+      this.DashboardResourceService.getPeopleFromDepartments(
+        this.getDateToString(this.dataStart),
+        this.getDateToString(this.dataEnd),
+        this.selectedDepartments.value
+      ).subscribe(data=>{
+        this.createChart(data,that);
+      })
+    }
     if(this.selectedSkill.value!=null &&this.selectedSkill.value.length!=0) {
       this.DashboardResourceService.findByPeriodAndSkill(
         this.getDateToString(this.dataStart),
@@ -152,6 +167,7 @@ updateProjectWork(id :number): void {
     
     this.spinner.show();
 this.getSkills();
+this.getDepartments();
     this.DashboardResourceService.getAllResource().subscribe(data=>{
       this.data =data;
       var that = this;
@@ -163,7 +179,9 @@ this.getSkills();
   
     };
    
-  
+  getDepartments() {
+    this.DepartmentService.getDepartments().subscribe(res=> this.departments = res);
+  }
 
   ngAfterViewInit() {
   

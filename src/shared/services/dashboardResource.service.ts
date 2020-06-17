@@ -23,6 +23,9 @@ export class DashboardResourceService {
   findByPeriodAndSkill(startTime,endTime, skills): Observable<any> {
     return this.http.post(this.uri+"/getEmployeeWithSkill?Start="+startTime+"&End="+endTime, skills)
   }
-  
+  getPeopleFromDepartments(startTime,endTime, departments): Observable<any> {
+    return this.http.post(this.uri+"/getPeopleFromDepartments?Start="+startTime+"&End="+endTime, departments)
+  }
+
 
 }
