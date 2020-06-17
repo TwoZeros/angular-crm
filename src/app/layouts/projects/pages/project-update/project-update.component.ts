@@ -4,6 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ProjectService} from "../../../../../shared/services/project.service";
 import {EmployeeService} from "../../../../../shared/services/employee.service";
 import {tap} from "rxjs/operators";
+import {ClientService} from "../../../../../shared/services/client.services";
 
 @Component({
   selector: 'app-project-update',
@@ -18,10 +19,14 @@ export class ProjectUpdateComponent implements OnInit {
   employee;
   employeeList;
   employ;
+  clientId;
+  clientList;
+  clientTemp;
 
   constructor(
     private ProjectService: ProjectService,
     private EmployeeSevice: EmployeeService,
+    private ClientService: ClientService,
     public dialogRef: MatDialogRef<ProjectUpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -34,6 +39,7 @@ export class ProjectUpdateComponent implements OnInit {
       id: +this.data.id,
       name: this.updateForm.value.name,
       projectManagerId: +this.updateForm.value.projectManagerId,
+      projectClientId: +this.updateForm.value.projectClientId,
       totalHour: this.updateForm.value.totalHour,
       description: this.updateForm.value.description,
 
@@ -62,7 +68,20 @@ export class ProjectUpdateComponent implements OnInit {
     });
     console.log(this.employee);
   }
-
+ getClient() {
+    this.ClientService.getClients()
+      .subscribe(client => {
+        this.clientList = client;
+        console.log(this.clientList);
+        for(this.clientTemp of this.clientList) {
+          if(this.project.projectClientName === this.clientTemp.fullName) {
+            this.clientId = this.clientTemp.id;
+            console.log(this.clientId);
+            this.createForm();
+          }
+        }
+      })
+ }
   async  getProject() {
     this.ProjectService.getProject(this.data.id)
       .subscribe(proj => {
@@ -70,6 +89,7 @@ export class ProjectUpdateComponent implements OnInit {
           console.log(this.project);
           this.createForm();
           this.getEmployees();
+          this.getClient();
         }
       );
 
@@ -79,6 +99,7 @@ export class ProjectUpdateComponent implements OnInit {
     this.updateForm = new FormGroup({
       name: new FormControl(this.project.name, [Validators.required]),
       projectManagerId: new FormControl(this.ManagerId, [Validators.required]),
+      projectClientId: new FormControl(this.clientId, [Validators.required]),
       totalHour: new FormControl(this.project.totalHour, [Validators.required]),
       description: new FormControl(this.project.description, [Validators.required]),
     });

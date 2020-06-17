@@ -17,6 +17,15 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
+      <mat-label>Клиент</mat-label>
+      <mat-select formControlName="projectClientId"  name="projectClienId">
+        <mat-option *ngFor="let client of clientList"  [value]="client.id">
+          {{client.fullName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
       <mat-label>Часы</mat-label>
       <input autocomplete="off"  matInput placeholder="Время проекта" formControlName="totalHour"  required>
     </mat-form-field>
