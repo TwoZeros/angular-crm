@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ProjectService {
-  public uri = 'https://edupulse.ru/api/Projects';
+  public uri = 'https://api.kronx.ru/api/Projects';
 
   constructor(private http: HttpClient) {
   }

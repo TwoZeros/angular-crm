@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DashboardResourceService {
-  public uri = 'https://edupulse.ru/api/ScheduleResource';
+  public uri = 'https://api.kronx.ru/api/ScheduleResource';
   constructor(private http: HttpClient){ }
 
   getAllResource(): Observable<any> {

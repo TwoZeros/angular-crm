@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DepartmentService {
-  public uri = 'https://edupulse.ru/api/BranchCompanies';
+  public uri = 'https://api.kronx.ru/api/BranchCompanies';
   constructor(private http: HttpClient){ }
 
   getDepartments(): Observable<any> {

@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CarmaService {
-  public uri = 'https://edupulse.ru/api/CarmaUsers';
+  public uri = 'https://api.kronx.ru/api/CarmaUsers';
 
   constructor(private http: HttpClient) {
   }

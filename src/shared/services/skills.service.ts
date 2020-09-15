@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SkillsService {
-  public uri = 'https://edupulse.ru/api/Skills';
+  public uri = 'https://api.kronx.ru/api/Skills';
   constructor(private http: HttpClient){ }
 
   getSkills(): Observable<any> {

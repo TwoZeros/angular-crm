@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class EmployeeService {
-  public uri = 'https://edupulse.ru/api/Employees';
+  public uri = 'https://api.kronx.ru/api/Employees';
   constructor(private http: HttpClient){ }
 
   getEmployees(): Observable<any> {

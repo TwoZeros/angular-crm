@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class EmployeeScheduleService {
-  public uri = 'https://edupulse.ru/api/EmployeeShedules';
+  public uri = 'https://api.kronx.ru/api/EmployeeShedules';
   constructor(private http: HttpClient){ }
 
   getEmployeeSchedules(): Observable<any> {

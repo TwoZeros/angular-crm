@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 export class AuthorisationService {
-  public uri = 'https://edupulse.ru';
+  public uri = 'https://api.kronx.ru';
   public token;
   constructor(private http: HttpClient, public router: Router) { }
 

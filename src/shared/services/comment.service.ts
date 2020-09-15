@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CommentService {
-  public uri = 'https://edupulse.ru/api/Comments';
+  public uri = 'https://api.kronx.ru/api/Comments';
   constructor(private http: HttpClient){ }
 
   getComments(): Observable<any> {

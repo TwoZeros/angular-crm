@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GroupSkillsService {
-  public uri = 'https://edupulse.ru/api/GroupSkills';
+  public uri = 'https://api.kronx.ru/api/GroupSkills';
   constructor(private http: HttpClient){ }
 
   getGroups(): Observable<any> {

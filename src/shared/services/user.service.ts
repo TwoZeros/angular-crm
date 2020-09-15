@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  public uri = 'https://edupulse.ru/api/Users';
+  public uri = 'https://api.kronx.ru/api/Users';
   constructor(private http: HttpClient){ }
 
   getAll(): Observable<any> {
